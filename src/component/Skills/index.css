@@ -1,0 +1,52 @@
+.skills {
+  height: 100vh;
+  padding-top: 20vh;
+}
+
+.skills-title {
+  margin-bottom: 10vh;
+
+  letter-spacing: var(--letter-spacing);
+}
+
+.carrusel-container {
+  padding: 5% 10%;
+
+  overflow: hidden;
+}
+
+.carrusel {
+  width: fit-content;
+  margin: auto;
+  
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.carrusel__btn-prev, .carrusel__btn-next {
+  width: 4em;
+  height: 4em;
+
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  background-color: white;
+  box-shadow: 0 0 0.2em 0 gray;
+  z-index: var(--carrusel-btn-z-index);
+}
+
+.carrusel__btn-prev:hover, .carrusel__btn-next:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.carrusel__btn-prev {
+  transform: translate(-50%, -50%);
+  left: 0;
+}
+
+.carrusel__btn-next {
+  transform: translate(50%, -50%);
+  right: 0;
+}
