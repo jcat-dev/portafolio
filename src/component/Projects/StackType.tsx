@@ -7,7 +7,7 @@ interface Props {
 
 const StackType: React.FC<Props> = ({ title, list }) => {
   if (list.length === 0) {
-    return
+    return <></>
   }
   
   return (
