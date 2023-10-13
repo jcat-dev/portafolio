@@ -1,0 +1,49 @@
+.item {
+  height: 100%;
+  padding-right: 1em;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.item__link {
+  padding: 1em 0;
+  color: black;
+  letter-spacing: var(--letter-spacing);
+}
+
+.item__progress-bar {
+  width: 0;
+  height: 2.5px;
+
+  position: absolute;
+  bottom: 0;
+  transition: width 0.5s linear;
+  background-color: red;
+}
+
+.item__progress-bar--active {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    height: fit-content;
+    margin-bottom: 1em;
+    
+    display: block;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .item__link {
+    display: block;
+  
+    &:hover {
+      color: red;
+    }
+  }
+}

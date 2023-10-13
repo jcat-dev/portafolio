@@ -15,39 +15,84 @@
   box-shadow: 0 0 2.5px 0 gray;
 }
 
-.list {
+.nav-list {
   height: 100%;
   display: flex;
 }
 
-
-/*Item.tsx*/
-
-.item {
-  height: 100%;
-  padding-right: 1em;
-
-  display: flex;
-  align-items: center;
-  position: relative;
+.menu, .nav-title {
+  display: none;
 }
 
-.item__link {
-  color: black;
-  letter-spacing: 0.1em;
-}
 
-.item__progress-bar {
-  width: 0;
-  height: 2.5px;
+@media screen and (max-width: 768px) {
+  .nav {   
+    transition: height 1.5s;
+  }
 
-  position: absolute;
-  bottom: 0;
-  transition: width 0.5s linear;
-  background-color: red;
-}
+  .nav-mobil {
+    height: 100vh;
+    padding: 5vh 15vw;
+    display: block;
+  }
 
-.item__progress-bar--active {
-  width: 100%;
-  transition: width 0.5s linear;
+  .nav-title {
+    font-size: 1.25em;
+
+    display: block;
+    font-weight: bold;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .nav-list {
+    width: fit-content;
+    height: fit-content;
+    display: block;
+    
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .menu {
+    margin-left: auto;
+    display: block;
+  }
+
+  .menu-icon {
+    width: 2.25em;
+    height: 2.25em;
+    padding: 0.5em;
+  
+    &:hover {
+      cursor: pointer;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .menu-close {
+    width: 2.25em;
+    height: 2.25em;
+    padding: 0.5em;
+
+    display: block;
+    position: absolute;
+    right: 15vw;    
+    border-radius: 100%;
+
+    &:hover {
+      transform: scale(1.25);
+      cursor: pointer;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
 }

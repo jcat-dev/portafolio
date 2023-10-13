@@ -31,3 +31,15 @@ a {
 input, textarea {
   outline: none;
 }
+
+@media screen and (min-width: 1440px) {
+  body {
+    font-size: 16.941px;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  body {
+    font-size:  30.117px;
+  }
+}
