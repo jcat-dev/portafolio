@@ -1,40 +1,52 @@
 .start {
-  height: 85vh;
-  padding-top: 15vh;
+  min-height: 85vh;
+  padding-top: 20vh;
+  
   display: flex;  
 }
 
-.start-container {
+.profile-container {
   margin: auto;
 
   display: grid;
-  gap: 1.5em 3em;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  gap: 2.5%;
+  grid-template-columns: 27.5% 70%;
+  grid-template-rows: 47.5% 50%;
   grid-template-areas: 
-  "title photo"
-  "text photo";
+  "photo title"
+  "text text";
 }
 
-.title {
+.profile-photo {
+  grid-area: photo;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1em;
+}
+
+.profile-title {
   grid-area: title;
 
   font-size: 3em;
   line-height: 1.25em;
 }
 
-.text {
+.profile-description {
   grid-area: text;
 
   text-align: justify;
   line-height: 1.25em;
 }
 
-.photo {
-  grid-area: photo;
+@media screen and (max-width: 768px) {
+  .profile-container {
+    grid-template-columns: 37.5% 60%;
+    grid-template-rows: 27.5% 70%;
+  }
 
-  min-width: 150px;
-  max-height: 250px;
-
-  border-radius: 1em;
+  .profile-title {
+    font-size: 1.5em;
+  }
 }

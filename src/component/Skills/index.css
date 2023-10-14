@@ -1,5 +1,5 @@
 .skills {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 20vh;
 }
 
@@ -10,13 +10,13 @@
 }
 
 .carrusel-container {
-  padding: 5% 10%;
+  padding: 5%;
 
   overflow: hidden;
 }
 
 .carrusel {
-  width: fit-content;
+  width: max-content;
   margin: auto;
   
   display: flex;
@@ -49,4 +49,15 @@
 .carrusel__btn-next {
   transform: translate(50%, -50%);
   right: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .carrusel-container {
+    padding: 10%;
+  }
+
+  .carrusel {
+    width: auto;
+  }
 }

@@ -7,8 +7,14 @@ const Start = () => {
       id='inicio' 
       className='start' 
     >
-      <div className='start-container' >
-        <h1 className='title' >
+      <div className='profile-container' >
+        <img 
+          className='profile-photo'
+          src={profile.photoUrl} 
+          alt="photo" 
+        />
+        
+        <h1 className='profile-title' >
           {
             profile.title.split(' ').map((value) => (
               <>
@@ -19,15 +25,9 @@ const Start = () => {
           }
         </h1>
 
-        <p className='text' >
+        <p className='profile-description' >
           {profile.description}
-        </p>
-      
-        <img 
-          className='photo'
-          src={profile.photoUrl} 
-          alt="photo" 
-        />
+        </p>        
       </div>
     </section>
   )

@@ -27,6 +27,7 @@
 
 @media screen and (max-width: 768px) {
   .nav {   
+    padding: 0 5vw;
     transition: height 1.5s;
   }
 
