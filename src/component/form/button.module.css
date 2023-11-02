@@ -1,0 +1,53 @@
+.button-solid, .button-outline {
+  min-width: 2.5em;
+  height: 2.5em;
+  padding: 0 2.5em;
+
+  border-radius: 0.5em;
+  font-weight: bolder;
+}
+
+.button-solid {
+  color: white;
+
+  &.button-solid--color-primary {
+    background-color: teal;
+
+    &:hover {
+      background-color: rgb(1, 105, 105);
+      cursor: pointer;
+    }
+  }
+
+  &.button-solid--color-secondary {
+    background-color: blue;
+
+    &:hover {
+      background-color: rgb(8, 8, 220);
+      cursor: pointer;
+    }
+  }
+}
+
+.button-outline {
+  outline: 1px solid currentColor;
+  background-color: white;
+
+  &.button-outline--color-primary {
+    color: teal;
+
+    &:hover {
+      background-color: rgb(194, 240, 240);
+      cursor: pointer;
+    }
+  }
+
+  &.button-outline--color-secondary {
+    color: blue;
+
+    &:hover {
+      background-color: rgb(143, 143, 238);
+      cursor: pointer;
+    }
+  }  
+}
