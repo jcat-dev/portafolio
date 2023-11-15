@@ -1,6 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap');
 
 :root {
+  --color-blue: #007ACC;
+  --color-blue-light: #AEDFF7;
+
+  --color-orange: #FFA500;
+  --color-orange-light: #FFD699;
+
+  --color-white: #FFFFFF;
+  --color-white-light: #E5E5E5;
+
+  --color-black: #000000;
+  --color-black-light: #CCCCCC;
+
+  --color-red: #FF0000;
+  --color-red-light: #FFB7B7;
+
+  --color-teal: #49A69A;
+  --color-teal-light: #7ECDC6;
+
   --letter-spacing: 0.1em;
   --nav-z-index: 10;
   --carrusel-btn-z-index: 1;
