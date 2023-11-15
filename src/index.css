@@ -2,7 +2,7 @@
 
 :root {
   --letter-spacing: 0.1em;
-  --nav-z-index: 100;
+  --nav-z-index: 10;
   --carrusel-btn-z-index: 1;
 }
 
@@ -20,16 +20,15 @@ li {
   list-style: none;
 }
 
-button {
+input, textarea, summary, button {
+  outline: none;
   border: none;
+  font-size: inherit;
+  font-family: inherit;
 }
 
 a {
   text-decoration: none;
-}
-
-input, textarea {
-  outline: none;
 }
 
 @media screen and (min-width: 1440px) {
