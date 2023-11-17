@@ -1,0 +1,28 @@
+.loading-img {
+  width: 8em;
+  height: 8em;
+}
+
+.loading {
+  width: 8em;
+  height: 8em;
+
+  animation-name: loading;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+}
+
+@keyframes loading {
+  0% {
+    background-color: hsla(200, 20%, 75%, 0.7);
+  }
+
+  50% {
+    background-color: hsla(200, 20%, 85%, 0.7);
+  }
+
+  100% {
+    background-color: hsla(200, 20%, 95%, 1);
+  }
+}
