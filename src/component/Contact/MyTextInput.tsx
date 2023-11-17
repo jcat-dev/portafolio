@@ -2,20 +2,32 @@ import { useField } from 'formik'
 import './myTextInput.css'
 
 interface Props {
-  label: string
+  labelTitle: string
   name: string
   type: string
-  placeholder: string
   id: string
+  placeholder?: string
 }
 
-const MyTextInput: React.FC<Props> = ({ label, ...props }) => {
-  const [field, meta] = useField(props)
+const MyTextInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
+  const [field, meta] = useField(name)
 
   return (
     <div
       className='form__field'
     >
+      <label 
+        htmlFor={props.id}
+
+        className= {
+          (meta.touched && meta.error) 
+            ? 'form__label form__label--error'
+            : 'form__label' 
+        }        
+      >
+        {labelTitle}
+      </label>
+
       <input 
         className= {
           (meta.touched && meta.error) 
@@ -25,21 +37,7 @@ const MyTextInput: React.FC<Props> = ({ label, ...props }) => {
 
         {...field} 
         {...props} 
-      />
-
-      <label 
-        htmlFor={props.id}
-
-        className= {
-          (meta.touched && meta.error) 
-            ? 'form__label form__label--error form__label--active'
-            : field.value
-              ? 'form__label form__label--active' 
-              : 'form__label'  
-        }        
-      >
-        {label}
-      </label>
+      />      
     </div>
   )
 }

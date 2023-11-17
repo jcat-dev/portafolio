@@ -1,85 +1,61 @@
-:root {
-  --input-border-buttom-color: gray;
-  
-  --label-error-color: red;
-  --label-error-bg-color: white;
-  --label-border-color: gray;
-  
-  --form-item-error-color: rgba(255, 0, 0, 0.1);
-  --form-item-bg-color: rgb(232, 240, 254);
-}
-
-.form__field {
-  margin: 2em auto;
+.form__field {  
   position: relative;
 }
 
-.form__input {
-  font-size: 1em;
-
-  width: 100%;
-  height: 3.5em;
-  padding: 0.5em 1em;
-  border: none;
-  border-bottom: 1.5px solid var(--input-border-buttom-color);
-
-  background-color: var(--form-item-bg-color);
-}
-
 .form__label {
+  font-size: 0.7em;
+
   width: fit-content;
-  height: 3.5em;
-  padding: 0.5em 1em;
+  height: 2em;
+  padding: 0 0.8em;
+  margin-left: 1rem;
+  border: 1px solid var(--color-teal);
 
   position: absolute;
-  inset: 0;
-  
+  top: -1em;
   display: flex;
   align-items: center;
   pointer-events: none;
-  background-color: transparent;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+  background-color: var(--color-teal-light);
+  
+  &.form__label--error{
+    color: var(--color-black);
+    border: 1px solid var(--color-red);
+    background-color: var(--color-red-light);
+  }
 }
 
-.form__input:focus ~ .form__label, .form__label--active {
-  font-size: 0.7em;
+.form__input {
+  width: 100%;
+  height: 3em;
+  padding: 0.5em 1rem;
+  border: 2px solid var(--color-teal);
 
-  height: 2em;
-  margin-left: 1rem;
-  border-left: 1px solid var(--label-border-color);
-  border-right: 1px solid var(--label-border-color);
-  padding: 0 0.8em;
+  border-radius: 0.25em;
+  background-color: var(--color-white);
 
-  top: -1em;
-  font-weight: bold;
-  letter-spacing: 0.25em;
-  transition: 0.5s;
-  background-color: white;
+  &.form__input--error {  
+    border: 2px solid var(--color-red);
+  }
 }
 
 .form__textarea {
-  font-size: 1.25em;
-
   width: 100%;
-  min-height: 150px;
-  padding: 0.5em 1em ;
-  margin: 0 auto;
-  border: none;
+  min-height: 9.5em;
+  padding: 0.75em 1rem;
+  border: 2px solid var(--color-teal);
 
   resize: none;
   display: block;
-  background-color: var(--form-item-bg-color);
   text-align: justify;
-}
+  background-color: var(--color-white);
+  border-radius: 0.25em;
 
-/********************************************************/
-/***********************Error****************************/
-
-.form__label--error {
-  color: var(--label-error-color);
-  background-color: var(--label-error-bg-color);
-}
-
-.form__input--error, .form__select--error, .form__textarea--error {
-  background-color: var(--form-item-error-color);
+  &.form__textarea--error {  
+    border: 2px solid var(--color-red);
+  }
 }
 
