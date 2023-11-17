@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import './myTextInput.css'
+import './formikInput.css'
 
 interface Props {
   labelTitle: string
@@ -9,7 +9,7 @@ interface Props {
   placeholder?: string
 }
 
-const MyTextInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
+const FormikInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
   const [field, meta] = useField(name)
 
   return (
@@ -42,4 +42,4 @@ const MyTextInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
   )
 }
 
-export default MyTextInput
+export default FormikInput
