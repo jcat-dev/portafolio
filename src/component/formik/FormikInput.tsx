@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import './formikInput.css'
+import styles from './formik.module.css'
 
 interface Props {
   labelTitle: string
@@ -14,15 +14,15 @@ const FormikInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
 
   return (
     <div
-      className='form__field'
+      className={styles['form__field']}
     >
       <label 
         htmlFor={props.id}
 
         className= {
           (meta.touched && meta.error) 
-            ? 'form__label form__label--error'
-            : 'form__label' 
+            ? `${styles['form__label']} ${styles['form__label--error']}`
+            : styles['form__label']
         }        
       >
         {labelTitle}
@@ -31,8 +31,8 @@ const FormikInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
       <input 
         className= {
           (meta.touched && meta.error) 
-            ? 'form__input form__input--error'
-            : 'form__input'
+            ? `${styles['form__input']} ${styles['form__input--error']}` 
+            : styles['form__input']
         } 
 
         {...field} 

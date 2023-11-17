@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import '../Contact/myTextInput.css'
+import styles from './formik.module.css'
 
 interface Props {
   name: string
@@ -11,13 +11,13 @@ const FormikTextArea: React.FC<Props> = ({name, labelTitle, ...props}) => {
   const [field, meta] = useField(name)
 
   return (
-    <div className={'form__field'} >
+    <div className={styles['form__field']} >
       <label 
         htmlFor={props.id} 
         className={
-          meta.error && meta.touched 
-            ? 'form__label form__label--error'
-            : 'form__label'
+          (meta.error && meta.touched)
+            ? `${styles['form__label']} ${styles['form__label--error']}`
+            : styles['form__label']
         }
       >
         {labelTitle}
@@ -25,9 +25,9 @@ const FormikTextArea: React.FC<Props> = ({name, labelTitle, ...props}) => {
 
       <textarea 
         className={
-          meta.error && meta.touched
-            ? 'form__textarea form__textarea--error'
-            : 'form__textarea'
+          (meta.error && meta.touched)
+            ? `${styles['form__textarea']} ${styles['form__textarea--error']}`
+            : styles['form__textarea']
         }
         {...field}
         {...props}
