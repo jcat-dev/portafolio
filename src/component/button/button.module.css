@@ -1,0 +1,15 @@
+.button {
+  min-width: 2.5em;
+  height: 2.5em;
+  padding: 0 2.5em;
+
+  font-weight: bolder;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &.button-icon {
+    padding: 0;
+  }
+}
+
