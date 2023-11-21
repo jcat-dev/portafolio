@@ -1,0 +1,120 @@
+.container {
+  margin: 2.5em auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.back-link {
+  margin-top: 1em;
+  margin-right: 3em;
+
+  background-color: transparent;
+  color: var(--color-black);
+  
+  &:hover {
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: var(--color-white-light);
+    transform: scale(1.15);
+    box-shadow: 0 0 10px 0 var(--color-white-light);
+  }
+}
+
+.form-project {
+  width: 45%;
+  padding: 1em;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  border-radius: 0.25em;
+  box-shadow: 0 10px 10px -2.5px var(--color-teal-light);
+
+  &.form-project--error {
+    box-shadow: 0 10px 10px -2.5px var(--color-red-light);
+  }
+}
+
+.form-project__field {
+  width: 47%;
+}
+
+.form-project__field-textarea {
+  width: 100%;
+}
+
+.select-skills {
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.select-skills__summary {
+  padding: 1em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.select-skills__details {
+  width: 47%;
+  border-radius: 0.25em;
+  border: 2px solid var(--color-teal);
+
+  &.select-skills__details--error {
+    border: 2px solid var(--color-red);
+  }
+}
+
+.details {
+  display: flex;
+  padding: 1em;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.details-item {
+  padding: 0.5em;
+  border-radius: 0.25em;
+  border: 1px solid var(--color-teal);
+
+  &.details-item--active {
+    background-color: var(--color-teal-light);
+  }
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form-btn {
+  width: 100%;
+  margin: 1em 0;
+
+  border-radius: 0.25em;
+  border: 2px solid var(--color-teal);
+  background-color: var(--color-white);
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-teal-light);
+  }
+}
+
+@media screen and (width <= 425px) {
+  .form-project__field, .select-skills__details {
+    width: 100%;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .form-project {
+    width: 90%;
+  }
+}
