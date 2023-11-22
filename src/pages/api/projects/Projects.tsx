@@ -8,12 +8,40 @@ import styles from './css/projects.module.css'
 import btnStyles from '../../../component/button/button.module.css'
 import Button from '../../../component/button/Button'
 import LoadingImage from '../../../component/loading/LoadingImage'
+import { getToastLoading, updateToastLoading } from '../../../utils/toast'
+import { setFetch } from '../../../utils/fetch'
+import { useEffect, useState } from 'react'
 
 const Projects = () => {
   const data = useLoaderData() as ProjectWithId[]
+  const [projects, setProjects] = useState<ProjectWithId[]>()
 
-  const handleDeleteClick = (id: string) => {
-    console.log(id)
+  useEffect(() => {
+    if (data) {
+      setProjects(data)
+    }
+
+  }, [data])
+
+  const handleDeleteClick = async (id: string) => {
+    const toastId = getToastLoading()
+
+    try {
+      const result = await setFetch(
+        `${String(import.meta.env.VITE_PROJECT_API)}/${id}`,
+        'DELETE'
+      )
+      
+      if (result.status === 204) {
+        setProjects(projects?.filter((value) => value._id !== id))
+        updateToastLoading(toastId, 'success')
+        return
+      }
+
+      return updateToastLoading(toastId, 'error')
+    } catch (error) {
+      return updateToastLoading(toastId, 'error')
+    }
   }
 
   return (
@@ -46,7 +74,7 @@ const Projects = () => {
         </thead>
         <tbody className='table-body' >
           {
-            data.map((value, index) => (
+            projects?.map((value, index) => (
               <tr 
                 key={index} 
                 className={styles['table-body__tr']}
