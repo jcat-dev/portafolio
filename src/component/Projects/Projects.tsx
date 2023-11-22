@@ -1,46 +1,46 @@
 import { proyectList } from './projectsList'
 import StackType from './StackType'
-import './index.css'
+import styles from './index.module.css'
 
 const Projects = () => {
   return (
     <section 
       id='proyectos'
-      className='projects-container'
+      className={styles['projects-container']}
     >
-      <h2 className='projects-title' >
+      <h2 className={styles['projects-title']} >
         Proyectos
       </h2>
 
-      <ul className='projects-list' >
+      <ul className={styles['projects-list']} >
         {
           proyectList.map((value, index) => (
             <li
-              className='projects-list__item'
+              className={styles['projects-list__item']}
               key={index}
             >
-              <div className='face face-front' >
-                <h3 className='face-front__title' >
+              <div className={styles['face face-front']} >
+                <h3 className={styles['face-front__title']} >
                   {value.stackType.name}
                 </h3>
 
                 <img 
-                  className='face-front__img'
+                  className={styles['face-front__img']}
                   src={value.pageImg} 
                   alt="page image" 
                 />
               </div>
 
-              <div className='face face-back' >
-                <p className='face-back__page-name' >
+              <div className={styles['face face-back']} >
+                <p className={styles['face-back__page-name']} >
                   {value.pageName}
                 </p>  
 
-                <p className='face-back__description'>
+                <p className={styles['face-back__description']} >
                   {value.description}
                 </p>         
 
-                <div className='face-back__stack' >
+                <div className={styles['face-back__stack']} >
                   <StackType
                     title='Front End'
                     list={value.stackType.frontendSkills}
@@ -57,9 +57,9 @@ const Projects = () => {
                   />
                 </div>
 
-                <div className='face-back__link'>
+                <div className={styles['face-back__link']} >
                   <a 
-                    className='face-back__link-url'
+                    className={styles['face-back__link-url']}
                     href={value.pageURL} 
                     target='_blank' 
                   >
@@ -67,7 +67,7 @@ const Projects = () => {
                   </a>
 
                   <a 
-                    className='face-back__link-repository'
+                    className={styles['face-back__link-repository']}
                     href={value.repository} 
                     target='_blank' 
                   >
