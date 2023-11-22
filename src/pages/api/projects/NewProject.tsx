@@ -48,7 +48,7 @@ const NewProject = () => {
 
     try {
       const result = await setFetch(
-        String(import.meta.env.VITE_PROJECTS_API), 
+        String(import.meta.env.VITE_PROJECT_API), 
         'POST', 
         {...values, stackType: [...stackType]}
       )

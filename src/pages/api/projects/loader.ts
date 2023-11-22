@@ -5,7 +5,7 @@ import { setFetch } from '../../../utils/fetch'
 
 export const projectsLoader = async () => {
   try {
-    const result = await setFetch(String(import.meta.env.VITE_PROJECTS_API), 'GET')
+    const result = await setFetch(String(import.meta.env.VITE_PROJECT_API), 'GET')
     const data: FetchResponseWithData<ProjectWithId[]> = await result.json()
 
     return data.data
@@ -16,7 +16,7 @@ export const projectsLoader = async () => {
 
 export const newProjectLoader = async () => {
   try {
-    const result = await setFetch(String(import.meta.env.VITE_SKILLS_API), 'GET')
+    const result = await setFetch(String(import.meta.env.VITE_SKILL_API), 'GET')
     const data: FetchResponseWithData<SkillWithId[]> = await result.json()
 
     return data.data
