@@ -1,5 +1,3 @@
-import { proyectList } from './projectsList'
-import StackType from './StackType'
 import styles from './index.module.css'
 
 const Projects = () => {
@@ -12,7 +10,7 @@ const Projects = () => {
         Proyectos
       </h2>
 
-      <ul className={styles['projects-list']} >
+      {/* <ul className={styles['projects-list']} >
         {
           proyectList.map((value, index) => (
             <li
@@ -78,7 +76,7 @@ const Projects = () => {
             </li>
           ))
         }
-      </ul>
+      </ul> */}
     </section>
   )
 }
