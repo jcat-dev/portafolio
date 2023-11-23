@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { routerHome } from './routerHome'
-import { routerApi } from './routerApi'
+import { routerHome } from './homeRouter/homeRouter'
+import { routerApi } from './apiRouter/apiRouter'
 
-const Router = () => {
+const Routers = () => {
   const router = createBrowserRouter([
     routerHome,
     routerApi
@@ -13,5 +13,5 @@ const Router = () => {
   )
 }
 
-export default Router
+export default Routers
 

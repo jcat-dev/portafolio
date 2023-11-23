@@ -1,9 +1,9 @@
 import { createRoot } from 'react-dom/client'
-import Router from './routes/Router'
+import Routers from './routers/Routers'
 import './global.css'
 
 const root = createRoot(document.getElementById('root')!)
 
 root.render(
-  <Router />
+  <Routers />
 )

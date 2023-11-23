@@ -1,7 +1,7 @@
-import { FetchResponseWithData } from '../../../Types/FetchResponse'
-import { ProjectWithId } from '../../../Types/Project'
-import { SkillWithId } from '../../../Types/Skill'
-import { setFetch } from '../../../utils/fetch'
+import { FetchResponseWithData } from '../../Types/FetchResponse'
+import { ProjectWithId } from '../../Types/Project'
+import { SkillWithId } from '../../Types/Skill'
+import { setFetch } from '../../utils/fetch'
 
 export const projectsLoader = async () => {
   try {

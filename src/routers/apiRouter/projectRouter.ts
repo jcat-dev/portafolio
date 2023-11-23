@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom';
-import { newProjectLoader, projectsLoader } from './loader';
-import Projects from './Projects';
-import NewProject from './NewProject';
+import { newProjectLoader, projectsLoader } from './projectLoader';
+import Projects from '../../pages/api/projects/Projects';
+import NewProject from '../../pages/api/projects/NewProject';
 
 
 export const projectRouter: RouteObject[] = [
