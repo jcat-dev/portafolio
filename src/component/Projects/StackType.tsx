@@ -1,4 +1,4 @@
-import './stackType.css'
+import styles from './stackType.module.css'
 
 interface Props {
   title: string
@@ -11,8 +11,8 @@ const StackType: React.FC<Props> = ({ title, list }) => {
   }
   
   return (
-    <ul className="stack-type" >
-      <span className="stack-type__title" >
+    <ul className={styles['stack-type']} >
+      <span className={styles['stack-type__title']} >
         {title}:
       </span>
       
@@ -20,7 +20,7 @@ const StackType: React.FC<Props> = ({ title, list }) => {
         list.map((value, index) => (
           <li
             key={index}
-            className='stack-type__item'
+            className={styles['stack-type__item']}
           >
             {value}
           </li>
