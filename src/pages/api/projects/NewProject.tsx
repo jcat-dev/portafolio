@@ -224,7 +224,11 @@ const NewProject = () => {
             <Button
               aria-label='enviar formulario'
               type='submit'
-              className={styles['form-btn']}
+              className={
+                (props.isValid && selectedSkills.length > 0)
+                  ? `${styles['form-btn']}`
+                  : `${styles['form-btn']} ${styles['form-btn--error']}`
+              }
               onClick={() => handleValidForm(props.dirty, props.isValid)}
             >
             Enviar

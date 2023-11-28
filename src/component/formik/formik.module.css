@@ -9,7 +9,7 @@
   height: 2em;
   padding: 0 0.8em;
   margin-left: 1rem;
-  border: 1px solid var(--color-teal);
+  border: 1px solid var(--color-teal-3);
 
   position: absolute;
   top: -1em;
@@ -18,13 +18,12 @@
   pointer-events: none;
   font-weight: bold;
   letter-spacing: 0.1em;
-  color: var(--color-black);
-  background-color: var(--color-teal-light);
+  color: var(--color-black-5);
+  background-color: var(--color-teal-2);
   
   &.form__label--error{
-    color: var(--color-black);
-    border: 1px solid var(--color-red);
-    background-color: var(--color-red-light);
+    border: 1px solid var(--color-red-3);
+    background-color: var(--color-red-2);
   }
 }
 
@@ -32,13 +31,13 @@
   width: 100%;
   height: 3em;
   padding: 0.5em 1rem;
-  border: 2px solid var(--color-teal);
+  border: 2px solid var(--color-teal-3);
 
   border-radius: 0.25em;
-  background-color: var(--color-white);
+  background-color: var(--color-black-1);
 
   &.form__input--error {  
-    border: 2px solid var(--color-red);
+    border: 2px solid var(--color-red-3);
   }
 }
 
@@ -46,15 +45,15 @@
   width: 100%;
   min-height: 9.5em;
   padding: 0.75em 1rem;
-  border: 2px solid var(--color-teal);
+  border: 2px solid var(--color-teal-3);
 
   resize: none;
   display: block;
   text-align: justify;
-  background-color: var(--color-white);
+  background-color: var(--color-black-1);
   border-radius: 0.25em;
 
   &.form__textarea--error {  
-    border: 2px solid var(--color-red);
+    border: 2px solid var(--color-red-3);
   }
 }

@@ -10,14 +10,16 @@
   margin-right: 3em;
 
   background-color: transparent;
-  color: var(--color-black);
+  color: var(--color-teal-3);
   
   &:hover {
     cursor: pointer;
-    border-radius: 100%;
-    background-color: var(--color-white-light);
-    transform: scale(1.15);
-    box-shadow: 0 0 10px 0 var(--color-white-light);
+    color: var(--color-teal-4);
+  }
+
+  &:active {
+    color: var(--color-teal-5);
+    transform: scale(0.95);
   }
 }
 
@@ -30,10 +32,10 @@
   justify-content: space-between;
   gap: 1em;
   border-radius: 0.25em;
-  box-shadow: 0 10px 10px -2.5px var(--color-teal-light);
+  box-shadow: 0 10px 10px -2.5px var(--color-teal-3);
 
   &.form-project--error {
-    box-shadow: 0 10px 10px -2.5px var(--color-red-light);
+    box-shadow: 0 10px 10px -2.5px var(--color-red-3);
   }
 }
 
@@ -65,10 +67,14 @@
 .select-skills__details {
   width: 47%;
   border-radius: 0.25em;
-  border: 2px solid var(--color-teal);
+  border: 2px solid var(--color-teal-3);
 
-  &.select-skills__details--error {
-    border: 2px solid var(--color-red);
+  &.select-skills__details--error  {
+    border: 2px solid var(--color-red-3);
+
+    & .details-item {
+      border-color: var(--color-red-3);
+    }
   }
 }
 
@@ -82,10 +88,10 @@
 .details-item {
   padding: 0.5em;
   border-radius: 0.25em;
-  border: 1px solid var(--color-teal);
+  border: 1px solid var(--color-teal-3);
 
   &.details-item--active {
-    background-color: var(--color-teal-light);
+    background-color: var(--color-teal-2);
   }
   
   &:hover {
@@ -98,12 +104,21 @@
   margin: 1em 0;
 
   border-radius: 0.25em;
-  border: 2px solid var(--color-teal);
-  background-color: var(--color-white);
+  border: 2px solid var(--color-teal-3);
+  background-color: var(--color-black-1);
+  color: var(--color-black-5);
+
+  &.form-btn--error {
+    border: 2px solid var(--color-red-3);
+
+    &:hover {
+      background-color: var(--color-red-2);
+    }
+  }
 
   &:hover {
     cursor: pointer;
-    background-color: var(--color-teal-light);
+    background-color: var(--color-teal-2);
   }
 }
 

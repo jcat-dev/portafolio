@@ -3,20 +3,24 @@
   margin: 2.5em auto;
   padding: 1em;
 
-  box-shadow: 0 0 10px 0px var(--color-orange-light);
   overflow: auto;
+  border: 1px solid var(--color-black-3);
 }
 
 .projects__add-button {
   margin-bottom: 1em;
-  border: 2.5px solid var(--color-orange);
   
   border-radius: 0.5em;
-  color: var(--color-dark);
-  background-color: var(--color-orange);
+  color: var(--color-black-1);
+  background-color: var(--color-blue-4);
 
+  &:hover {
+    background-color: var(--color-blue-5);
+  }
+  
   &:active {
     transform: scale(0.95);
+    background-color: var(--color-blue-6);
   }
 }
 
@@ -28,7 +32,7 @@
 }
 
 .table-heal {
-  border: 1px solid var(--color-black-light);
+  border: 1px solid var(--color-black-3);
   border-left: none;
   border-right: none;
 }
@@ -48,12 +52,12 @@
 .table-body {}
 
 .table-body__tr {
-  border: 1px solid var(--color-black-light);
+  border: 1px solid var(--color-black-3);
   border-left: none;
   border-right: none;  
 
   &:hover {
-    background-color: var(--color-orange-light);
+    background-color: var(--color-black-2);
     cursor: default;
   }
 }
@@ -76,26 +80,33 @@
 .td-box__edit-button {
   margin: auto;
   border-radius: 0.5em;
-  color: var(--color-black);
-  background-color: var(--color-orange);
+  color: var(--color-black-1);
+  background-color: var(--color-blue-4);
+
+  &:hover {
+    background-color: var(--color-blue-5);
+  }
 
   &:active {
     transform: scale(0.95);
+    background-color: var(--color-blue-6);
   }
 }
 
 .td-box__delete-button {
   margin: auto;
   border-radius: 0.5em;
-  color: var(--color-black);
-  background-color: var(--color-red);
+  color: var(--color-black-1);
+  background-color: var(--color-red-4);
   
   &:hover {
     cursor: pointer;
+    background-color: var(--color-red-5);
   }
 
   &:active {
     transform: scale(0.95);
+    background-color: var(--color-red-6);
   }
 }
 
