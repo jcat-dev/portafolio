@@ -1,65 +1,94 @@
-import { itemsList } from './itemsList'
 import { useState } from 'react'
-import Item from './Item'
-import menuIcon from '../../assets/icon-menu.svg'
-import closeIcon from '../../assets/icon-close.svg'
-import './index.css'
+import { Link } from 'react-router-dom'
+import { NavItems } from '../../Types/NavItems'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from '../button/Button'
+import styles from './css/header.module.css'
+import NavItem from './NavItem'
 
+interface Props {
+  navItems: NavItems[]
+  withNavLink: boolean
+}
 
-const Header = () => {
+const Header: React.FC<Props> = ({withNavLink, ...props}) => {
   const [menuIsActive, setMenuIsActive] = useState<boolean>(false)
   
-  const handleClickMenu = () => {
+  const handleMenuClick = () => {
     setMenuIsActive(!menuIsActive)
   }
 
   return (
-    <header className='header-container' >
+    <header className={styles['container']} >
       <nav className={
         menuIsActive 
-          ? 'nav nav-mobil'
-          : 'nav'
-      } >
+          ? `${styles['nav']} ${styles['nav-mobil']}` 
+          : styles['nav']
+      }>
         <p
-          className='nav-title' 
+          className={styles['nav-title']}
           hidden={menuIsActive} 
         >
           Jorge Emanuel Castillo
-        </p>
-
-        <div className='menu' >
-          <img 
-            className='menu-icon'   
-            src={menuIcon} 
-            alt="menu icon" 
-            onClick={handleClickMenu}
-            hidden={menuIsActive}      
-          />
-        
-          <img 
-            className="menu-close"
-            src={closeIcon}
-            alt='close icon'
-            onClick={handleClickMenu}
-            hidden={!menuIsActive}      
-          />
-        </div>       
+        </p>            
     
         <ul 
-          className='nav-list' 
+          className={styles['nav-list']}
           hidden={!menuIsActive} 
         >
           {
-            itemsList.map((value, index) => (
-              <Item 
+            props.navItems.map((value, index) => (
+              <NavItem 
                 key={index}
-                href={value.href}
-                title={value.value}
-                onClick={handleClickMenu}
+                link={value.link}
+                title={value.title}
+                withNavLink={withNavLink}
+                handleClick={handleMenuClick}
               />
             ))
           }
-        </ul>       
+
+          <li className={styles['nav-list__item']} >
+            {
+              withNavLink
+                ? <Link to={'/'} className={styles['nav-list__item-link']} >HOME</Link>
+                : <Link to={'/api'} className={styles['nav-list__item-link']} >DEV</Link>
+            }            
+          </li> 
+        </ul>     
+        
+        <div className={styles['menu']} >        
+          <Button
+            type='button'
+            className={styles['menu-btn']}  
+            aria-label="menu icon" 
+            icon={true}
+            hidden={menuIsActive} 
+            onClick={handleMenuClick}
+          >
+            <FontAwesomeIcon 
+              icon={faBars}    
+              size='xl'    
+              className={styles['menu-btn__icon']}       
+            />   
+          </Button>
+          
+          <Button
+            type='button'
+            className={styles['menu-close']}
+            aria-label='close icon'
+            icon={true}
+            hidden={!menuIsActive}  
+            onClick={handleMenuClick}
+          >
+            <FontAwesomeIcon 
+              icon={faXmark} 
+              size='xl'
+              className={styles['menu-close__icon']}
+            />
+          </Button>        
+        </div>  
       </nav>
     </header>
   )
