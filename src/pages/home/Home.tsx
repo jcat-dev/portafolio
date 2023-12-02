@@ -1,5 +1,5 @@
 import { navItems } from './navItems'
-import Contact from '../../component/Contact/Contact'
+import Contact from './components/contact/Contact'
 import Header from '../../component/header/Header'
 import Projects from './components/project/Projects'
 import Skills from '../../component/Skills/Skills'

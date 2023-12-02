@@ -1,6 +1,11 @@
+import { useLoaderData } from 'react-router-dom'
 import styles from './index.module.css'
+import { ProjectWithId } from '../../../../Types/Project'
+import StackType from './StackType'
 
 const Projects = () => {
+  const projects = useLoaderData() as ProjectWithId[]
+
   return (
     <section 
       id='proyectos'
@@ -10,28 +15,28 @@ const Projects = () => {
         Proyectos
       </h2>
 
-      {/* <ul className={styles['projects-list']} >
+      <ul className={styles['projects-list']} >
         {
-          proyectList.map((value, index) => (
+          projects.map((value, index) => (
             <li
               className={styles['projects-list__item']}
               key={index}
             >
-              <div className={styles['face face-front']} >
+              <div className={`${styles['face']} ${styles['face-front']}`} >
                 <h3 className={styles['face-front__title']} >
-                  {value.stackType.name}
+                  {value.stackTitle}
                 </h3>
 
                 <img 
                   className={styles['face-front__img']}
-                  src={value.pageImg} 
+                  src={value.pageImgURL} 
                   alt="page image" 
                 />
               </div>
 
-              <div className={styles['face face-back']} >
+              <div className={`${styles['face']} ${styles['face-back']}`} >
                 <p className={styles['face-back__page-name']} >
-                  {value.pageName}
+                  {value.pageURL}
                 </p>  
 
                 <p className={styles['face-back__description']} >
@@ -39,20 +44,15 @@ const Projects = () => {
                 </p>         
 
                 <div className={styles['face-back__stack']} >
-                  <StackType
-                    title='Front End'
-                    list={value.stackType.frontendSkills}
-                  />
-
-                  <StackType
-                    title='Back End'
-                    list={value.stackType.backendSkills}
-                  />
-
-                  <StackType
-                    title='Base de dato'
-                    list={value.stackType.databaseSkills}
-                  />
+                  {
+                    value.stackType.map((value, index) => (
+                      <StackType
+                        key={index}
+                        title={value.title}
+                        list={value.skills}
+                      />
+                    ))
+                  }
                 </div>
 
                 <div className={styles['face-back__link']} >
@@ -66,7 +66,7 @@ const Projects = () => {
 
                   <a 
                     className={styles['face-back__link-repository']}
-                    href={value.repository} 
+                    href={value.repositoryURL} 
                     target='_blank' 
                   >
                   Github
@@ -76,7 +76,7 @@ const Projects = () => {
             </li>
           ))
         }
-      </ul> */}
+      </ul>
     </section>
   )
 }
