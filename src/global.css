@@ -2,8 +2,9 @@
 
 :root {
   --letter-spacing: 0.1em;
-  --nav-z-index: 10;
   --carrusel-btn-z-index: 1;
+  --nav-z-index: 10;
+  --contact-wsp-z-index: 11;
 
   --color-blue-1: #f0f8ff;
   --color-blue-2: #e0f0fe;
