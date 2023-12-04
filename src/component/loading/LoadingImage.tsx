@@ -15,7 +15,7 @@ const LoadingImage: React.FC<Props> = (props) => {
   }
 
   return (    
-    <div className={style['loading-img']} >      
+    <>      
       {
         isLoading && <div className={style['loading']} />
       }
@@ -25,7 +25,7 @@ const LoadingImage: React.FC<Props> = (props) => {
         hidden={isLoading}        
         onLoad={handleImgLoad}
       />  
-    </div>
+    </>
   )
 }
 

@@ -1,11 +1,10 @@
-.loading-img {
-  width: 8em;
-  height: 8em;
-}
-
 .loading {
-  width: 8em;
-  height: 8em;
+  width: 100%;
+  padding-top: 90%;
+
+  position: absolute;
+  top: 5%;
+  left: 0;
 
   animation-name: loading;
   animation-timing-function: linear;
