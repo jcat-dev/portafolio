@@ -17,7 +17,7 @@
   align-items: center;
   pointer-events: none;
   font-weight: bold;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing);
   color: var(--color-black-5);
   background-color: var(--color-teal-2);
   
@@ -32,8 +32,6 @@
   height: 3em;
   padding: 0.5em 1rem;
   border: 2px solid var(--color-teal-3);
-
-  border-radius: 0.25em;
   background-color: var(--color-black-1);
 
   &.form__input--error {  
@@ -51,7 +49,6 @@
   display: block;
   text-align: justify;
   background-color: var(--color-black-1);
-  border-radius: 0.25em;
 
   &.form__textarea--error {  
     border: 2px solid var(--color-red-3);
