@@ -6,15 +6,17 @@ interface Props {
   name: string
   type: string
   id: string
+
   placeholder?: string
+  className?: string
 }
 
-const FormikInput: React.FC<Props> = ({ labelTitle, name, ...props }) => {
+const FormikInput: React.FC<Props> = ({ labelTitle, name, className, ...props }) => {
   const [field, meta] = useField(name)
 
   return (
     <div
-      className={styles['form__field']}
+      className={`${styles['form__field']} ${className ?? ''}`}
     >
       <label 
         htmlFor={props.id}

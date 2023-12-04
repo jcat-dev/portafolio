@@ -5,13 +5,15 @@ interface Props {
   name: string
   labelTitle: string
   id: string
+
+  className?: string
 }
 
-const FormikTextArea: React.FC<Props> = ({name, labelTitle, ...props}) => {
+const FormikTextArea: React.FC<Props> = ({name, labelTitle, className, ...props}) => {
   const [field, meta] = useField(name)
 
   return (
-    <div className={styles['form__field']} >
+    <div className={`${styles['form__field']} ${className ?? ''}`} >
       <label 
         htmlFor={props.id} 
         className={
