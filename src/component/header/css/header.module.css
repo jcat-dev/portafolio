@@ -17,6 +17,10 @@
   border-bottom: 2px solid var(--color-blue-2);
 }
 
+.hidden {
+  display: none;
+}
+
 .nav-list {
   height: 100%;
   display: flex;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { NavItems } from '../../Types/NavItems'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useNavScroll } from '../../hooks/useNavScroll'
 import Button from '../button/Button'
 import styles from './css/header.module.css'
 import NavItem from './NavItem'
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({withNavLink, ...props}) => {
+  const { navIsActive } = useNavScroll()
   const [menuIsActive, setMenuIsActive] = useState<boolean>(false)
   
   const handleMenuClick = () => {
@@ -21,11 +23,15 @@ const Header: React.FC<Props> = ({withNavLink, ...props}) => {
 
   return (
     <header className={styles['container']} >
-      <nav className={
-        menuIsActive 
-          ? `${styles['nav']} ${styles['nav-mobil']}` 
-          : styles['nav']
-      }>
+      <nav 
+        className={
+          navIsActive 
+            ? menuIsActive 
+              ? `${styles['nav']} ${styles['nav-mobil']}` 
+              : styles['nav']
+            : `${styles['hidden']} `
+        }      
+      >
         <p
           className={styles['nav-title']}
           hidden={menuIsActive} 
