@@ -1,0 +1,101 @@
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-container {
+  padding: 10vh 0;
+}
+
+.title {
+  width: fit-content;
+  margin-bottom: 10vh;
+  margin-left: 15vw;
+  border: 1px solid transparent;
+
+  letter-spacing: var(--letter-spacing);
+  position: relative;
+  z-index: 1;
+  color: var(--color-black-2);
+  cursor: default;
+  
+  &:hover {
+    border-bottom: 1px solid var(--color-black-2);
+  }
+}
+
+.skills {
+  width: fit-content;
+  min-width: 15em;
+  max-width: 38em;
+  margin: 1em 0;
+  padding: 1.5em;
+  border: 0.25em solid var(--color-black-2);
+
+  color: var(--color-black-2);
+  animation-name: parCircle;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.skills:nth-child(odd) {
+  animation-name: imparCircle;
+}
+
+.skills-title {
+  width: fit-content;
+  border-bottom: 1px solid currentColor;
+
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+.skills-list {
+  margin-top: 1.5em;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skills-list__item {
+  margin-right: 0.5em;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom: 1px solid currentColor;
+    cursor: default;
+  }
+}
+
+@keyframes parCircle {
+  to {
+    transform: translateX(100vw);
+  }
+ 
+  from {
+    transform: translateX(-110%);
+  }
+}
+
+@keyframes imparCircle {
+  to {
+    transform: translateX(-110%);
+  }
+ 
+  from {
+    transform: translateX(100vw);
+  }
+}
+
+@media screen and (width <= 425px) {
+  .title {
+    margin-left: 5vw;
+    color: white;
+  }
+}
