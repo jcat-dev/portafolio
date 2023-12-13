@@ -1,5 +1,10 @@
 export interface Profile {
-  title: string
-  description: string
+  stackTitle: string
+  fullName: string
   photoUrl: string
+  description: string
+}
+
+export interface ProfileWithId extends Profile {
+  _id: string
 }
