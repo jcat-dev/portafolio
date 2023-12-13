@@ -1,0 +1,50 @@
+.form {
+  width: min(25em, 90%);
+  margin: auto;
+  padding-bottom: 5vh;
+}
+
+.form-field {
+  margin-bottom: 1em;
+}
+
+.form-field__label {
+  border-radius: 1em; 
+}
+
+.form-field__input, .form-field__textarea {
+  border-radius: 0.25em;
+  border-width: 1px;
+}
+
+.form-field__btn {
+  margin: auto;
+  width: 100%;
+  border: 1px solid var(--color-teal-3);
+
+  display: block;
+  border-radius: 0.25em;
+  
+  background-color: var(--color-black-1);
+  color: var(--color-teal-3);
+
+  &.form-field__btn--error {
+    border-color: var(--color-red-3);
+    color: var(--color-red-3);
+
+    &:hover {
+      color: var(--color-black-1);
+      background-color: var(--color-red-3);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-teal-3);
+    color: var(--color-black-1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
