@@ -2,37 +2,39 @@ import { useField } from 'formik'
 import styles from './formik.module.css'
 
 interface Props {
-  name: string
-  labelTitle: string
   id: string
+  labelTitle: string
 
-  className?: string
+  name: string
+  classNameField?: string
+  classNameLabel?: string
+  classNameTextArea?: string
 }
 
-const FormikTextArea: React.FC<Props> = ({name, labelTitle, className, ...props}) => {
+const FormikTextArea: React.FC<Props> = ({name, classNameField, classNameLabel, classNameTextArea, ...props}) => {
   const [field, meta] = useField(name)
 
   return (
-    <div className={`${styles['form__field']} ${className ?? ''}`} >
+    <div className={`${styles['form__field']} ${classNameField ?? ''}`} >
       <label 
         htmlFor={props.id} 
         className={
           (meta.error && meta.touched)
-            ? `${styles['form__label']} ${styles['form__label--error']}`
-            : styles['form__label']
+            ? `${styles['form__label']} ${styles['form__label--error']} ${classNameLabel ?? ''}`
+            : `${styles['form__label']} ${classNameLabel ?? ''}`
         }
       >
-        {labelTitle}
+        {props.labelTitle}
       </label>
 
       <textarea 
+        id={props.id}
         className={
           (meta.error && meta.touched)
-            ? `${styles['form__textarea']} ${styles['form__textarea--error']}`
-            : styles['form__textarea']
+            ? `${styles['form__textarea']} ${styles['form__textarea--error']} ${classNameTextArea ?? ''}`
+            : `${styles['form__textarea']} ${classNameTextArea ?? ''}`
         }
         {...field}
-        {...props}
       />
     </div>
   )

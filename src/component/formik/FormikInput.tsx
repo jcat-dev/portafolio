@@ -2,29 +2,29 @@ import { useField } from 'formik'
 import styles from './formik.module.css'
 
 interface Props {
-  labelTitle: string
-  name: string
   type: string
   id: string
-
   placeholder?: string
-  className?: string
+
+  name: string
+  labelTitle: string
+  classNameField?: string
+  classNameLabel?: string
+  classNameInput?: string
 }
 
-const FormikInput: React.FC<Props> = ({ labelTitle, name, className, ...props }) => {
+const FormikInput: React.FC<Props> = ({ name, labelTitle, classNameField, classNameInput, classNameLabel, ...props }) => {
   const [field, meta] = useField(name)
 
   return (
-    <div
-      className={`${styles['form__field']} ${className ?? ''}`}
-    >
+    <div className={`${styles['form__field']} ${classNameField ?? ''}`} >
       <label 
         htmlFor={props.id}
 
         className= {
           (meta.touched && meta.error) 
-            ? `${styles['form__label']} ${styles['form__label--error']}`
-            : styles['form__label']
+            ? `${styles['form__label']} ${styles['form__label--error']} ${classNameLabel ?? ''}`
+            : `${styles['form__label']} ${classNameLabel ?? ''}`
         }        
       >
         {labelTitle}
@@ -33,8 +33,8 @@ const FormikInput: React.FC<Props> = ({ labelTitle, name, className, ...props })
       <input 
         className= {
           (meta.touched && meta.error) 
-            ? `${styles['form__input']} ${styles['form__input--error']}` 
-            : styles['form__input']
+            ? `${styles['form__input']} ${styles['form__input--error']} ${classNameInput ?? ''}` 
+            : `${styles['form__input']} ${classNameInput ?? ''}`
         } 
 
         {...field} 

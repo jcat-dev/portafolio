@@ -50,18 +50,19 @@ const Contact = () => {
   return (
     <section 
       id="contacto" 
-      className={styles['contact']}
+      className={styles['container']}
     >
-      <h2 className={styles['contact-title']} >
+      <h2 className={styles['title']} >
         Contacto
       </h2>   
 
-      <div className={styles['contact-box']} >
+      <div className={styles['contact']} >
         <LoadingImage
           alt="contact image" 
           src={String(import.meta.env.VITE_CONTACT_IMG)} 
-          className={styles['contact-box__img']}
-        />     
+          classNameContainer={styles['contact-box']}
+          classNameImg={styles['contact-box__img']}
+        />    
 
         <Formik
           initialValues={initialValues}
@@ -78,24 +79,30 @@ const Contact = () => {
                 <FormikInput 
                   id='name'
                   name='name'
-                  labelTitle='Nombre'
                   type='name'
-                  className={styles['contact-form__field']}
+                  labelTitle='Nombre'
+                  classNameField={styles['contact-form__field']}
+                  classNameInput={styles['contact-form__field-input']}
+                  classNameLabel={styles['contact-form__field-label']}
                 />
 
                 <FormikInput 
                   id='email'
                   name='email'
-                  labelTitle='Email'
                   type='email'
-                  className={styles['contact-form__field']}
+                  labelTitle='Email'
+                  classNameField={styles['contact-form__field']}
+                  classNameInput={styles['contact-form__field-input']}
+                  classNameLabel={styles['contact-form__field-label']}
                 />          
 
                 <FormikTextArea
                   id='text'
                   name='text'
                   labelTitle='Mensaje'
-                  className={styles['contact-form__field']}
+                  classNameField={styles['contact-form__field']}
+                  classNameTextArea={styles['contact-form__field-textarea']}
+                  classNameLabel={styles['contact-form__field-label']}
                 />
           
                 <Button 
@@ -108,7 +115,7 @@ const Contact = () => {
                   type='submit'
                   onClick={() => handleRequired(values)}
                 >
-              Enviar
+                  Enviar
                 </Button>                 
               </Form>
             )

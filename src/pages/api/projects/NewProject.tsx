@@ -13,7 +13,6 @@ import Button from '../../../component/button/Button'
 import MyTextInput from '../../../component/formik/FormikInput'
 import FormikTextArea from '../../../component/formik/FormikTextArea'
 import styles from './css/newProject.module.css'
-import styleBtn from '../../../component/button/button.module.css'
 
 const NewProject = () => {
   const data = useLoaderData() as SkillWithId[]
@@ -105,10 +104,10 @@ const NewProject = () => {
       <Link
         to={'../projects'}
         aria-label='volver a la pagina anterior'
-        className={`${styles['back-link']} ${styleBtn['button']} ${styleBtn['button-icon']}`}
+        className={styles['back-link']}
       >
         <FontAwesomeIcon 
-          size='2xl'
+          size='3x'
           icon={faLeftLong} 
         />
       </Link>
@@ -119,82 +118,85 @@ const NewProject = () => {
         onSubmit={(value: Project, action) => handleSubmit(value, action)}
       >
         {(props) => (
-          <Form className={
-            (!props.dirty || !props.isValid || selectedSkills.length <= 0)
-              ? `${styles['form-project']} ${styles['form-project--error']}`
-              : styles['form-project']
-          }>
-            <div className={styles['form-project__field']} >
-              <MyTextInput
-                type='text'
-                id='projectTitle'
-                name='projectTitle'
-                labelTitle='Project Title'
-                placeholder='My project'
-              />
-            </div>
+          <Form className={styles['form']} >           
+            <MyTextInput
+              type='text'
+              id='projectTitle'
+              name='projectTitle'
+              labelTitle='Project Title'
+              placeholder='My project'
+              classNameField={styles['form-field']}
+              classNameInput={styles['form-field__input']}
+              classNameLabel={styles['form-field__label']}
+            />            
           
-            <div className={styles['form-project__field']} >
-              <MyTextInput
-                type='text'
-                id='pageURL'
-                name='pageURL'
-                labelTitle='Page URL'
-                placeholder='https://www.ej'
-              />
-            </div>         
+            <MyTextInput
+              type='text'
+              id='pageURL'
+              name='pageURL'
+              labelTitle='Page URL'
+              placeholder='https://www.ej'
+              classNameField={styles['form-field']}
+              classNameInput={styles['form-field__input']}
+              classNameLabel={styles['form-field__label']}
+            />
 
-            <div className={styles['form-project__field']} >
-              <MyTextInput
-                type='text'
-                id='repositoryURL'
-                name='repositoryURL'
-                labelTitle='Repository URL'
-                placeholder='https://www.ej'
-              />
-            </div>
+            <MyTextInput
+              type='text'
+              id='repositoryURL'
+              name='repositoryURL'
+              labelTitle='Repository URL'
+              placeholder='https://www.ej'
+              classNameField={styles['form-field']}
+              classNameInput={styles['form-field__input']}
+              classNameLabel={styles['form-field__label']}
+            />
 
-            <div className={styles['form-project__field']} >
-              <MyTextInput
-                type='text'
-                id='pageImgURL'
-                name='pageImgURL'
-                labelTitle='Image Url'
-                placeholder='https://www.ej'
-              />
-            </div>
+            <MyTextInput
+              type='text'
+              id='pageImgURL'
+              name='pageImgURL'
+              labelTitle='Image Url'
+              placeholder='https://www.ej'
+              classNameField={styles['form-field']}
+              classNameInput={styles['form-field__input']}
+              classNameLabel={styles['form-field__label']}
+            />
    
-            <div className={styles['form-project__field-textarea']}>
-              <FormikTextArea 
-                name='description'
-                id='description'
-                labelTitle='Description'
-              />
-            </div>
+            <FormikTextArea 
+              name='description'
+              id='description'
+              labelTitle='Description'
+              classNameField={styles['form-field__box']}
+              classNameTextArea={styles['form-field__textarea']}
+              classNameLabel={styles['form-field__label']}
+            />
 
-            <div className={styles['form-project__field']} >
-              <MyTextInput
-                type='text'
-                id='stackTitle'
-                name='stackTitle'
-                labelTitle='Stack Title'
-                placeholder='Full Stack'
-              />
-            </div>
+            <MyTextInput
+              type='text'
+              id='stackTitle'
+              name='stackTitle'
+              labelTitle='Stack Title'
+              placeholder='Full Stack'
+              classNameField={styles['form-field']}
+              classNameInput={styles['form-field__input']}
+              classNameLabel={styles['form-field__label']}
+            />
 
-            <div className={styles['select-skills']} >
+            <div className={styles['form-skills']} >
               {
                 data.map((value) => (
                   <details
                     key={value._id}
+                    open={true}
                     className={
                       (selectedSkills.length <= 0) && props.touched.stackType
-                        ? `${styles['select-skills__details']} ${styles['select-skills__details--error']}`
-                        : styles['select-skills__details']
+                        ? `${styles['form-skills__details']} ${styles['form-skills__details--error']}`
+                        : styles['form-skills__details']
                     }>
 
                     <summary
-                      className={styles['select-skills__summary']}
+                      className={styles['form-skills__summary']}
                     >
                       {value.title}
                     </summary>
@@ -224,14 +226,10 @@ const NewProject = () => {
             <Button
               aria-label='enviar formulario'
               type='submit'
-              className={
-                (props.isValid && selectedSkills.length > 0)
-                  ? `${styles['form-btn']}`
-                  : `${styles['form-btn']} ${styles['form-btn--error']}`
-              }
+              className={styles['form-btn']}
               onClick={() => handleValidForm(props.dirty, props.isValid)}
             >
-            Enviar
+              Enviar
             </Button>
           </Form>
         )}
