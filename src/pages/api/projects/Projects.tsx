@@ -4,20 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons/faPenToSquare'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import styles from './css/projects.module.css'
-import btnStyles from '../../../component/button/button.module.css'
-import Button from '../../../component/button/Button'
-import LoadingImage from '../../../component/loading/LoadingImage'
-import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { setFetch } from '../../../utils/fetch'
 import { useEffect, useState } from 'react'
+import { getToastLoading, updateToastLoading } from '../../../utils/toast'
+import Button from '../../../component/button/Button'
+import LoadingImage from '../../../component/loading/LoadingImage'
+import styles from './css/projects.module.css'
 
 const Projects = () => {
   const data = useLoaderData() as ProjectWithId[]
   const [projects, setProjects] = useState<ProjectWithId[]>()
 
   useEffect(() => {
-    if (data) {
+    if (data.length >= 0) {
       setProjects(data)
     }
 
@@ -48,15 +47,18 @@ const Projects = () => {
     <div className={styles['projects']} >
       <Link
         to={'/api/projects/new'}
-        className={`${btnStyles['button']} ${styles['projects__add-button']}`}
+        className={styles['projects__add-button']}
         aria-label='agregar nuevo elemento'
       >
-        <FontAwesomeIcon icon={faPlus} size='lg' />
+        <FontAwesomeIcon 
+          icon={faPlus} 
+          size='lg'
+        />
       </Link>
 
-      <table className={`${styles['projects-table']} ${styles['table']}`} >
+      <table className={styles['table']} >
         <thead className={styles['table-heal']} >
-          <tr className={styles['table-head__tr']} >
+          <tr>
             <th className={styles['table-head__tr-th']} >
               Title
             </th>
@@ -72,7 +74,8 @@ const Projects = () => {
             </th>
           </tr>
         </thead>
-        <tbody className='table-body' >
+
+        <tbody>
           {
             projects?.map((value, index) => (
               <tr 
@@ -91,7 +94,8 @@ const Projects = () => {
                   <LoadingImage 
                     src={value.pageImgURL} 
                     alt="project image" 
-                    className={styles['td-img']}  
+                    classNameContainer={styles['td-box-img']}
+                    classNameImg={styles['td-box-img__img']}  
                   />
                 </td>
                   
@@ -101,7 +105,7 @@ const Projects = () => {
                   <div className={styles['td-box']} >
                     <Link 
                       to={`/api/projects/${value._id}`} 
-                      className={`${btnStyles['button']} ${btnStyles['button-icon']} ${styles['td-box__edit-button']}`}
+                      className={styles['td-box__edit-button']}
                       aria-label='editar elemento'
                     >
                       <FontAwesomeIcon icon={faPenToSquare} />

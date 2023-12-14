@@ -4,10 +4,11 @@ import style from './loadingImage.module.css'
 interface Props {
   src: string
   alt: string
-  className?: string
+  classNameImg?: string
+  classNameContainer?: string
 }
 
-const LoadingImage: React.FC<Props> = (props) => {
+const LoadingImage: React.FC<Props> = ({classNameContainer, classNameImg, ...props}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   
   const handleImgLoad = () => {
@@ -15,17 +16,18 @@ const LoadingImage: React.FC<Props> = (props) => {
   }
 
   return (    
-    <>      
+    <div className={classNameContainer ?? ''} >      
       {
         isLoading && <div className={style['loading']} />
       }
 
       <img
         {...props}
+        className={classNameImg ?? ''}
         hidden={isLoading}        
         onLoad={handleImgLoad}
       />  
-    </>
+    </div>
   )
 }
 
