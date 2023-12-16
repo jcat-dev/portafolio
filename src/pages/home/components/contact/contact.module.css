@@ -15,11 +15,11 @@
 .contact {
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 0px 0px 5px 0px var(--color-teal-3);
+  box-shadow: 0px 20px 20px -10px var(--color-blue-5);
   border-radius: 0.5em;
   
   &:has(.contact-form--error) {
-    box-shadow: 0px 0px 5px 0px var(--color-red-3);
+    box-shadow: 0px 20px 20px -10px var(--color-red-3);
   }
 }
 
@@ -54,28 +54,27 @@
 
 .contact-form__field-input, .contact-form__field-textarea {
   border-radius: 0.5em;
+  border-color: var(--color-blue-5);
 }
 
 .contact-form__field-label {
   border-radius: 1em;
+  border-color: var(--color-blue-5);
+  background-color: var(--color-blue-2);
 }
 
 .contact-form__submit-btn {
   width: 100%;
-  border: 1px solid currentColor;
+  border: 1px solid transparent;
 
   border-radius: 0.5em;
   letter-spacing: var(--letter-spacing);
-  background-color: var(--color-black-1);
-  color: var(--color-teal-3);
+  background-color: var(--color-blue-5);
+  color: var(--color-black-1);
 
   &.contact-form__submit-btn--error {
     border-color: currentColor;
-    color: var(--color-red-3);
-
-    &:hover {
-      background-color: var(--color-red-3);
-    }
+    background-color: var(--color-red-3);
 
     &:active {
       background-color: var(--color-red-4);
@@ -83,15 +82,12 @@
   }
 
   &:hover {
-    cursor: pointer;
-    background-color: var(--color-teal-3);
-    border-color: transparent;
-    color: var(--color-black-1);
+    cursor: pointer;    
   }
 
   &:active {
     transform: scale(0.95);
-    background-color: var(--color-teal-4);
+    background-color: var(--color-blue-6);
     border-color: transparent;
     color: var(--color-black-1);
   }
