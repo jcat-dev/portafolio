@@ -1,13 +1,16 @@
 import { navItems } from './navItems'
-import Contact from './components/contact/Contact'
+import { useLoaderData } from 'react-router-dom'
+import { ProfileWithId } from '../../Types/Profile'
 import Header from '../../component/header/Header'
-import Projects from './components/project/Projects'
-import Skills from '../../component/Skills/Skills'
-import Start from '../../component/Start/Start'
 import LayoutToast from '../../layout/LayoutToast'
-import './index.css'
+import Contact from './components/contact/Contact'
+import Projects from './components/project/Projects'
+import Skills from './components/skill/Skills'
+import Profile from './components/profile/Profile'
 
 const Home = () => {
+  const data = useLoaderData() as ProfileWithId[]
+  
   return (
     <>
       <Header
@@ -16,12 +19,12 @@ const Home = () => {
       />
       
       <main className="main-container" >
-        <LayoutToast>
-          <Start />
+        <LayoutToast>            
+          <Profile profile={data[0]} />
           <Skills />
           <Projects />
-          <Contact />
-        </LayoutToast>      
+          <Contact />          
+        </LayoutToast>              
       </main>
     </>
   )
