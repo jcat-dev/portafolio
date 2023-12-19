@@ -13,4 +13,5 @@
 
 .stack-type__item {
   margin-right: 0.25em;
+  color: var(--color-black-3);
 }

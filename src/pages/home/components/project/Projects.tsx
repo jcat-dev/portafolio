@@ -1,10 +1,30 @@
-import { useLoaderData } from 'react-router-dom'
-import styles from './index.module.css'
+import { useEffect, useState } from 'react'
 import { ProjectWithId } from '../../../../Types/Project'
+import { setFetch } from '../../../../utils/fetch'
+import { FetchResponseWithData } from '../../../../Types/FetchResponse'
+import { getToastError } from '../../../../utils/toast'
 import StackType from './StackType'
+import styles from './index.module.css'
+import ParticlesBg from '../../../../component/particle/ParticlesBg'
+import LoadingImage from '../../../../component/loading/LoadingImage'
 
 const Projects = () => {
-  const projects = useLoaderData() as ProjectWithId[]
+  const [projects, setProjects] = useState<ProjectWithId[]>([])
+  
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await setFetch(String(import.meta.env.VITE_PROJECT_API), 'GET')
+        const data: FetchResponseWithData<ProjectWithId[]> = await result.json()
+
+        setProjects(data.data)
+      } catch (error) {
+        getToastError('error al cargar los projectos')
+      }
+    } 
+
+    getData()
+  }, [])
 
   return (
     <section 
@@ -17,18 +37,25 @@ const Projects = () => {
 
       <ul className={styles['projects-list']} >
         {
-          projects.map((value, index) => (
+          projects?.map((value, index) => (
             <li
               className={styles['projects-list__item']}
               key={index}
             >
+              <ParticlesBg 
+                className={styles['particulas']} 
+                id={String(index)}
+                option='amongUs'
+              />
+              
               <div className={`${styles['face']} ${styles['face-front']}`} >
                 <h3 className={styles['face-front__title']} >
                   {value.stackTitle}
                 </h3>
 
-                <img 
-                  className={styles['face-front__img']}
+                <LoadingImage 
+                  classNameContainer={styles['face-front__img-container']}
+                  classNameImg={styles['face-front__img']}
                   src={value.pageImgURL} 
                   alt="page image" 
                 />
@@ -61,7 +88,7 @@ const Projects = () => {
                     href={value.pageURL} 
                     target='_blank' 
                   >
-                  Ver
+                    Ver
                   </a>
 
                   <a 
@@ -69,7 +96,7 @@ const Projects = () => {
                     href={value.repositoryURL} 
                     target='_blank' 
                   >
-                  Github
+                    Github
                   </a>
                 </div>
               </div>             
