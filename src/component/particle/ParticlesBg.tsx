@@ -1,10 +1,9 @@
 import { useCallback } from 'react';
 import { loadFull } from 'tsparticles'
+import type { Engine } from 'tsparticles-engine'
 import Particles from 'react-tsparticles';
-import type { Engine} from 'tsparticles-engine'
-import particleOption1 from './particles1.json'
-import particleOption2 from './particles2.json'
 import styles from './particlesBg.module.css'
+import { particleCircle, particleLinks } from './particles';
 
 interface Props {
   id: string
@@ -24,8 +23,8 @@ const ParticlesBg: React.FC<Props> = ({option, id, className}) => {
       init={particlesInit}
       options={
         option === 'default'
-          ? particleOption1
-          : particleOption2
+          ? particleCircle
+          : particleLinks
       }
     />
   )
