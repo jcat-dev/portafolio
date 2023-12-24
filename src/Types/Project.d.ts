@@ -3,6 +3,10 @@ export interface StackType {
   skills: string[]
 }
 
+export interface StackTypeWithId extends StackType {
+  _id: string
+}
+
 export interface Project {
   projectTitle: string
   stackTitle: string
@@ -13,6 +17,13 @@ export interface Project {
   description: string
 }
 
-export interface ProjectWithId extends Project {
+export interface ProjectWithId {
   _id: string
+  projectTitle: string
+  stackTitle: string
+  stackType: StackTypeWithId[]
+  repositoryURL: string
+  pageURL: string
+  pageImgURL: string
+  description: string
 }
