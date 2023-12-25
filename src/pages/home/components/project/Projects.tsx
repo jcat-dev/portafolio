@@ -62,8 +62,8 @@ const Projects = () => {
               </div>
 
               <div className={`${styles['face']} ${styles['face-back']}`} >
-                <p className={styles['face-back__page-name']} >
-                  {value.pageURL}
+                <p className={styles['face-back__project-title']} >
+                  {value.projectTitle}
                 </p>  
 
                 <p className={styles['face-back__description']} >
