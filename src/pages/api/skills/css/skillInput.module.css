@@ -1,0 +1,40 @@
+.skill-input-container {
+  display: flex;
+}
+
+.label {
+  border-radius: 1em;
+}
+
+.input {
+  border-right-style: none;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+}
+
+.btn {
+  height: auto;
+  border: 1px solid var(--color-teal-3);
+  border-left: none;
+
+  background-color: transparent;
+  color: var(--color-teal-3);
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-teal-3);
+    color: var(--color-black-1);
+  }
+
+  &.btn--error {
+    border-color: var(--color-red-3);
+  }
+}
+
+@media screen and (width <= 768px) {
+  .field-container {
+    width: 100%;
+  }
+}
