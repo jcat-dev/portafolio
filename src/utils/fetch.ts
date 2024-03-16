@@ -1,6 +1,6 @@
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+import { FetchMethod } from '../Types/FetchResponse'
 
-export const setFetch = (api: string, method: Method, body?: object) => {
+export const setFetch = (api: string, method: FetchMethod, body?: object) => {
   const config: RequestInit = {
     method,
     headers: {
