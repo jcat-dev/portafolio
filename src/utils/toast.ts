@@ -1,10 +1,8 @@
 import { toast, Id, TypeOptions } from 'react-toastify'
 
-export const updateToastLoading = (id: Id, type: TypeOptions, msg?: string) => {
-  const newMsg = type === 'success' ? 'La operación fue exitosa 👌' : 'Hubo un error inesperado 🤯'
-  
+export const updateToastLoading = (id: Id, type: TypeOptions, msg?: string) => {  
   return toast.update(id, {
-    render: msg ?? newMsg, 
+    render: msg ?? 'Oops, algo salió mal. Por favor, inténtalo de nuevo 🤯', 
     type, 
     isLoading: false,
     autoClose: 5000,
