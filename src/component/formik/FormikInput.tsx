@@ -17,14 +17,14 @@ const FormikInput: React.FC<Props> = ({ name, labelTitle, classNameField, classN
   const [field, meta] = useField(name)
 
   return (
-    <div className={`${styles['form__field']} ${classNameField ?? ''}`} >
+    <div className={`${styles['field']} ${classNameField ?? ''}`} >
       <label 
         htmlFor={props.id}
 
         className= {
           (meta.touched && meta.error) 
-            ? `${styles['form__label']} ${styles['form__label--error']} ${classNameLabel ?? ''}`
-            : `${styles['form__label']} ${classNameLabel ?? ''}`
+            ? `${styles['field__label']} ${styles['field__label--error']} ${classNameLabel ?? ''}`
+            : `${styles['field__label']} ${classNameLabel ?? ''}`
         }        
       >
         {labelTitle}
@@ -33,8 +33,8 @@ const FormikInput: React.FC<Props> = ({ name, labelTitle, classNameField, classN
       <input 
         className= {
           (meta.touched && meta.error) 
-            ? `${styles['form__input']} ${styles['form__input--error']} ${classNameInput ?? ''}` 
-            : `${styles['form__input']} ${classNameInput ?? ''}`
+            ? `${styles['field__input']} ${styles['field__input--error']} ${classNameInput ?? ''}` 
+            : `${styles['field__input']} ${classNameInput ?? ''}`
         } 
 
         {...field} 

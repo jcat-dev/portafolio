@@ -15,13 +15,13 @@ const FormikTextArea: React.FC<Props> = ({name, classNameField, classNameLabel, 
   const [field, meta] = useField(name)
 
   return (
-    <div className={`${styles['form__field']} ${classNameField ?? ''}`} >
+    <div className={`${styles['field']} ${classNameField ?? ''}`} >
       <label 
         htmlFor={props.id} 
         className={
           (meta.error && meta.touched)
-            ? `${styles['form__label']} ${styles['form__label--error']} ${classNameLabel ?? ''}`
-            : `${styles['form__label']} ${classNameLabel ?? ''}`
+            ? `${styles['field__label']} ${styles['field__label--error']} ${classNameLabel ?? ''}`
+            : `${styles['field__label']} ${classNameLabel ?? ''}`
         }
       >
         {props.labelTitle}
@@ -31,8 +31,8 @@ const FormikTextArea: React.FC<Props> = ({name, classNameField, classNameLabel, 
         id={props.id}
         className={
           (meta.error && meta.touched)
-            ? `${styles['form__textarea']} ${styles['form__textarea--error']} ${classNameTextArea ?? ''}`
-            : `${styles['form__textarea']} ${classNameTextArea ?? ''}`
+            ? `${styles['field__textarea']} ${styles['field__textarea--error']} ${classNameTextArea ?? ''}`
+            : `${styles['field__textarea']} ${classNameTextArea ?? ''}`
         }
         {...field}
       />
