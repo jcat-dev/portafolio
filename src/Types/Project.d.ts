@@ -1,27 +1,20 @@
-export interface StackType {
-  title: string
-  skills: string[]
-}
+import { SkillWithId } from './Skill'
 
-export interface StackTypeWithId extends StackType {
-  _id: string
-}
-
-export interface Project {
+interface Project {
   projectTitle: string
   stackTitle: string
-  stackType: StackType[]
+  stackType: SkillWithId[]
   repositoryURL: string
   pageURL: string
   pageImgURL: string
   description: string
 }
 
-export interface ProjectWithId {
+interface ProjectWithId {
   _id: string
   projectTitle: string
   stackTitle: string
-  stackType: StackTypeWithId[]
+  stackType: SkillWithId[]
   repositoryURL: string
   pageURL: string
   pageImgURL: string
