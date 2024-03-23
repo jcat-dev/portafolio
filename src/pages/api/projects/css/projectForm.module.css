@@ -53,7 +53,7 @@
   width: 100%;
 }
 
-.form-skills {
+.form-stacks-type {
   width: 100%;
 
   display: flex;
@@ -62,7 +62,7 @@
   gap: 1em;
 }
 
-.form-skills__summary {
+.form-stacks-type__summary {
   padding: 1em;
 
   &:hover {
@@ -70,12 +70,12 @@
   }
 }
 
-.form-skills__details {
+.form-stacks-type__details {
   width: 47%;
   border-radius: 0.5em;
   border: 1px solid var(--color-teal-3);
 
-  &.form-skills__details--error  {
+  &.form-stacks-type__details--error  {
     border-color: var(--color-red-3);
 
     & .details-item {
@@ -84,19 +84,19 @@
   }
 }
 
-.details {
+.skills {
   display: flex;
   padding: 1em;
   flex-wrap: wrap;
   gap: 0.5em;
 }
 
-.details-item {
+.skills-item {
   padding: 0.5em;
   border-radius: 0.25em;
   border: 1px solid var(--color-teal-3);
 
-  &.details-item--active {
+  &.skills-item--active {
     background-color: var(--color-teal-2);
   }
   
@@ -123,7 +123,7 @@
 }
 
 @media screen and (width <= 425px) {
-  .form-field, .form-skills__details {
+  .form-field, .form-stacks-type__details {
     width: 100%;
   }  
 }

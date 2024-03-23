@@ -3,14 +3,11 @@ import { SkillWithId } from '../../../Types/Skill'
 import ProjectForm from './components/ProjectForm'
 
 const NewProject = () => {
-  const skills = useLoaderData() as SkillWithId[]
+  const data = useLoaderData() as SkillWithId[]
 
   return (
     <ProjectForm 
-      isNewForm={true}
-      selectedSkills={[]}
-      selectedStackType={[]}
-      skills={skills}
+      stacksType={data}
     />
   )
 }

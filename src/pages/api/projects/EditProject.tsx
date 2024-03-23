@@ -1,42 +1,67 @@
 import { useLoaderData } from 'react-router-dom'
 import { ProjectWithId } from '../../../Types/Project'
-import { useEffect, useState } from 'react'
 import { SkillWithId } from '../../../Types/Skill'
-import { setFetch } from '../../../utils/fetch'
-import { FetchResponseWithData } from '../../../Types/FetchResponse'
-import { getToastError } from '../../../utils/toast'
 import ProjectForm from './components/ProjectForm'
 
+interface EditProject {
+  projectWithId: ProjectWithId
+  stacksType: SkillWithId[]
+}
+
 const EditProject: React.FC = () => {
-  const projectWithId = useLoaderData() as ProjectWithId | null
-  const [skills, setSkills] = useState<SkillWithId[]>([])
+  const data = useLoaderData() as EditProject | null
+  
+  if (!data) {
+    return (
+      <ProjectForm 
+        stacksType={[]}
+      />
+    )
+  }
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const result = await setFetch(String(import.meta.env.VITE_SKILL_API), 'GET')
-        
-        if (result.status === 200) {
-          const data: FetchResponseWithData<SkillWithId[]> = await result.json()
-          return setSkills(data.data)
-        }
-        
-        throw Error
-      } catch (error) {
-        return getToastError('Error al cargar las habilidades')
+  const filterUnselectedStacksType = () => {
+    return data.stacksType.filter((filteredValue) => !data.projectWithId.stackType.some((someValue) => someValue._id === filteredValue._id))
+  }
+
+  const addNewStacksType = () => {
+    const resetSkills = filterUnselectedStacksType().map((value) => {
+      return {
+        ...value,
+        skills: []
       }
-    }
+    })
+    
+    return data.projectWithId.stackType.concat(resetSkills)
+  }
 
-    getData()
-  }, [])
+  const addAllStacksType = () => {
+    const addAllSkills = data.projectWithId.stackType.map((mapValue) => {
+      const isFound = data.stacksType.find((findValue) => findValue._id === mapValue._id)
 
+      if (isFound) {
+        const newSkills = new Set(mapValue.skills.concat(isFound.skills))
+
+        return {
+          ...mapValue,
+          skills: [...newSkills]
+        }
+      }
+
+      return mapValue
+    })
+
+    return addAllSkills.concat(filterUnselectedStacksType())
+  }
+  
   return (
     <ProjectForm 
-      isNewForm={false}
-      projectValues={projectWithId ?? undefined}
-      selectedSkills={projectWithId?.stackType.flatMap((value) => value.skills) ?? []}
-      selectedStackType={projectWithId?.stackType ?? []}
-      skills={skills}
+      projectWithId={{
+        ...data.projectWithId,
+        stackType: [...addNewStacksType()]        
+      }}
+
+      stacksType={data.stacksType}
+      allStacksType={addAllStacksType()}
     />
   )
 }
