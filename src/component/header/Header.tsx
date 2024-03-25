@@ -1,19 +1,18 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { NavItems } from '../../Types/NavItems'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavScroll } from '../../hooks/useNavScroll'
 import Button from '../button/Button'
-import styles from './css/header.module.css'
-import NavItem from './NavItem'
+import styles from './header.module.css'
 
 interface Props {
+  seeDevMode: boolean
   navItems: NavItems[]
-  withNavLink: boolean
 }
 
-const Header: React.FC<Props> = ({withNavLink, ...props}) => {
+const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
   const { navIsActive } = useNavScroll()
   const [menuIsActive, setMenuIsActive] = useState<boolean>(false)
   
@@ -33,10 +32,12 @@ const Header: React.FC<Props> = ({withNavLink, ...props}) => {
         }      
       >
         <p
-          className={styles['nav-title']}
+          className={styles['nav-mobil__title']}
           hidden={menuIsActive} 
         >
-          Jorge Emanuel Castillo
+          {
+            import.meta.env.VITE_FULLNAME
+          }
         </p>            
     
         <ul 
@@ -44,57 +45,64 @@ const Header: React.FC<Props> = ({withNavLink, ...props}) => {
           hidden={!menuIsActive} 
         >
           {
-            props.navItems.map((value, index) => (
-              <NavItem 
+            navItems.map((value, index) => (
+              <li 
+                className={styles['nav-list__item']}
+                onClick={handleMenuClick} 
                 key={index}
-                link={value.link}
-                title={value.title}
-                withNavLink={withNavLink}
-                handleClick={handleMenuClick}
-              />
+              >
+                <NavLink
+                  className={({isActive}) => 
+                    isActive
+                      ? `${styles['nav-list__item-link']} ${styles['nav-list__item-link--active']}`
+                      : styles['nav-list__item-link']
+                  }
+                  to={value.link}
+                >
+                  {value.title}
+                </NavLink>     
+              </li>
             ))
           }
 
-          <li className={styles['nav-list__item']} >
+          <li className={`${styles['nav-list__item']} ${styles['nav-list__item--ma']}`} >
             {
-              withNavLink
-                ? <Link to={'/'} className={styles['nav-list__item-link']} >HOME</Link>
-                : <Link to={'/api'} className={styles['nav-list__item-link']} >DEV</Link>
+              seeDevMode
+                ? <Link to={'/api'} className={styles['nav-list__item-link']} >DEV</Link>
+                : <Link to={'/'} className={styles['nav-list__item-link']} >HOME</Link>
             }            
           </li> 
         </ul>     
         
-        <div className={styles['menu']} >        
-          <Button
-            type='button'
-            className={styles['menu-btn']}  
-            aria-label="menu icon" 
-            icon={true}
-            hidden={menuIsActive} 
-            onClick={handleMenuClick}
-          >
-            <FontAwesomeIcon 
-              icon={faBars}    
-              size='xl'    
-              className={styles['menu-btn__icon']}       
-            />   
-          </Button>
+        <Button
+          type='button'
+          className={styles['menu-mobil']}  
+          aria-label="menu icon" 
+          icon={true}
+          hidden={menuIsActive} 
+          onClick={handleMenuClick}
+        >
+          <FontAwesomeIcon 
+            icon={faBars}    
+            size='xl'    
+            className={styles['menu-mobil__icon']}       
+          />   
+        </Button>
           
-          <Button
-            type='button'
-            className={styles['menu-close']}
-            aria-label='close icon'
-            icon={true}
-            hidden={!menuIsActive}  
-            onClick={handleMenuClick}
-          >
-            <FontAwesomeIcon 
-              icon={faXmark} 
-              size='xl'
-              className={styles['menu-close__icon']}
-            />
-          </Button>        
-        </div>  
+        <Button
+          type='button'
+          className={styles['menu-mobil-close']}
+          aria-label='close icon'
+          icon={true}
+          hidden={!menuIsActive}  
+          onClick={handleMenuClick}
+        >
+          <FontAwesomeIcon 
+            icon={faXmark} 
+            size='xl'
+            className={styles['menu-mobil-close__icon']}
+          />
+        </Button>        
       </nav>
     </header>
   )
