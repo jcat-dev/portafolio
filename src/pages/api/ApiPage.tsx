@@ -3,16 +3,16 @@ import { navItems } from './navItems';
 import LayoutToast from '../../layout/LayoutToast';
 import Header from '../../component/header/Header';
 
-const Api = () => {
+const ApiPage = () => {
   return (
     <LayoutToast>
       <Header 
         navItems={navItems}
-        withNavLink={true}
+        seeDevMode={false}
       />
       <Outlet />
     </LayoutToast>
   )
 }
 
-export default Api
+export default ApiPage
