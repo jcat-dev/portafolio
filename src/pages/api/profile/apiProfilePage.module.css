@@ -13,20 +13,18 @@
 }
 
 .form-field__input, .form-field__textarea {
-  border-radius: 0.25em;
+  border-radius: 0.5em;
   border-width: 1px;
 }
 
 .form-field__btn {
   margin: auto;
   width: 100%;
-  border: 1px solid var(--color-teal-3);
 
   display: block;
-  border-radius: 0.25em;
-  
-  background-color: var(--color-black-1);
-  color: var(--color-teal-3);
+  border-radius: 0.5em;  
+  background-color: var(--color-blue-7);
+  color: var(--color-black-1);
 
   &.form-field__btn--error {
     border-color: var(--color-red-3);
@@ -40,11 +38,15 @@
 
   &:hover {
     cursor: pointer;
-    background-color: var(--color-teal-3);
-    color: var(--color-black-1);
   }
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: var(--color-blue-6);
+    opacity: 0.5;
   }
 }

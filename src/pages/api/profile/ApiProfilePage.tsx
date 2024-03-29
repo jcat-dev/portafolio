@@ -1,43 +1,43 @@
 import { useLoaderData } from 'react-router-dom'
-import { Profile as ProfileD, ProfileWithId } from '../../../Types/Profile'
+import { Profile, ProfileWithId } from '../../../Types/Profile'
 import { Formik, Form } from 'formik'
-import { object, string } from 'yup'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { setFetch } from '../../../utils/fetch'
 import FormikInput from '../../../component/formik/FormikInput'
 import FormikTextArea from '../../../component/formik/FormikTextArea'
 import Button from '../../../component/button/Button'
-import styles from './profile.module.css'
+import styles from './apiProfilePage.module.css'
+import * as Yup from 'yup'
 
-const Profile = () => {
-  const profiles = useLoaderData() as ProfileWithId[]
-
-  const initialValues: ProfileD = {
-    fullName: profiles[0]?.fullName ?? '',
-    stackTitle: profiles[0]?.stackTitle ?? '',
-    photoUrl: profiles[0]?.photoUrl ?? '',
-    description: profiles[0]?.description ?? '',
+const ApiProfilePage = () => {
+  const profile = useLoaderData() as ProfileWithId | null
+  
+  const initialValues: Profile = {
+    fullName: profile?.fullName ?? '',
+    stackTitle: profile?.stackTitle ?? '',
+    photoUrl: profile?.photoUrl ?? '',
+    description: profile?.description ?? '',
   }
 
-  const validationSchema = object({
-    fullName: string().required(),
-    stackTitle: string().required(),
-    description: string().required(),
-    photoUrl: string().url().required(),
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required(),
+    stackTitle: Yup.string().required(),
+    description: Yup.string().required(),
+    photoUrl: Yup.string().url().required(),
   })
 
-  const handleSubmit = async (values: ProfileD) => {
+  const handleSubmit = async (values: Profile) => {
     const id = getToastLoading()
 
     try {
-      const result = await setFetch(
-        String(import.meta.env.VITE_PROFILE_API),
-        'POST',
-        values
-      )
+      const result = await setFetch(String(import.meta.env.VITE_PROFILE_API), 'POST', values)
 
-      if (result.status === 204) return updateToastLoading(id, 'success')
-      throw new Error
+      if (result.status === 204){
+        updateToastLoading(id, 'success', result.statusText)
+        return
+      }
+
+      updateToastLoading(id, 'error', result.statusText)
     } catch (error) {
       updateToastLoading(id, 'error')
     }
@@ -45,7 +45,8 @@ const Profile = () => {
 
   const handleSubmitClick = (isValid: boolean, dirty: boolean) => {
     if (!isValid || !dirty) {
-      return getToastError('Field required.')
+      getToastError('Field required')
+      return
     }
   }
 
@@ -103,6 +104,7 @@ const Profile = () => {
           <Button
             aria-label='enviar formulario'
             type='submit'
+            disabled={!dirty}
             className={
               (!isValid)
                 ? `${styles['form-field__btn']} ${styles['form-field__btn--error']}`
@@ -110,7 +112,7 @@ const Profile = () => {
             }
             onClick={() => handleSubmitClick(isValid, dirty)}
           >
-            Save
+            Enviar
           </Button>
         </Form>
       )}
@@ -118,4 +120,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default ApiProfilePage
