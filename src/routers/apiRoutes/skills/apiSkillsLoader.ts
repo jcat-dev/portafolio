@@ -3,7 +3,7 @@ import { SkillWithId } from '../../../Types/Skill'
 import { setFetch } from '../../../utils/fetch'
 import { getToastError } from '../../../utils/toast'
 
-export const skillsLoader = async (): Promise<SkillWithId[] | null> => {
+export const apiSkillsLoader = async (): Promise<SkillWithId[] | null> => {
   try {
     const result = await setFetch(String(import.meta.env.VITE_SKILL_API), 'GET')
     
@@ -21,7 +21,7 @@ export const skillsLoader = async (): Promise<SkillWithId[] | null> => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const editSkillLoader = async ({ params }: any): Promise<SkillWithId | null> => {
+export const apiEditSkillLoader = async ({ params }: any): Promise<SkillWithId | null> => {
   try {
     const result = await setFetch(`${String(import.meta.env.VITE_SKILL_API)}/${params.id}`, 'GET')
 

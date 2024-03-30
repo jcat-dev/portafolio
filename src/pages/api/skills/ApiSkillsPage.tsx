@@ -5,10 +5,10 @@ import { faPenToSquare, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-i
 import { setFetch } from '../../../utils/fetch'
 import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { useEffect, useState } from 'react'
-import styles from './css/skills.module.css'
+import styles from './css/apiSkillsPage.module.css'
 import Button from '../../../component/button/Button'
 
-const Skills = () => {
+const ApiSkillsPage = () => {
   const loaderSkills = useLoaderData() as (SkillWithId[] | null)
   const [skills, setSkills] = useState<SkillWithId[]>()
 
@@ -31,9 +31,9 @@ const Skills = () => {
         return
       }
 
-      return updateToastLoading(toastID, 'error', result.statusText)
+      updateToastLoading(toastID, 'error', result.statusText)
     } catch (error) {
-      return updateToastLoading(toastID, 'error')
+      updateToastLoading(toastID, 'error')
     }
   }
 
@@ -95,4 +95,4 @@ const Skills = () => {
   )
 }
 
-export default Skills
+export default ApiSkillsPage

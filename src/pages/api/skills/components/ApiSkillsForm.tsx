@@ -8,16 +8,16 @@ import { setFetch } from '../../../../utils/fetch'
 import { FetchMethod, FetchResponse } from '../../../../Types/FetchResponse'
 import { useNavigate } from 'react-router-dom'
 import FormikInput from '../../../../component/formik/FormikInput'
-import styles from '../css/skillsForm.module.css'
+import styles from '../css/apiSkillsForm.module.css'
 import Button from '../../../../component/button/Button'
-import SkillInput from './SkillInput'
+import ApiSkillInput from './ApiSkillInput'
 
 interface Props {
   isNew: boolean
   data?: SkillWithId
 }
 
-const SkillsForm: React.FC<Props> = ({isNew, data}) => {  
+const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {  
   const navigation = useNavigate()
   const initialValues: Skill = {
     skills: data?.skills ?? [],
@@ -93,7 +93,7 @@ const SkillsForm: React.FC<Props> = ({isNew, data}) => {
           <FieldArray name='skills' >
             {(arrayHelpers) => (
               <>
-                <SkillInput
+                <ApiSkillInput
                   handleBtnPlusClick={arrayHelpers.push}
                   error={Boolean(errors.skills)}
                 />
@@ -130,6 +130,7 @@ const SkillsForm: React.FC<Props> = ({isNew, data}) => {
           <Button
             aria-label='enviar formulario'
             type='submit'
+            disabled={!dirty}
             onClick={() => handleValidateSubmit(isValid, dirty)}
             className={styles['form-btn']}
           >
@@ -143,4 +144,4 @@ const SkillsForm: React.FC<Props> = ({isNew, data}) => {
   )
 }
 
-export default SkillsForm
+export default ApiSkillsForm

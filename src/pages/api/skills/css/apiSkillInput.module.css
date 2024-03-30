@@ -8,19 +8,19 @@
 
 .input {
   border-right-style: none;
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
 }
 
-.btn {
+.add-btn {
   height: auto;
   border: 1px solid var(--color-teal-3);
   border-left: none;
 
   background-color: transparent;
   color: var(--color-teal-3);
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 
   &:hover {
     cursor: pointer;
@@ -28,7 +28,7 @@
     color: var(--color-black-1);
   }
 
-  &.btn--error {
+  &.add-btn--error {
     border-color: var(--color-red-3);
   }
 }

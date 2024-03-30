@@ -8,7 +8,7 @@
 }
 
 .form-field__input {
-  border-radius: 0.25em;
+  border-radius: 0.5em;
 }
 
 .form-field__label {
@@ -45,16 +45,23 @@
 .form-btn {
   width: 100%;
   margin: 0 auto;
-  border: 1px solid var(--color-teal-3);
   
-  border-radius: 0.25em;
-  background-color: var(--color-black-1);
-  color: var(--color-teal-3);
+  border-radius: 0.5em;
+  background-color: var(--color-blue-7);
+  color: var(--color-black-1);
 
   &:hover {
-    background-color: var(--color-teal-3);
-    color: var(--color-black-1);
     cursor: pointer;
+  }
+
+  &[disabled] {
+    background-color: var(--color-blue-6);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 }
 

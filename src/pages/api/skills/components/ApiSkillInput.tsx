@@ -2,7 +2,7 @@ import { ChangeEvent, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Button from '../../../../component/button/Button'
-import styles from '../css/skillInput.module.css'
+import styles from '../css/apiSkillInput.module.css'
 import formStyles from '../../../../component/formik/formik.module.css'
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   handleBtnPlusClick: (skillName: string) => void
 }
 
-const SkillInput: React.FC<Props> = (props) => {
+const ApiSkillInput: React.FC<Props> = (props) => {
   const [inputSkill, setInputSkill] = useState<string>('')
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -62,8 +62,8 @@ const SkillInput: React.FC<Props> = (props) => {
         onClick={() => handleBtnPlusClick()}      
         className={
           props.error
-            ? `${styles['btn']} ${styles['btn--error']}`
-            : styles['btn']
+            ? `${styles['add-btn']} ${styles['add-btn--error']}`
+            : styles['add-btn']
         }      
       >
         <FontAwesomeIcon icon={faPlus} />
@@ -72,4 +72,4 @@ const SkillInput: React.FC<Props> = (props) => {
   )
 }
 
-export default SkillInput
+export default ApiSkillInput
