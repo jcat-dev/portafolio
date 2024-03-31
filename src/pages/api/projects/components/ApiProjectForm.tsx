@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 import Button from '../../../../component/button/Button'
 import FormikTextArea from '../../../../component/formik/FormikTextArea'
 import MyTextInput from '../../../../component/formik/FormikInput'
-import styles from '../css/projectForm.module.css'
+import styles from '../css/apiProjectForm.module.css'
 
 interface Props {
   stacksType: SkillWithId[]
@@ -19,7 +19,7 @@ interface Props {
   allStacksType?: SkillWithId[]
 }
 
-const ProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksType}) => {
+const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksType}) => {
   const newStacksType = projectWithId ? allStacksType : stacksType
   const navigate = useNavigate()
   const clearSkills = () => {
@@ -261,6 +261,7 @@ const ProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksType}
               type='submit'
               className={styles['form-btn']}
               onClick={() => handleValidForm(dirty, isValid)}
+              disabled={!dirty}
             >
               Enviar
             </Button>
@@ -271,4 +272,4 @@ const ProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksType}
   )
 }
 
-export default ProjectForm
+export default ApiProjectForm

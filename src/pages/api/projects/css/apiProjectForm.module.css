@@ -120,6 +120,12 @@
   &:active {
     transform: scale(0.95);
   }
+
+  &[disabled] {
+    background-color: var(--color-blue-6);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 @media screen and (width <= 425px) {

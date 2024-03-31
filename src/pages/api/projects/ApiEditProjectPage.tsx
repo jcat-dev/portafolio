@@ -1,14 +1,14 @@
 import { useLoaderData } from 'react-router-dom'
 import { ProjectWithId } from '../../../Types/Project'
 import { SkillWithId } from '../../../Types/Skill'
-import ProjectForm from './components/ProjectForm'
+import ProjectForm from './components/ApiProjectForm'
 
 interface EditProject {
   projectWithId: ProjectWithId
   stacksType: SkillWithId[]
 }
 
-const EditProject: React.FC = () => {
+const ApiEditProjectPage: React.FC = () => {
   const data = useLoaderData() as EditProject | null
   
   if (!data) {
@@ -66,4 +66,4 @@ const EditProject: React.FC = () => {
   )
 }
 
-export default EditProject
+export default ApiEditProjectPage

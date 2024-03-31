@@ -4,7 +4,7 @@ import { SkillWithId } from '../../../Types/Skill'
 import { setFetch } from '../../../utils/fetch'
 import { getToastError } from '../../../utils/toast'
 
-export const projectsLoader = async (): Promise<ProjectWithId[]> => {
+export const apiProjectsLoader = async (): Promise<ProjectWithId[] | []> => {
   try {
     const result = await setFetch(String(import.meta.env.VITE_PROJECT_API), 'GET')
     
@@ -13,14 +13,15 @@ export const projectsLoader = async (): Promise<ProjectWithId[]> => {
       return data.data
     }
 
-    throw Error
+    getToastError(result.statusText)
+    return []
   } catch (error) {
     getToastError('Error al cargar los proyectos')
     return []
   }
 }
 
-export const newProjectLoader = async (): Promise<SkillWithId[]> => {
+export const apiNewProjectLoader = async (): Promise<SkillWithId[] | []> => {
   try {
     const result = await setFetch(String(import.meta.env.VITE_SKILL_API), 'GET')
     
@@ -29,9 +30,10 @@ export const newProjectLoader = async (): Promise<SkillWithId[]> => {
       return data.data
     }
 
-    throw Error
+    getToastError(result.statusText)
+    return []
   } catch (error) {
-    getToastError('Error al cargar las habilidades')
+    getToastError('Error al cargar los tipos de stacks')
     return []
   }
 }
@@ -41,7 +43,7 @@ interface EditProject {
   stacksType: SkillWithId[]
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const editProjectLoader = async ({ params }: any): Promise<EditProject | null> => {
+export const apiEditProjectLoader = async ({ params }: any): Promise<EditProject | null> => {
   try {
     const projectResult = await setFetch(`${String(import.meta.env.VITE_PROJECT_API)}/${params.id}`, 'GET'    )
     const stacksTypeResult = await setFetch(String(import.meta.env.VITE_SKILL_API), 'GET')
@@ -56,7 +58,11 @@ export const editProjectLoader = async ({ params }: any): Promise<EditProject | 
       }
     } 
 
-    throw Error
+    projectResult.status !== 200
+      ? getToastError(projectResult.statusText)
+      : getToastError(stacksTypeResult.statusText)
+      
+    return null
   } catch (error) {
     getToastError('Error al cargar el proyecto')
     // retornar undefined, hace que react-router lo tome como un error,

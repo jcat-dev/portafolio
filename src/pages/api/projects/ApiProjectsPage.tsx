@@ -9,10 +9,10 @@ import { useEffect, useState } from 'react'
 import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import Button from '../../../component/button/Button'
 import LoadingImage from '../../../component/loading/LoadingImage'
-import styles from './css/projects.module.css'
+import styles from './css/apiProjects.module.css'
 
-const Projects = () => {
-  const data = useLoaderData() as ProjectWithId[]
+const ApiProjectsPage = () => {
+  const data = useLoaderData() as ProjectWithId[] | []
   const [projects, setProjects] = useState<ProjectWithId[]>()
 
   useEffect(() => {
@@ -26,20 +26,17 @@ const Projects = () => {
     const toastId = getToastLoading()
 
     try {
-      const result = await setFetch(
-        `${String(import.meta.env.VITE_PROJECT_API)}/${id}`,
-        'DELETE'
-      )
+      const result = await setFetch(`${String(import.meta.env.VITE_PROJECT_API)}/${id}`,'DELETE')
       
       if (result.status === 204) {
         setProjects(projects?.filter((value) => value._id !== id))
-        updateToastLoading(toastId, 'success')
+        updateToastLoading(toastId, 'success', result.statusText)
         return
       }
 
-      return updateToastLoading(toastId, 'error')
+      updateToastLoading(toastId, 'error', result.statusText)
     } catch (error) {
-      return updateToastLoading(toastId, 'error')
+      updateToastLoading(toastId, 'error')
     }
   }
 
@@ -131,4 +128,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default ApiProjectsPage
