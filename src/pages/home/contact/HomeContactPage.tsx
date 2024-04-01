@@ -1,17 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Form, Formik, FormikHelpers } from 'formik'
-import { getToastError, getToastLoading, updateToastLoading } from '../../../../utils/toast'
-import { setFetch } from '../../../../utils/fetch'
-import { FormContact } from '../../../../Types/FormContact'
-import LoadingImage from '../../../../component/loading/LoadingImage'
-import FormikInput from '../../../../component/formik/FormikInput'
-import FormikTextArea from '../../../../component/formik/FormikTextArea'
-import Button from '../../../../component/button/Button'
-import styles from './contact.module.css'
+import { getToastError, getToastLoading, updateToastLoading } from '../../../utils/toast'
+import { setFetch } from '../../../utils/fetch'
+import { FormContact } from '../../../Types/FormContact'
+import { FetchResponse } from '../../../Types/FetchResponse'
+import LoadingImage from '../../../component/loading/LoadingImage'
+import FormikInput from '../../../component/formik/FormikInput'
+import FormikTextArea from '../../../component/formik/FormikTextArea'
+import Button from '../../../component/button/Button'
+import styles from './homeContactPage.module.css'
 import * as Yup from 'yup'
 
-const Contact = () => { 
+const HomeContactPage = () => { 
   const initialValues: FormContact = {
     email: '',
     name: '',
@@ -19,8 +20,8 @@ const Contact = () => {
   }
 
   const validationSchema = Yup.object<FormContact>({
-    email: Yup.string().email().required('Required'),
-    name: Yup.string().required('Required'),
+    email: Yup.string().email().trim().required('Required'),
+    name: Yup.string().trim().required('Required'),
     text: Yup.string().required('Required'),
   })
 
@@ -30,12 +31,14 @@ const Contact = () => {
     try {
       const result = await setFetch(String(import.meta.env.VITE_EMAIL_API), 'POST', values)
 
-      if (result.status === 204) {          
-        updateToastLoading(toastId, 'success')
-        return action.resetForm()
+      if (result.status === 201) {          
+        const data: FetchResponse = await result.json()
+        updateToastLoading(toastId, 'success', data.msg)
+        action.resetForm()
+        return
       } 
 
-      throw Error
+      updateToastLoading(toastId, 'error', result.statusText)
     } catch (error) {
       updateToastLoading(toastId, 'error')
     } 
@@ -48,13 +51,10 @@ const Contact = () => {
   }
 
   return (
-    <section 
-      id="contacto" 
-      className={styles['container']}
-    >
-      <h2 className={styles['title']} >
-        Contacto
-      </h2>   
+    <main className={styles['container']} >
+      <h1 className={styles['title']} >
+        Contact
+      </h1>   
 
       <div className={styles['contact']} >
         <LoadingImage
@@ -70,7 +70,7 @@ const Contact = () => {
           onSubmit={(values, action) => handleSubmit(values, action)}
         >
           {
-            ({isValid, values}) => (
+            ({isValid, values, errors, touched}) => (
               <Form className={
                 isValid
                   ? styles['contact-form']
@@ -83,7 +83,11 @@ const Contact = () => {
                   labelTitle='Nombre'
                   classNameField={styles['contact-form__field']}
                   classNameInput={styles['contact-form__field-input']}
-                  classNameLabel={styles['contact-form__field-label']}
+                  classNameLabel={
+                    errors.name && touched.name
+                      ? `${styles['contact-form__field-label']} ${styles['contact-form__field-label--error']}`
+                      : styles['contact-form__field-label']
+                  }
                 />
 
                 <FormikInput 
@@ -93,7 +97,11 @@ const Contact = () => {
                   labelTitle='Email'
                   classNameField={styles['contact-form__field']}
                   classNameInput={styles['contact-form__field-input']}
-                  classNameLabel={styles['contact-form__field-label']}
+                  classNameLabel={
+                    errors.email && touched.email
+                      ? `${styles['contact-form__field-label']} ${styles['contact-form__field-label--error']}`
+                      : styles['contact-form__field-label']
+                  }
                 />          
 
                 <FormikTextArea
@@ -102,7 +110,11 @@ const Contact = () => {
                   labelTitle='Mensaje'
                   classNameField={styles['contact-form__field']}
                   classNameTextArea={styles['contact-form__field-textarea']}
-                  classNameLabel={styles['contact-form__field-label']}
+                  classNameLabel={
+                    errors.text && touched.text
+                      ? `${styles['contact-form__field-label']} ${styles['contact-form__field-label--error']}`
+                      : styles['contact-form__field-label']
+                  }
                 />
           
                 <Button 
@@ -133,8 +145,8 @@ const Contact = () => {
           size='3x'
         />
       </a>        
-    </section>
+    </main>
   )
 }
 
-export default Contact
+export default HomeContactPage
