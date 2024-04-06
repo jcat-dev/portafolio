@@ -1,21 +1,15 @@
 .profile {
-  min-height: 80vh;
-}
-
-.container {
   width: 70%;
   margin: auto;
-  padding-top: 7.5vh;
+  padding: 7.5vh 0;
 
   display: grid;
-  grid-template-columns: 77.5% 20%;    
-  grid-template-rows: auto auto auto;
+  grid-template-columns: auto min(10em);    
+  grid-template-rows: auto auto min(5em);
   grid-template-areas: 
-    "title title"
+    "title photo"
     "fullname photo"
     "description photo";
-  gap: 5%;
-  column-gap: 2.5%;
   align-items: center;
 }
 
@@ -30,6 +24,8 @@
 .profile-fullname {
   grid-area: fullname;
   color: var(--color-blue-7);
+  font-weight: bolder;
+  font-size: 1.25em;
 }
 
 .profile__photo-container {
@@ -46,14 +42,13 @@
 
 .profile-description {
   grid-area: description;
-  margin-top: 1em;
 
-  white-space: pre-line;
+  margin-right: 0.5em;
   line-height: 1.5em;
 }
 
 @media screen and (width <= 768px) {
-  .container {
+  .profile {
     width: 90%;
   }
   
@@ -64,18 +59,21 @@
 
 @media screen and (width <= 425px) {
   .profile {
-    min-height: 100vh;
-  }
-
-  .container {
+    padding-top: 0;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas: 
      "title title"
      "fullname fullname"
-     "description photo";
-    grid-template-columns: 50% 50%;
+     "description description"
+     "photo photo";
   }
 
   .profile-description {
     text-align: justify;
+    margin: 0.75em 0;
+  }
+
+  .profile__photo-container {
+    height: 9em;
   }
 }
