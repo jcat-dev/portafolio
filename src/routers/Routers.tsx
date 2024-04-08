@@ -1,11 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { routerHome } from './homeRouter/homeRouter'
-import { routerApi } from './apiRouter/apiRouter'
+import { homeRoutes } from './homeRoutes/homeRoutes'
+import { apiRoutes } from './apiRoutes/apiRoutes'
 
 const Routers = () => {
   const router = createBrowserRouter([
-    routerHome,
-    routerApi
+    homeRoutes,
+    apiRoutes
   ])
 
   return (
