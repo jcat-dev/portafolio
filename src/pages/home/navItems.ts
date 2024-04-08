@@ -1,8 +1,8 @@
 import { NavItems } from '../../Types/NavItems';
 
 export const navItems: NavItems[] = [
-  { title: 'Inicio', link: '#inicio' },
-  { title: 'Habilidades', link: '#habilidades' },
-  { title: 'Proyectos', link: '#proyectos' },
-  { title: 'Contacto', link: '#contacto' }
+  { title: 'Profile', link: 'profile'},
+  { title: 'Skills', link: 'skills' },
+  { title: 'Projects', link: 'projects' },
+  { title: 'Contact', link: 'contact' }
 ]
