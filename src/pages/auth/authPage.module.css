@@ -1,0 +1,32 @@
+.form {
+  width: 20em;
+  height: 100vh;
+  margin: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center
+}
+
+.form-field {
+  width: 100%;
+}
+
+.field-error {
+  width: 100%;
+  padding: 0.5em 0;
+}
+
+.btn-submit {
+  width: 100%;
+  margin-top: 1em;
+
+  background-color: var(--color-blue-7);
+  color: var(--color-black-1);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
