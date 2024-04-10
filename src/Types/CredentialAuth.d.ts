@@ -1,0 +1,3 @@
+interface CredentialAuth {
+  token: string
+}
