@@ -1,7 +1,5 @@
 import { FieldArray, Form, Formik, FormikHelpers } from 'formik'
-import { Link, useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeftLong } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 import { SkillWithId } from '../../../../Types/Skill'
 import { Project, ProjectWithId } from '../../../../Types/Project'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../../utils/toast'
@@ -12,6 +10,7 @@ import Button from '../../../../component/button/Button'
 import FormikTextArea from '../../../../component/formik/FormikTextArea'
 import MyTextInput from '../../../../component/formik/FormikInput'
 import styles from '../css/apiProjectForm.module.css'
+import LinkButton from '../../../../component/button/LinkButton'
 
 interface Props {
   stacksType: SkillWithId[]
@@ -121,17 +120,6 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
 
   return (
     <div className={styles['container']} >
-      <Link
-        to={'../projects'}
-        aria-label='volver a la pagina anterior'
-        className={styles['back-link']}
-      >
-        <FontAwesomeIcon 
-          size='3x'
-          icon={faLeftLong} 
-        />
-      </Link>
-
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -146,9 +134,9 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
               name='projectTitle'
               labelTitle='Project Title'
               placeholder='My project'
-              classNameField={styles['form-field']}
-              classNameInput={styles['form-field__input']}
-              classNameLabel={styles['form-field__label']}
+              classNameField={styles['form__field']}
+              classNameInput={styles['form__field-input']}
+              classNameLabel={styles['form__field-label']}
             />            
             
             <MyTextInput
@@ -157,9 +145,9 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
               name='pageURL'
               labelTitle='Page URL'
               placeholder='https://www.ej'
-              classNameField={styles['form-field']}
-              classNameInput={styles['form-field__input']}
-              classNameLabel={styles['form-field__label']}
+              classNameField={styles['form__field']}
+              classNameInput={styles['form__field-input']}
+              classNameLabel={styles['form__field-label']}
             />
 
             <MyTextInput
@@ -168,9 +156,9 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
               name='repositoryURL'
               labelTitle='Repository URL'
               placeholder='https://www.ej'
-              classNameField={styles['form-field']}
-              classNameInput={styles['form-field__input']}
-              classNameLabel={styles['form-field__label']}
+              classNameField={styles['form__field']}
+              classNameInput={styles['form__field-input']}
+              classNameLabel={styles['form__field-label']}
             />
 
             <MyTextInput
@@ -179,18 +167,18 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
               name='pageImgURL'
               labelTitle='Image Url'
               placeholder='https://www.ej'
-              classNameField={styles['form-field']}
-              classNameInput={styles['form-field__input']}
-              classNameLabel={styles['form-field__label']}
+              classNameField={styles['form__field']}
+              classNameInput={styles['form__field-input']}
+              classNameLabel={styles['form__field-label']}
             />
    
             <FormikTextArea 
               name='description'
               id='description'
               labelTitle='Description'
-              classNameField={styles['form-field__box']}
-              classNameTextArea={styles['form-field__textarea']}
-              classNameLabel={styles['form-field__label']}
+              classNameField={styles['form__field-box']}
+              classNameTextArea={styles['form__field-textarea']}
+              classNameLabel={styles['form__field-label']}
             />
 
             <MyTextInput
@@ -199,14 +187,14 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
               name='stackTitle'
               labelTitle='Stack Title'
               placeholder='Full Stack'
-              classNameField={styles['form-field']}
-              classNameInput={styles['form-field__input']}
-              classNameLabel={styles['form-field__label']}
+              classNameField={styles['form__field']}
+              classNameInput={styles['form__field-input']}
+              classNameLabel={styles['form__field-label']}
             />
 
             <FieldArray name='stackType' >
               {() => (
-                <div className={styles['form-stacks-type']} >
+                <div className={styles['form-stacks']} >
                   {
                     newStacksType?.map((stackTypeValue, index) => (
                       <details
@@ -214,22 +202,22 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
                         open={true}
                         className={
                           (touched.stackType && errors.stackType)
-                            ? `${styles['form-stacks-type__details']} ${styles['form-stacks-type__details--error']}`
-                            : styles['form-stacks-type__details']
+                            ? `${styles['form-stacks__details']} ${styles['form-stacks__details--error']}`
+                            : styles['form-stacks__details']
                         }
                       >                        
                         <summary
-                          className={styles['form-stacks-type__summary']}
+                          className={styles['form-stacks__details-summary']}
                         >
                           {stackTypeValue.title}
                         </summary>
                     
                         <FieldArray name={`stackType[${index}].skills`} >
                           {({push}) => (
-                            <div className={styles['skills']} >
+                            <ul className={styles['skills']} >
                               {                    
                                 stackTypeValue.skills.map((skill, skillIndex) => (
-                                  <div
+                                  <li
                                     key={skillIndex}
                                     className={
                                       values.stackType[index].skills.includes(skill)
@@ -243,10 +231,10 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
                                     }                                  
                                   >
                                     {skill}
-                                  </div>
+                                  </li>
                                 ))
                               }
-                            </div>
+                            </ul>
                           )}
                         </FieldArray>
                       </details>
@@ -265,6 +253,15 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
             >
               Enviar
             </Button>
+
+            <LinkButton 
+              to={'..'}
+              aria-label='volver a la pagina anterior'  
+              className={styles['form__btn-cancel']}
+              relative='path'
+            >
+              Cancelar
+            </LinkButton>
           </Form>
         )}
       </Formik>
