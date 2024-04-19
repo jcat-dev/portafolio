@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 
 const ApiProfilePage = () => {
   const profile = useLoaderData() as ProfileWithId | null
-  
+
   const initialValues: Profile = {
     fullName: profile?.fullName ?? '',
     stackTitle: profile?.stackTitle ?? '',
@@ -105,14 +105,10 @@ const ApiProfilePage = () => {
             aria-label='enviar formulario'
             type='submit'
             disabled={!dirty}
-            className={
-              (!isValid)
-                ? `${styles['form-field__btn']} ${styles['form-field__btn--error']}`
-                : styles['form-field__btn'] 
-            }
+            className={styles['form-field__btn']}
             onClick={() => handleSubmitClick(isValid, dirty)}
           >
-            Enviar
+            Guardar
           </Button>
         </Form>
       )}
