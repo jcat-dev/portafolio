@@ -5,6 +5,9 @@ import { Project, ProjectWithId } from '../../../../Types/Project'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../../utils/toast'
 import { setFetch } from '../../../../utils/fetch'
 import { FetchResponse } from '../../../../Types/FetchResponse'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState } from 'react'
 import * as Yup from 'yup'
 import Button from '../../../../component/button/Button'
 import FormikTextArea from '../../../../component/formik/FormikTextArea'
@@ -19,7 +22,7 @@ interface Props {
 }
 
 const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksType}) => {
-  const newStacksType = projectWithId ? allStacksType : stacksType
+  const [newStacksType, setNewStacksType] = useState<SkillWithId[]>(allStacksType ?? stacksType)
   const navigate = useNavigate()
   const clearSkills = () => {
     return stacksType.map((value) => {
@@ -66,7 +69,10 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
       const API = String(import.meta.env.VITE_PROJECT_API)
       const api = projectWithId ? `${API}/${projectWithId._id}` : API 
       const method = projectWithId ? 'PUT' : 'POST' 
-      const result = await setFetch(api, method, values)
+      const result = await setFetch(api, method, {
+        ...values,
+        stackType: values.stackType.filter((value) => value.skills.length !== 0)
+      })
 
       if (result.status === 201) {
         const data: FetchResponse = await result.json()
@@ -116,6 +122,15 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
       ...projectValue,
       stackType: removeSkill
     })
+  }
+
+  const handleDeleteOldStackType = (id: string, project: Project, cb: (value: Project) => void) => {
+    cb({
+      ...project,
+      stackType: project.stackType.filter((value) => value._id !== id)
+    })
+
+    setNewStacksType(newStacksType.filter((value) => value._id !== id))
   }
 
   return (
@@ -237,6 +252,18 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
                             </ul>
                           )}
                         </FieldArray>
+
+                        <Button
+                          aria-label='Eliminar Stack'
+                          type='button'    
+                          hidden={Boolean(stacksType.find((values) => values._id === stackTypeValue._id))}      
+                          className={styles['form-stacks__details-delete']}
+                          icon={true}       
+                          onClick={() => handleDeleteOldStackType(stackTypeValue._id, values, setValues)}        
+                          title={'Delete Old Stack'}                          
+                        >
+                          <FontAwesomeIcon icon={faXmark} />
+                        </Button>
                       </details>
                     ))
                   }
@@ -251,7 +278,9 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
               onClick={() => handleValidForm(dirty, isValid)}
               disabled={!dirty}
             >
-              Enviar
+              {
+                projectWithId ? 'Guardar' : 'Enviar'
+              }
             </Button>
 
             <LinkButton 

@@ -44,18 +44,12 @@
   gap: 1em;
 }
 
-.form-stacks__details-summary {
-  padding: 1em;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .form-stacks__details {
   width: 47%;
-  border-radius: 0.5em;
   border: 1px solid var(--color-teal-3);
+
+  border-radius: 0.5em;
+  position: relative;
 
   &.form-stacks__details--error  {
     border-color: var(--color-red-3);
@@ -63,6 +57,26 @@
     & .details-item {
       border-color: var(--color-red-3);
     }
+  }
+}
+
+.form-stacks__details-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--color-red-5);
+  background-color: transparent;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.form-stacks__details-summary {
+  padding: 1em;
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
