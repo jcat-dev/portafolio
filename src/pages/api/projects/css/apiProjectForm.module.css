@@ -8,15 +8,13 @@
 
 .form {
   width: 90%;
-  padding: 1em;
+  padding-bottom: 1em;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1em;
   border-radius: 0.5em;
-  box-shadow: 0 0px 5px 0px var(--color-blue-2);
-  border: 1px solid var(--color-blue-2);
 }
 
 .form__field {
