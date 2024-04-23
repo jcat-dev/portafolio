@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 import { ProjectWithId } from '../../../Types/Project'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
@@ -9,7 +9,8 @@ import { useEffect, useState } from 'react'
 import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import Button from '../../../component/button/Button'
 import LoadingImage from '../../../component/loading/LoadingImage'
-import styles from './css/apiProjects.module.css'
+import styles from './css/apiProjectsPage.module.css'
+import LinkButton from '../../../component/button/LinkButton'
 
 const ApiProjectsPage = () => {
   const data = useLoaderData() as ProjectWithId[] | []
@@ -41,9 +42,9 @@ const ApiProjectsPage = () => {
   }
 
   return (
-    <div className={styles['projects']} >
-      <Link
-        to={'/api/projects/new'}
+    <main className={styles['projects']} >
+      <LinkButton
+        to={'new'}
         className={styles['projects__add-button']}
         aria-label='agregar nuevo elemento'
       >
@@ -51,7 +52,7 @@ const ApiProjectsPage = () => {
           icon={faPlus} 
           size='lg'
         />
-      </Link>
+      </LinkButton>
 
       <table className={styles['table']} >
         <thead className={styles['table-heal']} >
@@ -99,14 +100,15 @@ const ApiProjectsPage = () => {
                 <td 
                   className={`${styles['table-body__tr-td']} ${styles['td']}`} 
                 >                    
-                  <div className={styles['td-box']} >
-                    <Link 
-                      to={`/api/projects/${value._id}`} 
+                  <div className={styles['td-box']} >     
+                    <LinkButton
+                      to={`${value._id}`} 
                       className={styles['td-box__edit-button']}
                       aria-label='editar elemento'
+                      icon={true}
                     >
                       <FontAwesomeIcon icon={faPenToSquare} />
-                    </Link>          
+                    </LinkButton>  
 
                     <Button 
                       type='button'
@@ -124,7 +126,7 @@ const ApiProjectsPage = () => {
           }          
         </tbody>
       </table>       
-    </div>
+    </main>
   )
 }
 
