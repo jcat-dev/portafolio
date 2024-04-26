@@ -44,7 +44,7 @@ const ApiProjectsPage = () => {
   return (
     <main className={styles['projects']} >
       <LinkButton
-        to={'new'}
+        to={'/api/projects/new'}
         className={styles['projects__add-button']}
         aria-label='agregar nuevo elemento'
       >

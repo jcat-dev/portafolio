@@ -42,7 +42,7 @@ const ApiEditProjectPage: React.FC = () => {
         const newSkills = new Set(mapValue.skills.concat(isFound.skills))
 
         return {
-          ...mapValue,
+          ...isFound,
           skills: [...newSkills]
         }
       }
