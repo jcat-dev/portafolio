@@ -1,5 +1,10 @@
 .skill-input-container {
+  width: 100%;
   display: flex;
+}
+
+.field-container {
+  width: 100%;
 }
 
 .label {
@@ -14,27 +19,22 @@
 
 .add-btn {
   height: auto;
-  border: 1px solid var(--color-teal-3);
+  border: 1px solid var(--color-blue-3);
   border-left: none;
 
   background-color: transparent;
-  color: var(--color-teal-3);
+  color: var(--color-blue-7);
   border-top-right-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
 
   &:hover {
-    cursor: pointer;
-    background-color: var(--color-teal-3);
+    border: 1px solid var(--color-blue-7);
+    border-left: none;
+    background-color: var(--color-blue-7);
     color: var(--color-black-1);
   }
 
   &.add-btn--error {
     border-color: var(--color-red-3);
-  }
-}
-
-@media screen and (width <= 768px) {
-  .field-container {
-    width: 100%;
   }
 }

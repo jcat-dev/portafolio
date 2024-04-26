@@ -11,6 +11,7 @@ import FormikInput from '../../../../component/formik/FormikInput'
 import styles from '../css/apiSkillsForm.module.css'
 import Button from '../../../../component/button/Button'
 import ApiSkillInput from './ApiSkillInput'
+import LinkButton from '../../../../component/button/LinkButton'
 
 interface Props {
   isNew: boolean
@@ -132,12 +133,20 @@ const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {
             type='submit'
             disabled={!dirty}
             onClick={() => handleValidateSubmit(isValid, dirty)}
-            className={styles['form-btn']}
+            className={styles['form__submit-btn']}
           >
             {
-              isNew ? 'Create' : 'Guardar'
+              isNew ? 'Enviar' : 'Guardar'
             }
           </Button>
+
+          <LinkButton
+            to={'..'}
+            relative='path'
+            className={styles['form__cancel-btn']}
+          >
+            Cancelar
+          </LinkButton>
         </Form>
       )}
     </Formik>

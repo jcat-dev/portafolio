@@ -1,43 +1,32 @@
-.skills-container {
+.container {
   width: 70%;
   margin: 0 auto;
-  padding: 1em 0;
+  padding-bottom: 1em;
 }
 
-.add {
-  min-width: 3em;
-  min-height: 3em;
-  padding: 0 3em;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.add-btn {
+  margin-bottom: 1em;
   background-color: var(--color-blue-7);
   color: var(--color-black-1);
   border-radius: 0.5em;
 }
 
-.skills {
-  margin-top: 1em;
-  
+.stacks { 
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1.25em;
+  column-gap: 0.25em;
+  row-gap: 1.25em;
 }
 
-.skills__item {
-  width: 13em;
+.stacks-item {
+  width: fit-content;
   height: fit-content;
-  min-height: 13em;
-  padding: 0 1em;
-
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
+  min-width: 15em;
+  max-width: 19em;
+  padding: 0 1.5em;
+  padding-top: 1.25em;
+  
   box-shadow: 0 5px 10px 0px var(--color-black-3);
   border-radius: 1em;
 
@@ -45,23 +34,32 @@
     box-shadow: 0 5px 15px -5px var(--color-teal-4);
   }
 
-  &:hover .skills__item-btns {
+  &:hover .stacks-item__btns {
     border-top: 1px solid var(--color-teal-2);
   }
 }
 
-.skills__item-title {
+.stacks-item__title {
   width: 100%;
   margin-bottom: auto;
-  margin-top: 1em;
 
-  text-transform: capitalize;
+  text-align: center;
   font-weight: bolder;
   font-size: 1.5em;
   color: var(--color-blue-7);
 }
 
-.skills__item-skill {
+.stacks-item__skills {
+  margin: 1.5em 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.stacks-item__skills-item {
+  height: fit-content;
   min-width: 2em;
   padding: 0.5em;
 
@@ -70,67 +68,59 @@
   border-radius: 1em;
 }
 
-.skills__item-btns {
+.stacks-item__btns {
   width: 100%;
   height: 3.5em;
-  margin-top: auto;
-  padding: 0.5em 0;
   border-top: 1px solid var(--color-black-3);
-
-  position: relative;
+  
+  position: relative;  
 }
 
 .edit-btn {
   width: 50%;
-  height: 2.5em;
-  padding: 0 2.5em;
+  height: 3.5em;
 
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 0;
   transition: width 0.1s;
   background-color: var(--color-black-1);
   color: var(--color-blue-7);
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
+  position: absolute;
+  left: 0;
 
   &:hover {
     width: 100%;
-
-    cursor: pointer;
     z-index: 1;
   }
 }
 
 .delete-btn {
   width: 50%;
+  height: 3.5em;
 
-  position: absolute;
   background-color: var(--color-black-1);
   color: var(--color-red-5);
-  border-bottom-right-radius: 1em;
-  border-bottom-left-radius: 1em;
+  position: absolute;
+  right: 0;
 
   &:hover {
     width: 100%;
-
-    cursor: pointer;
     z-index: 1;
     left: 0;
   }
 }
 
 @media screen and (width <= 768px) {
-  .skills-container {
+  .container {
     width: 90%;
   }
 }
 
 @media screen and (width <= 425px) {
-  .skills__item {
+  .stacks {
+    column-gap: 0;
+  }
+
+  .stacks-item {
     width: 100%;
-    min-height: 15em;
+    max-width: none;
   }
 }

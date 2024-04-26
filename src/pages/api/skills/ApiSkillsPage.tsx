@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 import { SkillWithId } from '../../../Types/Skill'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -7,6 +7,7 @@ import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { useEffect, useState } from 'react'
 import styles from './css/apiSkillsPage.module.css'
 import Button from '../../../component/button/Button'
+import LinkButton from '../../../component/button/LinkButton'
 
 const ApiSkillsPage = () => {
   const loaderSkills = useLoaderData() as (SkillWithId[] | null)
@@ -38,45 +39,48 @@ const ApiSkillsPage = () => {
   }
 
   return (
-    <div className={styles['skills-container']} >
-      <Link
+    <main className={styles['container']} >
+      <LinkButton
         to={'new'}
-        className={styles['add']}
+        className={styles['add-btn']}
+        aria-label='create new skills'
       >
         <FontAwesomeIcon 
           icon={faPlus} 
           size='lg'
         />
-      </Link>
+      </LinkButton>
 
-      <ul className={styles['skills']} >
+      <ul className={styles['stacks']} >
         {
           skills?.map((value) => (
             <li
               key={value._id}
-              className={styles['skills__item']} 
+              className={styles['stacks-item']} 
             >
-              <p className={styles['skills__item-title']} >
+              <p className={styles['stacks-item__title']} >
                 {value.title}
               </p>
 
-              {value.skills.map((skill, index) => (
-                <p
-                  key={index}
-                  className={styles['skills__item-skill']}
-                >
-                  {skill}
-                </p>
-              ))}
+              <ul className={styles['stacks-item__skills']} >
+                {value.skills.map((skill, index) => (
+                  <li
+                    key={index}
+                    className={styles['stacks-item__skills-item']}
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
 
-              <div className={styles['skills__item-btns']} >
-                <Link
+              <div className={styles['stacks-item__btns']} >
+                <LinkButton
                   aria-label='editar habilidad'
                   className={styles['edit-btn']}
                   to={value._id}
                 >
                   <FontAwesomeIcon icon={faPenToSquare} />
-                </Link>
+                </LinkButton>
 
                 <Button 
                   aria-label='eliminar habilidades'
@@ -91,7 +95,7 @@ const ApiSkillsPage = () => {
           ))
         }
       </ul>
-    </div>
+    </main>
   )
 }
 

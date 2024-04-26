@@ -1,6 +1,7 @@
 .form {
   margin: 0 auto;
-  width: 20em;
+  width: min(25em, 90%);
+  padding-bottom: 1em;
 }
 
 .form-field {
@@ -42,31 +43,25 @@
   margin-left: 0.5em;
 }
 
-.form-btn {
+.form__submit-btn {
   width: 100%;
-  margin: 0 auto;
   
   border-radius: 0.5em;
   background-color: var(--color-blue-7);
   color: var(--color-black-1);
-
-  &:hover {
-    cursor: pointer;
-  }
 
   &[disabled] {
     background-color: var(--color-blue-6);
     opacity: 0.5;
     cursor: not-allowed;
   }
-
-  &:active {
-    transform: scale(0.95);
-  }
 }
 
-@media screen and (width <= 425px) {
-  .form {
-    width: 90%;
-  }
+.form__cancel-btn {
+  width: 100%;
+  margin-top: 1em;
+
+  background-color: var(--color-blue-7);
+  color: var(--color-black-1);
+  border-radius: 0.5em;
 }
