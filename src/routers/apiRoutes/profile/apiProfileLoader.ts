@@ -6,10 +6,10 @@ import { getToastError } from '../../../utils/toast'
 export const apiProfileLoader = async (): Promise<ProfileWithId | null> => {
   try {
     const result = await setFetch(String(import.meta.env.VITE_PROFILE_API), 'GET')
-    
+
     if (result.status === 200) {
       const data: FetchResponseWithData<ProfileWithId[]> = await result.json()
-      return data.data[0]
+      return data.data[0] || null
     }
 
     getToastError(result.statusText)
