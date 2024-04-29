@@ -1,6 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
 import { ProfileWithId } from '../../../Types/Profile'
-import LoadingImage from '../../../component/loading/LoadingImage'
 import styles from './homeProfilePage.module.css'
 import ParticlesBg from '../../../component/particle/ParticlesBg'
 
@@ -18,22 +17,27 @@ const HomeProfilePage: React.FC = () => {
 
       <div className={styles['profile']} >
         <h1 className={styles['profile-title']} >
-          {profile?.stackTitle}
+          {
+            profile?.title
+          }
         </h1>
 
         <p className={styles['profile-fullname']}>
-          {profile?.fullName}
+          {
+            profile?.fullName
+          }
         </p>
-
-        <LoadingImage 
-          classNameContainer={styles['profile__photo-container']}
-          classNameImg={styles['profile__photo']}
-          src={profile?.photoUrl ?? ''} 
-          alt="imagen del perfil" 
-        />
+        
+        <h2 className={styles['profile-stack']} >
+          {
+            profile?.stackTitle
+          }
+        </h2>
 
         <p className={styles['profile-description']} >
-          {profile?.description}
+          {
+            profile?.description
+          }
         </p>      
       </div>      
     </main>

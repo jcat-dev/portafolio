@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { Profile, ProfileWithId } from '../../../Types/Profile'
 import { Formik, Form } from 'formik'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../utils/toast'
@@ -11,11 +11,12 @@ import * as Yup from 'yup'
 
 const ApiProfilePage = () => {
   const profile = useLoaderData() as ProfileWithId | null
+  const navigate = useNavigate()
 
   const initialValues: Profile = {
     fullName: profile?.fullName ?? '',
     stackTitle: profile?.stackTitle ?? '',
-    photoUrl: profile?.photoUrl ?? '',
+    title: profile?.title ?? '',
     description: profile?.description ?? '',
   }
 
@@ -23,7 +24,7 @@ const ApiProfilePage = () => {
     fullName: Yup.string().required(),
     stackTitle: Yup.string().required(),
     description: Yup.string().required(),
-    photoUrl: Yup.string().url().required(),
+    title: Yup.string().required(),
   })
 
   const handleSubmit = async (values: Profile) => {
@@ -34,6 +35,7 @@ const ApiProfilePage = () => {
 
       if (result.status === 204){
         updateToastLoading(id, 'success', result.statusText)
+        navigate('..')
         return
       }
 
@@ -45,7 +47,7 @@ const ApiProfilePage = () => {
 
   const handleSubmitClick = (isValid: boolean, dirty: boolean) => {
     if (!isValid || !dirty) {
-      getToastError('Field required')
+      getToastError('Required field')
       return
     }
   }
@@ -68,6 +70,17 @@ const ApiProfilePage = () => {
             classNameField={styles['form-field']}
             classNameLabel={styles['form-field__label']}
             classNameInput={styles['form-field__input']}
+          />          
+
+          <FormikInput
+            id='title'
+            name='title'
+            type='text'
+            labelTitle='Title'
+            placeholder='Developer...'
+            classNameField={styles['form-field']}
+            classNameLabel={styles['form-field__label']}
+            classNameInput={styles['form-field__input']}
           />
 
           <FormikInput
@@ -76,17 +89,6 @@ const ApiProfilePage = () => {
             type='text'
             labelTitle='Stack Title'
             placeholder='Full Stack...'
-            classNameField={styles['form-field']}
-            classNameLabel={styles['form-field__label']}
-            classNameInput={styles['form-field__input']}
-          />
-
-          <FormikInput
-            id='photoUrl'
-            name='photoUrl'
-            type='url'
-            labelTitle='Photo Url'
-            placeholder='https://...com'
             classNameField={styles['form-field']}
             classNameLabel={styles['form-field__label']}
             classNameInput={styles['form-field__input']}

@@ -1,7 +1,7 @@
 export interface Profile {
+  title: string
   stackTitle: string
   fullName: string
-  photoUrl: string
   description: string
 }
 
