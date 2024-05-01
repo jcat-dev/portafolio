@@ -8,12 +8,14 @@ import { FetchResponse } from '../../../../Types/FetchResponse'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
+import { CREATED_STATUS, OK_STATUS } from '../../../../utils/httpStatus'
 import * as Yup from 'yup'
 import Button from '../../../../component/button/Button'
 import FormikTextArea from '../../../../component/formik/FormikTextArea'
 import MyTextInput from '../../../../component/formik/FormikInput'
 import styles from '../css/apiProjectForm.module.css'
 import LinkButton from '../../../../component/button/LinkButton'
+import { VALIDATION_MSG } from '../../../../utils/toastMsg'
 
 interface Props {
   stacksType: SkillWithId[]
@@ -74,7 +76,7 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
         stackType: values.stackType.filter((value) => value.skills.length !== 0)
       })
 
-      if (result.status === 201) {
+      if (result.status === CREATED_STATUS) {
         const data: FetchResponse = await result.json()
         updateToastLoading(toastId, 'success', data.msg)
         action.resetForm()
@@ -82,28 +84,24 @@ const ApiProjectForm: React.FC<Props> = ({stacksType, projectWithId, allStacksTy
         return
       }      
 
-      if (result.status === 204) {    
-        updateToastLoading(toastId, 'success', result.statusText)
+      const msg = await result.text()
+
+      if (result.status === OK_STATUS) {    
+        updateToastLoading(toastId, 'success', msg)
         navigate(-1)
         return
       }      
 
-      return updateToastLoading(toastId, 'error', result.statusText)
+      return updateToastLoading(toastId, 'error', msg)
     } catch (error) {
       return updateToastLoading(toastId, 'error')
     }
   }
 
   const handleValidForm = (dirty: boolean, isValid: boolean) => {
-    //Validacion cuando el proyecto es nuevo
-    if (!projectWithId && (!dirty || !isValid)) {
-      getToastError('Campo requerido')
-      return
-    }
-
-    if (!isValid) {
-      getToastError('Campo requerido')
-    }
+    if (isValid && dirty) return
+   
+    getToastError(VALIDATION_MSG)
   }
 
   const handleRemoveSkill = (skill: string, stackTypeId: string, projectValue: Project, cb: (values: Project) => void) => {

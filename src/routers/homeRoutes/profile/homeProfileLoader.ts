@@ -1,27 +1,24 @@
 import { FetchResponseWithData } from '../../../Types/FetchResponse'
 import { ProfileWithId } from '../../../Types/Profile'
 import { setFetch } from '../../../utils/fetch'
-import { getToastError, getToastInfo } from '../../../utils/toast'
+import { OK_STATUS } from '../../../utils/httpStatus'
+import { getToastError } from '../../../utils/toast'
+import { PROFILE_LOADER_MSG } from '../../../utils/toastMsg'
 
 export const homeProfileLoader = async (): Promise<ProfileWithId | null> => {
   try {
     const result = await setFetch(String(import.meta.env.VITE_PROFILE_API), 'GET')
     
-    if (result.status === 200) {
+    if (result.status === OK_STATUS) {
       const data: FetchResponseWithData<ProfileWithId[]> = await result.json()
-
-      if (data.data[0]) {
-        return data.data[0] 
-      }
-
-      getToastInfo('Perfil sin registrar')
-      return null
+      //React Router toma como error si se retorna undefined 
+      return data.data[0] ?? null
     }
 
-    getToastError(result.statusText)
+    getToastError(await result.text())
     return null
   } catch (error) {
-    getToastError('Error al cargar el perfil')
+    getToastError(PROFILE_LOADER_MSG)
     return null
   }
 } 

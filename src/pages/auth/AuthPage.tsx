@@ -2,6 +2,7 @@ import { Form, Formik, FormikHelpers } from 'formik'
 import { setFetch } from '../../utils/fetch'
 import { getToastLoading, updateToastLoading } from '../../utils/toast'
 import { FetchResponseWithData } from '../../Types/FetchResponse'
+import { CREATED_STATUS } from '../../utils/httpStatus'
 import * as Yup from 'yup'
 import FormikInput from '../../component/formik/FormikInput'
 import styles from './authPage.module.css'
@@ -27,7 +28,7 @@ const AuthPage = () => {
     try {
       const result = await setFetch(String(import.meta.env.VITE_AUTH_API), 'POST', values)
       
-      if (result.status === 201) {
+      if (result.status === CREATED_STATUS) {
         const data: FetchResponseWithData<CredentialAuth> = await result.json()
         sessionStorage.setItem('token', data.data.token)
         updateToastLoading(toastId, 'success', data.msg)
@@ -35,7 +36,7 @@ const AuthPage = () => {
         return
       }
 
-      updateToastLoading(toastId, 'error', result.statusText)
+      updateToastLoading(toastId, 'error', await result.text())
     } catch (error) {
       updateToastLoading(toastId, 'error')
     }

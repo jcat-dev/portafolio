@@ -5,8 +5,10 @@ import { getToastError, getToastLoading, updateToastLoading } from '../../../../
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { setFetch } from '../../../../utils/fetch'
-import { FetchMethod, FetchResponse } from '../../../../Types/FetchResponse'
+import { FetchResponse } from '../../../../Types/FetchResponse'
 import { useNavigate } from 'react-router-dom'
+import { CREATED_STATUS, OK_STATUS } from '../../../../utils/httpStatus'
+import { VALIDATION_MSG } from '../../../../utils/toastMsg'
 import FormikInput from '../../../../component/formik/FormikInput'
 import styles from '../css/apiSkillsForm.module.css'
 import Button from '../../../../component/button/Button'
@@ -37,39 +39,36 @@ const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {
       const API = String(import.meta.env.VITE_SKILL_API)
       const result = await (
         isNew 
-          ? setFetchSkills(API, 'POST', values)
-          : setFetchSkills(`${API}/${data?._id}`, 'PUT', values)
+          ? setFetch(API, 'POST', values)
+          : setFetch(`${API}/${data?._id}`, 'PUT', values)
       )
 
-      if (result.status === 201) {
+      if (result.status === CREATED_STATUS) {
         const data: FetchResponse = await result.json()
-
         updateToastLoading(toastID, 'success', data.msg)
         helper.resetForm()
         navigation(-1)
         return
       }
       
-      if (result.status === 204) {
-        updateToastLoading(toastID, 'success', result.statusText)
+      const msg = await result.text()
+
+      if (result.status === OK_STATUS) {
+        updateToastLoading(toastID, 'success', msg)
         navigation(-1)
         return
       }
 
-      updateToastLoading(toastID, 'error', result.statusText)
+      updateToastLoading(toastID, 'error', msg)
     } catch (error) {
       updateToastLoading(toastID, 'error')
     }
   }
 
-  const setFetchSkills = (API: string, method: FetchMethod, formValue: Skill) => {
-    return setFetch(API, method, formValue)
-  }
-
   const handleValidateSubmit = (isValid: boolean, dirty: boolean) => {
-    if (!isValid || !dirty) {
-      return getToastError('Field required') 
-    }
+    if (isValid && dirty) return
+   
+    getToastError(VALIDATION_MSG)
   }
 
   return (

@@ -7,6 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { setFetch } from '../../../utils/fetch'
 import { useEffect, useState } from 'react'
 import { getToastLoading, updateToastLoading } from '../../../utils/toast'
+import { OK_STATUS } from '../../../utils/httpStatus'
 import Button from '../../../component/button/Button'
 import LoadingImage from '../../../component/loading/LoadingImage'
 import styles from './css/apiProjectsPage.module.css'
@@ -28,14 +29,15 @@ const ApiProjectsPage = () => {
 
     try {
       const result = await setFetch(`${String(import.meta.env.VITE_PROJECT_API)}/${id}`,'DELETE')
-      
-      if (result.status === 204) {
+      const msg = await result.text()
+
+      if (result.status === OK_STATUS) {
         setProjects(projects?.filter((value) => value._id !== id))
-        updateToastLoading(toastId, 'success', result.statusText)
+        updateToastLoading(toastId, 'success', msg)
         return
       }
 
-      updateToastLoading(toastId, 'error', result.statusText)
+      updateToastLoading(toastId, 'error', msg)
     } catch (error) {
       updateToastLoading(toastId, 'error')
     }

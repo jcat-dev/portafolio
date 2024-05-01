@@ -5,6 +5,8 @@ import { getToastError, getToastLoading, updateToastLoading } from '../../../uti
 import { setFetch } from '../../../utils/fetch'
 import { FormContact } from '../../../Types/FormContact'
 import { FetchResponse } from '../../../Types/FetchResponse'
+import { CREATED_STATUS } from '../../../utils/httpStatus'
+import { VALIDATION_MSG } from '../../../utils/toastMsg'
 import LoadingImage from '../../../component/loading/LoadingImage'
 import FormikInput from '../../../component/formik/FormikInput'
 import FormikTextArea from '../../../component/formik/FormikTextArea'
@@ -31,23 +33,23 @@ const HomeContactPage = () => {
     try {
       const result = await setFetch(String(import.meta.env.VITE_EMAIL_API), 'POST', values)
 
-      if (result.status === 201) {          
+      if (result.status === CREATED_STATUS) {          
         const data: FetchResponse = await result.json()
         updateToastLoading(toastId, 'success', data.msg)
         action.resetForm()
         return
       } 
-
-      updateToastLoading(toastId, 'error', result.statusText)
+      
+      updateToastLoading(toastId, 'error', await result.text())
     } catch (error) {
       updateToastLoading(toastId, 'error')
     } 
   }
 
-  const handleRequired = (values: FormContact) => {
-    if (!values.email || !values.name || !values.text) {
-      getToastError('Campo requerido')
-    }       
+  const handleRequired = (isValid: boolean, dirty: boolean) => {
+    if (isValid && dirty) return
+   
+    getToastError(VALIDATION_MSG)     
   }
 
   return (
@@ -70,7 +72,7 @@ const HomeContactPage = () => {
           onSubmit={(values, action) => handleSubmit(values, action)}
         >
           {
-            ({isValid, values, errors, touched}) => (
+            ({isValid, dirty, errors, touched}) => (
               <Form className={
                 isValid
                   ? styles['contact-form']
@@ -125,7 +127,7 @@ const HomeContactPage = () => {
                       : `${styles['contact-form__submit-btn']} ${styles['contact-form__submit-btn--error']}`
                   }
                   type='submit'
-                  onClick={() => handleRequired(values)}
+                  onClick={() => handleRequired(isValid, dirty)}
                 >
                   Enviar
                 </Button>                 

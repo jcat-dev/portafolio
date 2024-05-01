@@ -5,6 +5,7 @@ import { faPenToSquare, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-i
 import { setFetch } from '../../../utils/fetch'
 import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { useEffect, useState } from 'react'
+import { OK_STATUS } from '../../../utils/httpStatus'
 import styles from './css/apiSkillsPage.module.css'
 import Button from '../../../component/button/Button'
 import LinkButton from '../../../component/button/LinkButton'
@@ -25,14 +26,15 @@ const ApiSkillsPage = () => {
 
     try {
       const result = await setFetch(`${String(import.meta.env.VITE_SKILL_API)}/${id}`, 'DELETE')
+      const msg = await result.text()
 
-      if (result.status === 204) {
-        updateToastLoading(toastID, 'success', result.statusText)
+      if (result.status === OK_STATUS) {
+        updateToastLoading(toastID, 'success', msg)
         setSkills(skills?.filter((value) => value._id !== id))
         return
       }
 
-      updateToastLoading(toastID, 'error', result.statusText)
+      updateToastLoading(toastID, 'error', msg)
     } catch (error) {
       updateToastLoading(toastID, 'error')
     }

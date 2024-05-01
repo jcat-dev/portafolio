@@ -3,6 +3,8 @@ import { Profile, ProfileWithId } from '../../../Types/Profile'
 import { Formik, Form } from 'formik'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { setFetch } from '../../../utils/fetch'
+import { OK_STATUS } from '../../../utils/httpStatus'
+import { VALIDATION_MSG } from '../../../utils/toastMsg'
 import FormikInput from '../../../component/formik/FormikInput'
 import FormikTextArea from '../../../component/formik/FormikTextArea'
 import Button from '../../../component/button/Button'
@@ -31,25 +33,25 @@ const ApiProfilePage = () => {
     const id = getToastLoading()
 
     try {
-      const result = await setFetch(String(import.meta.env.VITE_PROFILE_API), 'POST', values)
+      const result = await setFetch(String(import.meta.env.VITE_PROFILE_API), 'PUT', values)
+      const msg = await result.text()
 
-      if (result.status === 204){
-        updateToastLoading(id, 'success', result.statusText)
+      if (result.status === OK_STATUS) {
+        updateToastLoading(id, 'success', msg)
         navigate('..')
         return
       }
 
-      updateToastLoading(id, 'error', result.statusText)
+      updateToastLoading(id, 'error', msg)
     } catch (error) {
       updateToastLoading(id, 'error')
     }
   }
 
   const handleSubmitClick = (isValid: boolean, dirty: boolean) => {
-    if (!isValid || !dirty) {
-      getToastError('Required field')
-      return
-    }
+    if (isValid && dirty) return
+   
+    getToastError(VALIDATION_MSG)
   }
 
   return (
