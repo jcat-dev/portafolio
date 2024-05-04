@@ -1,17 +1,9 @@
 import styles from './button.module.css'
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: boolean
-}
-
-const Button: React.FC<Props>= ({icon, className, children, ...props}) => {
+const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>= ({className, children, ...props}) => {
   return (
     <button
-      className={
-        icon
-          ? `${className ?? ''} ${styles['button']} ${styles['button-icon']}`
-          : `${className ?? ''} ${styles['button']}`
-      }
+      className={`${className ?? ''} ${styles['button']}`}
       {...props}
     >
       {
