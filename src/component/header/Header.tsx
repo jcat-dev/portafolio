@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { NavItems } from '../../Types/NavItems'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavScroll } from '../../hooks/useNavScroll'
-import Button from '../button/Button'
 import styles from './header.module.css'
+import LinkButton from '../button/LinkButton'
 
 interface Props {
   seeDevMode: boolean
@@ -41,21 +41,21 @@ const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
         </p>            
     
         <ul 
-          className={styles['nav-list']}
+          className={styles['nav__list']}
           hidden={!menuIsActive} 
         >
           {
             navItems.map((value, index) => (
               <li 
-                className={styles['nav-list__item']}
+                className={styles['nav__list-item']}
                 onClick={handleMenuClick} 
                 key={index}
               >
                 <NavLink
                   className={({isActive}) => 
                     isActive
-                      ? `${styles['nav-list__item-link']} ${styles['nav-list__item-link--active']}`
-                      : styles['nav-list__item-link']
+                      ? `${styles['link']} ${styles['link--active']}`
+                      : styles['link']
                   }
                   to={value.link}
                 >
@@ -65,44 +65,40 @@ const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
             ))
           }
 
-          <li className={`${styles['nav-list__item']} ${styles['nav-list__item--ma']}`} >
+          <li className={`${styles['nav__list-item']} ${styles['nav__list-item--ma']}`} >
             {
               seeDevMode
-                ? <Link to={'/api'} className={styles['nav-list__item-link']} >DEV</Link>
-                : <Link to={'/'} className={styles['nav-list__item-link']} >HOME</Link>
+                ? <LinkButton to={'/api'} className={styles['link-mode']} >DEV</LinkButton>
+                : <LinkButton to={'/'} className={styles['link-mode']} >HOME</LinkButton>
             }            
           </li> 
         </ul>     
         
-        <Button
+        <button
           type='button'
-          className={styles['menu-mobil']}  
+          className={styles['nav-mobil__menu-btn']}  
           aria-label="menu icon" 
-          icon={true}
           hidden={menuIsActive} 
           onClick={handleMenuClick}
         >
           <FontAwesomeIcon 
             icon={faBars}    
             size='xl'    
-            className={styles['menu-mobil__icon']}       
           />   
-        </Button>
+        </button>
           
-        <Button
+        <button
           type='button'
-          className={styles['menu-mobil-close']}
+          className={styles['nav-mobil__close-btn']}  
           aria-label='close icon'
-          icon={true}
           hidden={!menuIsActive}  
           onClick={handleMenuClick}
         >
           <FontAwesomeIcon 
             icon={faXmark} 
             size='xl'
-            className={styles['menu-mobil-close__icon']}
           />
-        </Button>        
+        </button>        
       </nav>
     </header>
   )
