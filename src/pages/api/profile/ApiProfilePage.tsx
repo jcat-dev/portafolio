@@ -69,9 +69,9 @@ const ApiProfilePage = () => {
             type='text'
             labelTitle='Full Name'
             placeholder='Full Name'
-            classNameField={styles['form-field']}
-            classNameLabel={styles['form-field__label']}
-            classNameInput={styles['form-field__input']}
+            classNameField={styles['form__field']}
+            classNameLabel={styles['form__field-label']}
+            classNameInput={styles['form__field-input']}
           />          
 
           <FormikInput
@@ -80,9 +80,9 @@ const ApiProfilePage = () => {
             type='text'
             labelTitle='Title'
             placeholder='Developer...'
-            classNameField={styles['form-field']}
-            classNameLabel={styles['form-field__label']}
-            classNameInput={styles['form-field__input']}
+            classNameField={styles['form__field']}
+            classNameLabel={styles['form__field-label']}
+            classNameInput={styles['form__field-input']}
           />
 
           <FormikInput
@@ -91,25 +91,25 @@ const ApiProfilePage = () => {
             type='text'
             labelTitle='Stack Title'
             placeholder='Full Stack...'
-            classNameField={styles['form-field']}
-            classNameLabel={styles['form-field__label']}
-            classNameInput={styles['form-field__input']}
+            classNameField={styles['form__field']}
+            classNameLabel={styles['form__field-label']}
+            classNameInput={styles['form__field-input']}
           />
 
           <FormikTextArea 
             id='description'
             name='description'
             labelTitle='Description'
-            classNameField={styles['form-field']}
-            classNameLabel={styles['form-field__label']}
-            classNameTextArea={styles['form-field__textarea']}
+            classNameField={styles['form__field']}
+            classNameLabel={styles['form__field-label']}
+            classNameTextArea={styles['form__field-textarea']}
           />
 
           <Button
             aria-label='enviar formulario'
             type='submit'
             disabled={!dirty}
-            className={styles['form-field__btn']}
+            className={styles['form__submit-btn']}
             onClick={() => handleSubmitClick(isValid, dirty)}
           >
             Guardar

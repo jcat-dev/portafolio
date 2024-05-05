@@ -4,35 +4,25 @@
   padding-bottom: 1em;
 }
 
-.form-field {
+.form__field {
   margin-bottom: 1em;
 }
 
-.form-field__label {
+.form__field-label {
   border-radius: 1em; 
 }
 
-.form-field__input, .form-field__textarea {
+.form__field-input, .form__field-textarea {
   border-radius: 0.5em;
   border-width: 1px;
 }
 
-.form-field__btn {
-  margin: auto;
+.form__submit-btn {
   width: 100%;
 
-  display: block;
   border-radius: 0.5em;  
   background-color: var(--color-blue-7);
   color: var(--color-black-1);
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
 
   &[disabled] {
     cursor: not-allowed;
