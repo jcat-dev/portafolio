@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.field__label {
+.field-label {
   font-size: 0.7em;
 
   width: fit-content;
@@ -21,25 +21,25 @@
   color: var(--color-black-5);
   background-color: var(--color-teal-2);
   
-  &.field__label--error{
+  &.field-label--error{
     border-color: var(--color-red-3);
     background-color: var(--color-red-2);
   }
 }
 
-.field__input {
+.field-input {
   width: 100%;
   height: 3em;
   padding: 0.5em 1rem;
   border: 1px solid var(--color-teal-3);
   background-color: var(--color-black-1);
 
-  &.field__input--error {  
+  &.field-input--error {  
     border-color: var(--color-red-3);
   }
 }
 
-.field__textarea {
+.field-textarea {
   width: 100%;
   min-height: 9.5em;
   padding: 0.75em 1rem;
@@ -47,10 +47,9 @@
 
   resize: none;
   display: block;
-  text-align: justify;
   background-color: var(--color-black-1);
 
-  &.field__textarea--error {  
+  &.field-textarea--error {  
     border-color: var(--color-red-3);
   }
 }

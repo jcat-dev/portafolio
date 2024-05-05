@@ -1,46 +1,27 @@
 import { useField } from 'formik'
-import styles from './formik.module.css'
+import { HTMLInputTypeAttribute } from 'react'
+import Input from './Input'
 
-interface Props {
-  type: string
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string
-  placeholder?: string
-
+  type: HTMLInputTypeAttribute
   name: string
+
   labelTitle: string
   classNameField?: string
   classNameLabel?: string
   classNameInput?: string
 }
 
-const FormikInput: React.FC<Props> = ({ name, labelTitle, classNameField, classNameInput, classNameLabel, ...props }) => {
-  const [field, meta] = useField(name)
+const FormikInput: React.FC<Props> = (props) => {
+  const [field, meta] = useField({name: props.name, type: props.type})
 
-  return (
-    <div className={`${styles['field']} ${classNameField ?? ''}`} >
-      <label 
-        htmlFor={props.id}
-
-        className= {
-          (meta.touched && meta.error) 
-            ? `${styles['field__label']} ${styles['field__label--error']} ${classNameLabel ?? ''}`
-            : `${styles['field__label']} ${classNameLabel ?? ''}`
-        }        
-      >
-        {labelTitle}
-      </label>
-
-      <input 
-        className= {
-          (meta.touched && meta.error) 
-            ? `${styles['field__input']} ${styles['field__input--error']} ${classNameInput ?? ''}` 
-            : `${styles['field__input']} ${classNameInput ?? ''}`
-        } 
-
-        {...field} 
-        {...props} 
-      />      
-    </div>
+  return (    
+    <Input 
+      error={Boolean(meta.touched && meta.error)}
+      field={field}    
+      {...props} 
+    />    
   )
 }
 
