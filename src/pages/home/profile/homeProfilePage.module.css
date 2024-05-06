@@ -8,15 +8,19 @@
 
 .profile-title, .profile-stack {
   font-size: 2em;
+  font-weight: normal;
   color: var(--color-teal-4);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
 }
 
 .profile-fullname {
   font-size: 2.5em;
   margin: 1rem 0;
-
   color: var(--color-blue-7);
-  font-weight: bolder;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
 }
 
 .profile-description {
@@ -36,6 +40,6 @@
 
   .profile-fullname {
     font-size: 2em;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
   }
 }
