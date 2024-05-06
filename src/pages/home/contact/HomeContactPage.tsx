@@ -7,12 +7,12 @@ import { FormContact } from '../../../Types/FormContact'
 import { FetchResponse } from '../../../Types/FetchResponse'
 import { CREATED_STATUS } from '../../../utils/httpStatus'
 import { VALIDATION_MSG } from '../../../utils/toastMsg'
-import LoadingImage from '../../../component/loading/LoadingImage'
 import FormikInput from '../../../component/formik/FormikInput'
 import FormikTextArea from '../../../component/formik/FormikTextArea'
 import Button from '../../../component/button/Button'
 import styles from './homeContactPage.module.css'
 import * as Yup from 'yup'
+import Anchor from '../../../component/button/Anchor'
 
 const HomeContactPage = () => { 
   const initialValues: FormContact = {
@@ -46,7 +46,7 @@ const HomeContactPage = () => {
     } 
   }
 
-  const handleRequired = (isValid: boolean, dirty: boolean) => {
+  const handleValidateClick = (isValid: boolean, dirty: boolean) => {
     if (isValid && dirty) return
    
     getToastError(VALIDATION_MSG)     
@@ -58,95 +58,68 @@ const HomeContactPage = () => {
         Contact
       </h1>   
 
-      <div className={styles['contact']} >
-        <LoadingImage
-          alt="contact image" 
-          src={String(import.meta.env.VITE_CONTACT_IMG)} 
-          classNameContainer={styles['contact-box']}
-          classNameImg={styles['contact-box__img']}
-        />    
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(values, action) => handleSubmit(values, action)}
+      >
+        {
+          ({isValid, dirty}) => (
+            <Form className={styles['form']} >
+              <FormikInput 
+                id='name'
+                name='name'
+                type='name'
+                labelTitle='Nombre'
+                classNameField={styles['form__field']}
+                classNameInput={styles['form__field-input']}
+                classNameLabel={styles['form__field-label']}
+              />
 
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={(values, action) => handleSubmit(values, action)}
-        >
-          {
-            ({isValid, dirty, errors, touched}) => (
-              <Form className={
-                isValid
-                  ? styles['contact-form']
-                  : `${styles['contact-form']} ${styles['contact-form--error']}`
-              }>
-                <FormikInput 
-                  id='name'
-                  name='name'
-                  type='name'
-                  labelTitle='Nombre'
-                  classNameField={styles['contact-form__field']}
-                  classNameInput={styles['contact-form__field-input']}
-                  classNameLabel={
-                    errors.name && touched.name
-                      ? `${styles['contact-form__field-label']} ${styles['contact-form__field-label--error']}`
-                      : styles['contact-form__field-label']
-                  }
-                />
+              <FormikInput 
+                id='email'
+                name='email'
+                type='email'
+                labelTitle='Email'
+                classNameField={styles['form__field']}
+                classNameInput={styles['form__field-input']}
+                classNameLabel={styles['form__field-label']}
+              />          
 
-                <FormikInput 
-                  id='email'
-                  name='email'
-                  type='email'
-                  labelTitle='Email'
-                  classNameField={styles['contact-form__field']}
-                  classNameInput={styles['contact-form__field-input']}
-                  classNameLabel={
-                    errors.email && touched.email
-                      ? `${styles['contact-form__field-label']} ${styles['contact-form__field-label--error']}`
-                      : styles['contact-form__field-label']
-                  }
-                />          
-
-                <FormikTextArea
-                  id='text'
-                  name='text'
-                  labelTitle='Mensaje'
-                  classNameField={styles['contact-form__field']}
-                  classNameTextArea={styles['contact-form__field-textarea']}
-                  classNameLabel={
-                    errors.text && touched.text
-                      ? `${styles['contact-form__field-label']} ${styles['contact-form__field-label--error']}`
-                      : styles['contact-form__field-label']
-                  }
-                />
+              <FormikTextArea
+                id='text'
+                name='text'
+                labelTitle='Mensaje'
+                classNameField={styles['form__field']}
+                classNameTextArea={styles['form__field-textarea']}
+                classNameLabel={styles['form__field-label']}
+              />
           
-                <Button 
-                  aria-label='Enviar formulario'
-                  className={
-                    isValid
-                      ? styles['contact-form__submit-btn']
-                      : `${styles['contact-form__submit-btn']} ${styles['contact-form__submit-btn--error']}`
-                  }
-                  type='submit'
-                  onClick={() => handleRequired(isValid, dirty)}
-                >
-                  Enviar
-                </Button>                 
-              </Form>
-            )
-          }
-        </Formik>
-      </div>
+              <Button 
+                aria-label='Enviar formulario'
+                className={styles['form__submit-btn']}
+                type='submit'
+                onClick={() => handleValidateClick(isValid, dirty)}
+              >
+                  Enviar Mensaje
+              </Button>                 
+            </Form>
+          )
+        }
+      </Formik>
 
-      <a 
-        className={styles['contact-link']}
+      <Anchor 
         href={`http://wa.me/${import.meta.env.VITE_WHATSAPP}`}
+        className={styles['wsp-btn']}
         target="_blank" 
       >
+        Enviar WhatsApp
         <FontAwesomeIcon 
           icon={faWhatsapp}
-          size='3x'
+          size='xl'
+          className={styles['wsp-btn-icon']}
         />
-      </a>        
+      </Anchor>        
     </main>
   )
 }
