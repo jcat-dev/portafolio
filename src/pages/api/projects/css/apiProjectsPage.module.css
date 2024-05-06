@@ -9,7 +9,6 @@
 .projects__add-button {
   margin-bottom: 1em;
 
-  border-radius: 0.5em;
   color: var(--color-black-1);
   background-color: var(--color-blue-7);
 }
@@ -20,7 +19,7 @@
 }
 
 .table-heal {
-  border: 1px solid var(--color-blue-4);
+  border: 1px solid var(--color-black-5);
   border-left: none;
   border-right: none;
 }
@@ -36,13 +35,12 @@
 }
 
 .table-body__tr {
-  border: 1px solid var(--color-blue-4);
+  border: 1px solid var(--color-black-5);
   border-left: none;
   border-right: none;  
 
   &:hover {
     background-color: var(--color-blue-1);
-    cursor: default;
   }
 }
 
@@ -70,15 +68,30 @@
 }
 
 .td-box__edit-button {
+  padding: 0;
+  border: 1px solid var(--color-blue-7);
+
   border-radius: 0.5em;
-  color: var(--color-black-1);
-  background-color: var(--color-blue-7);
+  color: var(--color-blue-7);
+
+  &:hover {
+    color: var(--color-black-1);
+    background-color: var(--color-blue-7);
+  }
 }
 
 .td-box__delete-button {
+  padding: 0;
+  border: 1px solid var(--color-red-6);
+
   border-radius: 0.5em;
-  color: var(--color-black-1);
-  background-color: var(--color-red-4);
+  color: var(--color-red-6);
+  background-color: transparent;
+
+  &:hover {
+    color: var(--color-black-1);
+    background-color: var(--color-red-5);
+  }
 }
 
 @media screen and (width <= 768px) {

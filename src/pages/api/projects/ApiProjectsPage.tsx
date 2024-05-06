@@ -104,17 +104,15 @@ const ApiProjectsPage = () => {
                 >                    
                   <div className={styles['td-box']} >     
                     <LinkButton
-                      to={`${value._id}`} 
+                      to={`/api/projects/${value._id}`} 
                       className={styles['td-box__edit-button']}
                       aria-label='editar elemento'
-                      icon={true}
                     >
                       <FontAwesomeIcon icon={faPenToSquare} />
                     </LinkButton>  
 
                     <Button 
                       type='button'
-                      icon={true}
                       className={styles['td-box__delete-button']}
                       aria-label='eliminar elemento'
                       onClick={() => handleDeleteClick(value._id)}
