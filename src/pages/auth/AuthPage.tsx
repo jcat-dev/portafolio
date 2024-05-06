@@ -3,17 +3,18 @@ import { setFetch } from '../../utils/fetch'
 import { getToastLoading, updateToastLoading } from '../../utils/toast'
 import { FetchResponseWithData } from '../../Types/FetchResponse'
 import { CREATED_STATUS } from '../../utils/httpStatus'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import FormikInput from '../../component/formik/FormikInput'
 import styles from './authPage.module.css'
 import Button from '../../component/button/Button'
-import LayoutToast from '../../layout/LayoutToast'
 
 interface FormValues {
   credential: string
 }
 
 const AuthPage = () => {
+  const navigate = useNavigate()
   const initialValues: FormValues = {
     credential: ''
   }
@@ -33,6 +34,7 @@ const AuthPage = () => {
         sessionStorage.setItem('token', data.data.token)
         updateToastLoading(toastId, 'success', data.msg)
         helper.resetForm()
+        navigate('/')
         return
       }
 
@@ -43,38 +45,36 @@ const AuthPage = () => {
   }
 
   return (
-    <LayoutToast>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values, helper) => handleSubmit(values, helper)}
-        validationSchema={validationSchema}
-      >
-        {
-          ({ errors }) => (
-            <Form className={styles['form']} >
-              <FormikInput 
-                id='credentialId'
-                labelTitle='Credential'
-                name='credential'
-                type='password'
-                classNameField={styles['form-field']}
-              />
-              <p className={styles['field-error']}>
-                {errors.credential}
-              </p>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values, helper) => handleSubmit(values, helper)}
+      validationSchema={validationSchema}
+    >
+      {
+        ({ errors }) => (
+          <Form className={styles['form']} >
+            <FormikInput 
+              id='credentialId'
+              labelTitle='Credential'
+              name='credential'
+              type='password'
+              classNameField={styles['form-field']}
+            />
+            <p className={styles['field-error']}>
+              {errors.credential}
+            </p>
 
-              <Button 
-                aria-label='enviar formulario'
-                className={styles['btn-submit']}
-                type='submit'
-              >
+            <Button 
+              aria-label='enviar formulario'
+              className={styles['btn-submit']}
+              type='submit'
+            >
                 Enviar
-              </Button>
-            </Form>
-          )
-        }
-      </Formik>
-    </LayoutToast>
+            </Button>
+          </Form>
+        )
+      }
+    </Formik>
   )
 }
 
