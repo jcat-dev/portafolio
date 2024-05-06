@@ -4,19 +4,19 @@
   padding-bottom: 1em;
 }
 
-.form-field {
+.form__field {
   margin-bottom: 1.5em;
 }
 
-.form-field__input {
+.form__field-input {
   border-radius: 0.5em;
 }
 
-.form-field__label {
+.form__field-label {
   border-radius: 1em;
 }
 
-.form-skills {
+.form__skills {
   width: 100%;
   margin: 1em 0;
 
@@ -25,11 +25,11 @@
   gap: 1em;
 }
 
-.form-skills__item {
+.form__skills-item {
   width: fit-content;
 }
 
-.form-skills__item-btn {
+.remove-btn {
   padding: 0 0.5em;
 
   cursor: pointer;
@@ -39,7 +39,7 @@
   color: var(--color-teal-6);
 }
 
-.form-skills__item-icon {
+.remove-btn-icon{
   margin-left: 0.5em;
 }
 

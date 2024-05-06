@@ -7,8 +7,7 @@ const ApiEditSkillPage = () => {
 
   return (
     <ApiSkillsForm 
-      data={data ?? undefined}
-      isNew={false}
+      skill={data ?? undefined}
     />
   )
 }

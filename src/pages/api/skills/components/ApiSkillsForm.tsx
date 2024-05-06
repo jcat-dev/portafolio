@@ -16,15 +16,14 @@ import ApiSkillInput from './ApiSkillInput'
 import LinkButton from '../../../../component/button/LinkButton'
 
 interface Props {
-  isNew: boolean
-  data?: SkillWithId
+  skill?: SkillWithId
 }
 
-const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {  
+const ApiSkillsForm: React.FC<Props> = ({skill}) => {  
   const navigation = useNavigate()
   const initialValues: Skill = {
-    skills: data?.skills ?? [],
-    title: data?.title ?? ''
+    skills: skill?.skills ?? [],
+    title: skill?.title ?? ''
   }
   
   const validationSchema = object({
@@ -38,9 +37,9 @@ const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {
     try {
       const API = String(import.meta.env.VITE_SKILL_API)
       const result = await (
-        isNew 
-          ? setFetch(API, 'POST', values)
-          : setFetch(`${API}/${data?._id}`, 'PUT', values)
+        skill 
+          ? setFetch(`${API}/${skill._id}`, 'PUT', values)
+          : setFetch(API, 'POST', values)
       )
 
       if (result.status === CREATED_STATUS) {
@@ -84,39 +83,41 @@ const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {
             labelTitle='Skill Title'
             name='title'
             type='text'
-            classNameField={styles['form-field']}
-            classNameInput={styles['form-field__input']}
-            classNameLabel={styles['form-field__label']}
+            classNameField={styles['form__field']}
+            classNameInput={styles['form__field-input']}
+            classNameLabel={styles['form__field-label']}
             placeholder='FrontEnd'
           />
 
           <FieldArray name='skills' >
-            {(arrayHelpers) => (
+            {({push, remove}) => (
               <>
                 <ApiSkillInput
-                  handleBtnPlusClick={arrayHelpers.push}
+                  onClick={push}
                   error={Boolean(errors.skills)}
                 />
                   
-                <ul className={styles['form-skills']} >
+                <ul className={styles['form__skills']} >
                   { 
                     values.skills.map((value, index) => (
                       <li
                         key={index}
-                        className={styles['form-skills__item']}
+                        className={styles['form__skills-item']}
                       >                      
                         <Button                           
                           aria-label='eliminar skill'
                           type='button'
-                          className={styles['form-skills__item-btn']}
-                          onClick={() => arrayHelpers.remove(index)}  
+                          className={styles['remove-btn']}
+                          onClick={() => remove(index)}  
                         >
-                          {value}
+                          {
+                            value
+                          }
 
                           <FontAwesomeIcon 
                             icon={faCircleXmark} 
                             size='1x'
-                            className={styles['form-skills__item-icon']}
+                            className={styles['remove-btn-icon']}
                           />
                         </Button>
                       </li>
@@ -135,7 +136,7 @@ const ApiSkillsForm: React.FC<Props> = ({isNew, data}) => {
             className={styles['form__submit-btn']}
           >
             {
-              isNew ? 'Enviar' : 'Guardar'
+              skill ? 'Guardar' : 'Enviar'
             }
           </Button>
 
