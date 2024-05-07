@@ -1,15 +1,23 @@
-import { useState } from 'react'
+import { ImgHTMLAttributes, useState } from 'react'
 import style from './loadingImage.module.css'
 
-interface Props {
+interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   src: string
   alt: string
-  classNameImg?: string
+
   classNameContainer?: string
+  classNameImg?: string
+  classNameLoading?: string
 }
 
-const LoadingImage: React.FC<Props> = ({classNameContainer, classNameImg, ...props}) => {
+const LoadingImage: React.FC<Props> = (props) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const {
+    classNameContainer,
+    classNameImg,
+    classNameLoading,
+    ...rest
+  } = props
   
   const handleImgLoad = () => {
     setIsLoading(false)
@@ -18,11 +26,11 @@ const LoadingImage: React.FC<Props> = ({classNameContainer, classNameImg, ...pro
   return (    
     <div className={classNameContainer ?? ''} >      
       {
-        isLoading && <div className={style['loading']} />
+        isLoading && <div className={`${style['loading']} ${classNameLoading ?? ''}`} />
       }
 
       <img
-        {...props}
+        {...rest}
         className={classNameImg ?? ''}
         hidden={isLoading}        
         onLoad={handleImgLoad}
