@@ -10,12 +10,22 @@ interface Props {
   fullScreen: boolean
   backgroundColor: string
   containerClassName?: string
+  canvasClassName?: string
 }
 
-const ParticlesBg: React.FC<Props> = ({option, id, fullScreen, backgroundColor, containerClassName}) => {
+const ParticlesBg: React.FC<Props> = (props) => {
+  const {
+    id,
+    option,
+    fullScreen,
+    backgroundColor,
+    canvasClassName,
+    containerClassName
+  } = props
+
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-  }, []);
+    await loadFull(engine)
+  }, [])
 
   return (
     <Particles    
@@ -27,6 +37,7 @@ const ParticlesBg: React.FC<Props> = ({option, id, fullScreen, backgroundColor, 
           ? getParticles(fullScreen, backgroundColor)
           : getParticlesWithLink(fullScreen, backgroundColor)
       }
+      canvasClassName={canvasClassName}
     />
   )
 }
