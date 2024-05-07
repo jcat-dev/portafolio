@@ -1,24 +1,12 @@
 import { ProjectWithId } from '../../../Types/Project'
 import { useLoaderData } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import styles from './homeProjectsPage.module.css'
 import ParticlesBg from '../../../component/particle/ParticlesBg'
 import LoadingImage from '../../../component/loading/LoadingImage'
+import Anchor from '../../../component/button/Anchor'
+import styles from './homeProjectsPage.module.css'
 
 const HomeProjectsPage = () => {
-  const data = useLoaderData() as ProjectWithId[]
-  const [projects, setProjects] = useState<ProjectWithId[]>()
-
-  useEffect(() => {
-    setProjects(
-      data.map((value) => {
-        return {
-          ...value,
-          stackType: value.stackType.filter((value) => value.skills.length > 0)
-        }
-      })
-    )
-  }, [data])
+  const projects = useLoaderData() as ProjectWithId[]
 
   return (
     <main className={styles['container']} >
@@ -30,83 +18,82 @@ const HomeProjectsPage = () => {
         {
           projects?.map((projectValue, projectIndex) => (
             <li
-              className={styles['projects__item']}
+              className={styles['projects-item']}
               key={projectIndex}
-            >
-              <ParticlesBg 
-                containerClassName={styles['particulas']} 
-                id={String(projectValue.stackTitle) + projectIndex}
-                option='default'
-                backgroundColor='#000000'
-                fullScreen={false}
-              />
-              
+            >          
               <div className={`${styles['face']} ${styles['face-front']}`} >
                 <h2 className={styles['face-front__title']} >
-                  {projectValue.stackTitle}
+                  {
+                    projectValue.stackTitle
+                  }
                 </h2>
 
                 <LoadingImage 
                   classNameContainer={styles['face-front__img-container']}
+                  classNameLoading={styles['face-front__img-loading']}
                   classNameImg={styles['face-front__img']}
                   src={projectValue.pageImgURL} 
-                  alt="page image" 
+                  alt="todo app image" 
                 />
               </div>
 
               <div className={`${styles['face']} ${styles['face-back']}`} >
+                <ParticlesBg 
+                  containerClassName={styles['particles']} 
+                  canvasClassName={styles['particles-canvas']}
+                  id={String(projectValue.stackTitle) + projectIndex}
+                  option='default'
+                  backgroundColor='#f0f8ff'
+                  fullScreen={true}
+                />
+              
                 <p className={styles['face-back__project-title']} >
-                  {projectValue.projectTitle}
+                  {
+                    projectValue.projectTitle
+                  }
                 </p>  
 
                 <p className={styles['face-back__description']} >
-                  {projectValue.description}
+                  {
+                    projectValue.description
+                  }
                 </p>         
 
-                <div className={styles['face-back__stack']} >
+                <ul 
+                  className={styles['face-back__stacks']} 
+                >  
                   {
-                    projectValue.stackType.map((stackTypeValue, stackTypeIndex) => (
-                      <ul 
-                        className={styles['stack-type']} 
-                        key={stackTypeIndex}
+                    projectValue.stackType.flatMap((value) => value.skills).map((flatValue, flatIndex) => (
+                      <li
+                        key={flatIndex}
+                        className={styles['face-back__stacks-item']}
                       >
-                        <p className={styles['stack-type__title']} >
-                          {stackTypeValue.title}:
-                        </p>
-      
                         {
-                          stackTypeValue.skills.map((skillValue, skillIndex) => (
-                            <li
-                              key={skillIndex}
-                              className={styles['stack-type__item']}
-                            >
-                              {skillValue}
-                            </li>
-                          ))
+                          flatValue
                         }
-                      </ul>
+                      </li>
                     ))
                   }
-                </div>
+                </ul>
 
                 <div className={styles['face-back__link']} >
-                  <a 
-                    className={styles['face-back__link-url']}
+                  <Anchor 
                     href={projectValue.pageURL} 
                     target='_blank' 
+                    className={styles['face-back__link-page']}
                   >
                     Ver
-                  </a>
+                  </Anchor>
 
-                  <a 
-                    className={styles['face-back__link-repository']}
+                  <Anchor
                     href={projectValue.repositoryURL} 
                     target='_blank' 
+                    className={styles['face-back__link-github']}
                   >
                     Github
-                  </a>
+                  </Anchor>
                 </div>
-              </div>             
+              </div>     
             </li>
           ))
         }
