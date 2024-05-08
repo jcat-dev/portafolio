@@ -11,7 +11,7 @@ const HomeProjectsPage = () => {
   return (
     <main className={styles['container']} >
       <h1 className={styles['title']} >
-        Projects
+        PROYECTOS
       </h1>
 
       <ul className={styles['projects']} >

@@ -21,7 +21,6 @@
 .nav__list {
   height: 100%;
   display: flex;
-  text-transform: uppercase;
 }
 
 .nav__list-item {

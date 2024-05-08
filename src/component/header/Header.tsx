@@ -69,7 +69,7 @@ const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
             {
               seeDevMode
                 ? <LinkButton to={'/api'} className={styles['link-mode']} >DEV</LinkButton>
-                : <LinkButton to={'/'} className={styles['link-mode']} >HOME</LinkButton>
+                : <LinkButton to={'/'} className={styles['link-mode']} >INICIO</LinkButton>
             }            
           </li> 
         </ul>     

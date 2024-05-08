@@ -8,7 +8,7 @@ const HomeSkillsPage = () => {
   return (
     <main className={styles['container']} >
       <h1 className={styles['title']} >
-          Skills
+        HABILIDADES
       </h1>
 
       <ul className={styles['stacks']} > 

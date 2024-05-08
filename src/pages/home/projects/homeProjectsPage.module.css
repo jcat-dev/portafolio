@@ -9,7 +9,6 @@
 
   letter-spacing: var(--letter-spacing);
   color: var(--color-blue-7);
-  text-transform: uppercase;
 }
 
 .projects { 

@@ -55,7 +55,7 @@ const HomeContactPage = () => {
   return (
     <main className={styles['container']} >
       <h1 className={styles['title']} >
-        Contact
+        CONTACTO
       </h1>   
 
       <Formik
