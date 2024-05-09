@@ -2,9 +2,7 @@
 
 :root {
   --letter-spacing: 0.1em;
-  --carrusel-btn-z-index: 1;
   --nav-z-index: 10;
-  --contact-wsp-z-index: 11;
 
   --color-blue-1: #f0f8ff;
   --color-blue-2: #e0f0fe;
@@ -14,11 +12,11 @@
   --color-blue-6: #015fa3;
   --color-blue-7: #065186;
 
-  --color-black-1: #ffffff;
-  --color-black-2: #f6f6f6;
-  --color-black-3: #CCCCCC;
-  --color-black-4: #888888;
-  --color-black-5: #000000;
+  --color-white-1: #ffffff;
+  --color-black-1: #000000;
+  --color-gray-1: #f6f6f6;
+  --color-gray-2: #CCCCCC;
+  --color-gray-3: #888888;
 
   --color-red-1: #fff0f0;
   --color-red-2: #ffdddd;
@@ -43,6 +41,7 @@
 
 body {
   font-family: 'Epilogue', sans-serif;
+  background-color: var(--color-gray-1);
 }
 
 li {
