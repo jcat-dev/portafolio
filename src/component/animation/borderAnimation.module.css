@@ -1,0 +1,82 @@
+
+.top, .right, .bottom, .left {
+  position: absolute;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.top {
+  width: 100%;
+  height: 3px;
+
+  top: 0;
+  right: 0;
+  animation-name: top; 
+}
+
+@keyframes top {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.right {
+  width: 3px;
+  height: 100%;
+
+  right: 0;
+  bottom: 0;
+  animation-name: right; 
+  animation-delay: 1s;
+}
+
+@keyframes right {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.bottom {
+  width: 100%;
+  height: 3px;
+
+  bottom: 0;
+  left: 0;
+  animation-name: bottom; 
+}
+
+@keyframes bottom {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.left {
+  width: 3px;
+  height: 100%;
+
+  left: 0;
+  top: 0;
+  animation-name: left; 
+  animation-delay: 1s;
+}
+
+@keyframes left {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
