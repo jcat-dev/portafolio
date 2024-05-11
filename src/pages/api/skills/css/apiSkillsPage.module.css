@@ -1,110 +1,17 @@
 .container {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  padding-bottom: 1em;
+  padding-bottom: 2.5em;
 }
 
 .add-btn {
-  margin-bottom: 1em;
-  background-color: var(--color-blue-7);
-  color: var(--color-black-1);
-}
-
-.stacks { 
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75em;
-}
-
-.stacks-item {
-  width: 19em;
-  height: fit-content;
-  padding: 1em;
-  border: 1px dotted var(--color-teal-4);
-  border-left: 5px double var(--color-teal-4);
-
-  &:hover {
-    box-shadow: 0 0 3px 0px var(--color-teal-4);
-    border-style: solid;
-    border-left-style: double;
-    border-color: var(--color-teal-4);
-  }
-
-  &:hover .stacks-item__btns {
-    border-top: 1px solid var(--color-teal-3);
-  }
-}
-
-.stacks-item__title {
-  width: 100%;
-  margin-bottom: auto;
-
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5em;
-  color: var(--color-blue-7);
-}
-
-.stacks-item__skills {
-  margin: 1.5em 0;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5em;
-}
-
-.stacks-item__skills-item {
-  min-width: 5em;
-  height: fit-content;
-  padding: 0.5em;
-
-  text-align: center;
-  background-color: var(--color-teal-2);
-  color: var(--color-teal-6);
-}
-
-.stacks-item__btns {
-  width: 100%;
-  padding-top: 1em;
-  border-top: 1px dotted var(--color-teal-3);
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.edit-btn, .delete-btn {
-  width: 50%;
-  height: fit-content;
-  padding: 0.5em 0;
-  background-color: var(--color-black-1);
-}
-
-.edit-btn {
-  color: var(--color-blue-7);
-
-  &:hover {
-    background-color: var(--color-blue-7);
-    color: var(--color-black-1);
-  }
-}
-
-.delete-btn {
-  color: var(--color-red-5);
-
-  &:hover {
-    background-color: var(--color-red-5);
-    color: var(--color-black-1);
-  }
+  margin-bottom: 2.5em;
+  background-color: var(--color-blue-6);
+  color: var(--color-gray-1);
 }
 
 @media screen and (width <= 768px) {
   .container {
     width: 90%;
-  }
-}
-
-@media screen and (width <= 425px) {
-  .stacks-item {
-    width: 100%;
   }
 }

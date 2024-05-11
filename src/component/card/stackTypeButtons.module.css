@@ -1,0 +1,30 @@
+.buttons {
+  width: 100%;
+  padding-top: 1.5em;
+
+  box-shadow: 0 -3px 3px -3px var(--color-teal-3);
+  display: flex;
+}
+
+.edit, .delete {
+  width: 50%;
+  background-color: var(--color-gray-1);
+}
+
+.edit {
+  color: var(--color-blue-6);
+
+  &:hover {
+    background-color: var(--color-blue-6);
+    color: var(--color-gray-1);
+  }
+}
+
+.delete {
+  color: var(--color-red-5);
+
+  &:hover {
+    background-color: var(--color-red-5);
+    color: var(--color-gray-1);
+  }
+}

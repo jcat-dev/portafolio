@@ -1,43 +1,18 @@
 import { useLoaderData } from 'react-router-dom'
 import { SkillWithId } from '../../../Types/Skill'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { setFetch } from '../../../utils/fetch'
-import { getToastLoading, updateToastLoading } from '../../../utils/toast'
-import { useEffect, useState } from 'react'
-import { OK_STATUS } from '../../../utils/httpStatus'
-import styles from './css/apiSkillsPage.module.css'
-import Button from '../../../component/button/Button'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
+import StackTypeCard from '../../../component/card/StacksTypeCard'
 import LinkButton from '../../../component/button/LinkButton'
+import styles from './css/apiSkillsPage.module.css'
 
 const ApiSkillsPage = () => {
   const loaderSkills = useLoaderData() as (SkillWithId[] | null)
-  const [skills, setSkills] = useState<SkillWithId[]>()
+  const [skills, setSkills] = useState<SkillWithId[] | undefined>(loaderSkills ?? undefined)
 
-  useEffect(() => {
-    if (loaderSkills) {
-      setSkills(loaderSkills)
-    }
-  }, [loaderSkills])
-  
-
-  const handleDeleteBtnClick = async (id: string) => {
-    const toastID = getToastLoading()
-
-    try {
-      const result = await setFetch(`${String(import.meta.env.VITE_SKILL_API)}/${id}`, 'DELETE')
-      const msg = await result.text()
-
-      if (result.status === OK_STATUS) {
-        updateToastLoading(toastID, 'success', msg)
-        setSkills(skills?.filter((value) => value._id !== id))
-        return
-      }
-
-      updateToastLoading(toastID, 'error', msg)
-    } catch (error) {
-      updateToastLoading(toastID, 'error')
-    }
+  const handleDeleteStack = async (id: string) => {    
+    setSkills(skills?.filter((value) => value._id !== id))
   }
 
   return (
@@ -53,50 +28,13 @@ const ApiSkillsPage = () => {
         />
       </LinkButton>
 
-      <ul className={styles['stacks']} >
-        {
-          skills?.map((value) => (
-            <li
-              key={value._id}
-              className={styles['stacks-item']} 
-            >
-              <p className={styles['stacks-item__title']} >
-                {value.title}
-              </p>
-
-              <ul className={styles['stacks-item__skills']} >
-                {value.skills.map((skill, index) => (
-                  <li
-                    key={index}
-                    className={styles['stacks-item__skills-item']}
-                  >
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-
-              <div className={styles['stacks-item__btns']} >
-                <LinkButton
-                  aria-label='editar habilidad'
-                  className={styles['edit-btn']}
-                  to={value._id}
-                >
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </LinkButton>
-
-                <Button 
-                  aria-label='eliminar habilidades'
-                  type='button'
-                  className={styles['delete-btn']}
-                  onClick={() => handleDeleteBtnClick(value._id)}
-                >
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </Button>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        skills && <StackTypeCard 
+          stackType={skills} 
+          devMode={true} 
+          onDelete={handleDeleteStack} 
+        />        
+      }
     </main>
   )
 }
