@@ -1,7 +1,7 @@
 .form {
   margin: 0 auto;
   width: min(25em, 90%);
-  padding-bottom: 1em;
+  padding: 2.5em 0;
 }
 
 .form__field {
@@ -47,11 +47,10 @@
   width: 100%;
   
   border-radius: 0.5em;
-  background-color: var(--color-blue-7);
-  color: var(--color-black-1);
+  background-color: var(--color-blue-6);
+  color: var(--color-gray-1);
 
   &[disabled] {
-    background-color: var(--color-blue-6);
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -61,7 +60,7 @@
   width: 100%;
   margin-top: 1em;
 
-  background-color: var(--color-blue-7);
-  color: var(--color-black-1);
+  background-color: var(--color-blue-6);
+  color: var(--color-gray-1);
   border-radius: 0.5em;
 }

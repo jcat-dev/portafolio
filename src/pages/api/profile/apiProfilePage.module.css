@@ -1,7 +1,7 @@
 .form {
   width: min(25em, 90%);
   margin: auto;
-  padding-bottom: 1em;
+  padding: 2.5em 0;
 }
 
 .form__field {
@@ -21,12 +21,11 @@
   width: 100%;
 
   border-radius: 0.5em;  
-  background-color: var(--color-blue-7);
-  color: var(--color-black-1);
+  background-color: var(--color-blue-6);
+  color: var(--color-gray-1);
 
   &[disabled] {
     cursor: not-allowed;
-    background-color: var(--color-blue-6);
     opacity: 0.5;
   }
 }

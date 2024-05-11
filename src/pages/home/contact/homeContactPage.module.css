@@ -1,13 +1,13 @@
 .container {
-  width: 70%;
+  width: 80%;
   margin: auto;
-  padding-bottom: 1em;
+  padding-bottom: 2.5em;
 }
 
 .title {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   letter-spacing: var(--letter-spacing);
-  color: var(--color-blue-7);
+  color: var(--color-blue-6);
 }
 
 .form {
@@ -32,8 +32,8 @@
 
   border-radius: 0.5em;
   letter-spacing: var(--letter-spacing);
-  background-color: var(--color-blue-7); 
-  color: var(--color-black-1);
+  background-color: var(--color-blue-6); 
+  color: var(--color-gray-1);
   font-weight: normal;
 }
 
@@ -42,7 +42,7 @@
   margin: auto;
   margin-top: 1em;
 
-  color: var(--color-black-1);
+  color: var(--color-gray-1);
   background-color: var(--color-teal-5);
   display: flex;
   border-radius: 0.5em;
@@ -53,7 +53,6 @@
 .wsp-btn-icon {
   margin-left: 0.25em;
 }
-
 
 @media screen and (width <= 768px) {
   .container {

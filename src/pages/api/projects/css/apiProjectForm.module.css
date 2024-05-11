@@ -1,17 +1,15 @@
 .form {
-  width: 70%;
+  width: 40em;
   margin: auto;
-  padding-bottom: 1em;
+  padding: 2.5em 0;
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 1em;
-  border-radius: 0.5em;
 }
 
 .form__field {
-  width: 47%;
+  width: calc(50% - 0.5em);
 }
 
 .form__field-input, .form__field-textarea {
@@ -31,12 +29,11 @@
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 1em;
 }
 
 .form-stacks__details {
-  width: 47%;
+  width: calc(50% - 0.5em);
   border: 1px solid var(--color-teal-3);
 
   border-radius: 0.5em;
@@ -89,6 +86,7 @@
   
   &:hover {
     cursor: pointer;
+    background-color: var(--color-teal-2);
   }
 }
 
@@ -96,11 +94,10 @@
   width: 100%;
 
   border-radius: 0.5em;
-  color: var(--color-black-1);
-  background-color: var(--color-blue-7);
+  color: var(--color-gray-1);
+  background-color: var(--color-blue-6);
 
   &[disabled] {
-    background-color: var(--color-blue-6);
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -110,8 +107,8 @@
   width: 100%;
 
   border-radius: 0.5em;
-  background-color: var(--color-blue-7);
-  color: var(--color-black-1)
+  background-color: var(--color-blue-6);
+  color: var(--color-gray-1);
 }
 
 @media screen and (width <= 425px) {

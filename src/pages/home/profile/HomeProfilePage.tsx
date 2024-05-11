@@ -11,7 +11,7 @@ const HomeProfilePage: React.FC = () => {
       <ParticlesBg 
         id='Profile'
         option='particlesWithLink'
-        backgroundColor='#ffffff'
+        backgroundColor='#f6f6f6'
         fullScreen={true} 
       />  
 

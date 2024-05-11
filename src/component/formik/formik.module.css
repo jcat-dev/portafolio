@@ -18,7 +18,7 @@
   pointer-events: none;
   font-weight: bold;
   letter-spacing: var(--letter-spacing);
-  color: var(--color-black-5);
+  color: var(--color-black-1);
   background-color: var(--color-teal-2);
   
   &.field-label--error{
@@ -32,7 +32,7 @@
   height: 3em;
   padding: 0.5em 1rem;
   border: 1px solid var(--color-teal-3);
-  background-color: var(--color-black-1);
+  background-color: inherit;
 
   &.field-input--error {  
     border-color: var(--color-red-3);
@@ -47,7 +47,7 @@
 
   resize: none;
   display: block;
-  background-color: var(--color-black-1);
+  background-color: inherit;
 
   &.field-textarea--error {  
     border-color: var(--color-red-3);
