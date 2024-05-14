@@ -1,8 +1,11 @@
 import { ProjectWithId } from '../../../Types/Project'
 import { useLoaderData } from 'react-router-dom'
-import ParticlesBg from '../../../component/particle/ParticlesBg'
+import { faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import LoadingImage from '../../../component/loading/LoadingImage'
 import Anchor from '../../../component/button/Anchor'
+import BorderAnimation from '../../../component/animation/BorderAnimation'
 import styles from './homeProjectsPage.module.css'
 
 const HomeProjectsPage = () => {
@@ -30,35 +33,25 @@ const HomeProjectsPage = () => {
 
                 <LoadingImage 
                   classNameContainer={styles['face-front__img-container']}
-                  classNameLoading={styles['face-front__img-loading']}
                   classNameImg={styles['face-front__img']}
                   src={projectValue.pageImgURL} 
-                  alt="todo app image" 
+                  alt="imagen de la app" 
                 />
               </div>
 
               <div className={`${styles['face']} ${styles['face-back']}`} >
-                <ParticlesBg 
-                  containerClassName={styles['particles']} 
-                  canvasClassName={styles['particles-canvas']}
-                  id={String(projectValue.stackTitle) + projectIndex}
-                  option='default'
-                  backgroundColor='#f0f8ff'
-                  fullScreen={true}
-                />
-              
                 <p className={styles['face-back__project-title']} >
-                  {
-                    projectValue.projectTitle
-                  }
+                  {projectValue.projectTitle}
                 </p>  
 
-                <p className={styles['face-back__description']} >
-                  {
-                    projectValue.description
-                  }
-                </p>         
+                {
+                  projectValue.description.trim().length > 0 &&
+                  <p>
+                    {projectValue.description}
+                  </p> 
+                }      
 
+                  
                 <ul 
                   className={styles['face-back__stacks']} 
                 >  
@@ -83,6 +76,12 @@ const HomeProjectsPage = () => {
                     className={styles['face-back__link-page']}
                   >
                     Ver
+
+                    <FontAwesomeIcon 
+                      icon={faGlobe} 
+                      size='lg'
+                      className={styles['icon']}
+                    />
                   </Anchor>
 
                   <Anchor
@@ -91,9 +90,23 @@ const HomeProjectsPage = () => {
                     className={styles['face-back__link-github']}
                   >
                     Github
-                  </Anchor>
+                    
+                    <FontAwesomeIcon 
+                      icon={faGithub} 
+                      size='lg'
+                      className={styles['icon']}
+                    />
+                  </Anchor> 
                 </div>
-              </div>     
+                
+                <BorderAnimation 
+                  bottomColor='#015fa3'
+                  leftColor='#015fa3'
+                  rightColor='#015fa3'
+                  topColor='#015fa3'
+                  className={styles['projects-item__animation']}
+                />   
+              </div>
             </li>
           ))
         }
