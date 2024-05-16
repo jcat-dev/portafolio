@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { NavItems } from '../../Types/NavItems'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavScroll } from '../../hooks/useNavScroll'
@@ -8,11 +7,10 @@ import styles from './header.module.css'
 import LinkButton from '../button/LinkButton'
 
 interface Props {
-  seeDevMode: boolean
-  navItems: NavItems[]
+  navItems: NavItems
 }
 
-const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
+const Header: React.FC<Props> = ({navItems}) => {
   const { navIsActive } = useNavScroll()
   const [menuIsActive, setMenuIsActive] = useState<boolean>(false)
   
@@ -45,7 +43,7 @@ const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
           hidden={!menuIsActive} 
         >
           {
-            navItems.map((value, index) => (
+            navItems.items.map((value, index) => (
               <li 
                 className={styles['nav__list-item']}
                 onClick={handleMenuClick} 
@@ -65,13 +63,12 @@ const Header: React.FC<Props> = ({navItems, seeDevMode}) => {
             ))
           }
 
-          <li className={`${styles['nav__list-item']} ${styles['nav__list-item--ma']}`} >
-            {
-              seeDevMode
-                ? <LinkButton to={'/api'} className={styles['link-mode']} >DEV</LinkButton>
-                : <LinkButton to={'/'} className={styles['link-mode']} >INICIO</LinkButton>
-            }            
-          </li> 
+          {
+            navItems.extraLink.link.trim() && navItems.extraLink.title.trim() && 
+            <li className={`${styles['nav__list-item']} ${styles['nav__list-item--ma']}`} >                
+              <LinkButton to={navItems.extraLink.link} className={styles['link-mode']} >{navItems.extraLink.title}</LinkButton>
+            </li> 
+          }            
         </ul>     
         
         <button
