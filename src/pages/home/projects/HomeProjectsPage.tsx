@@ -100,10 +100,10 @@ const HomeProjectsPage = () => {
                 </div>
                 
                 <BorderAnimation 
-                  bottomColor='#015fa3'
-                  leftColor='#015fa3'
-                  rightColor='#015fa3'
-                  topColor='#015fa3'
+                  bottomColor='#49a69a'
+                  leftColor='#49a69a'
+                  rightColor='#49a69a'
+                  topColor='#49a69a'
                   className={styles['projects-item__animation']}
                 />   
               </div>

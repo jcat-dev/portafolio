@@ -23,8 +23,8 @@
   width: 100%;
   margin-top: 1em;
 
-  background-color: var(--color-blue-7);
-  color: var(--color-black-1);
+  background-color: var(--color-blue-6);
+  color: var(--color-white-1);
 
   &:hover {
     cursor: pointer;

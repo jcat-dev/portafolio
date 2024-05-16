@@ -23,12 +23,13 @@
   position: relative;
   
   &:hover .face-front {
-    transform: perspective(500px) rotateY(180deg);
+    transform: perspective(1000px) rotateY(180deg);
+    box-shadow: 0 0 1px 0 var(--color-gray-3);
   }
   
   &:hover .face-back {
-    transform: perspective(500px) rotateY(360deg);
-    box-shadow: 0 0 5px 0 var(--color-blue-6);   
+    transform: perspective(1000px) rotateY(360deg);
+    box-shadow: 0 0 1px 0 var(--color-gray-3);
   }
 
   &:hover .projects-item__animation {
@@ -95,6 +96,8 @@
   text-align: center;
   font-size: 1.25em;
   text-transform: capitalize;
+  color: var(--color-blue-6);
+  font-weight: bold;
 }
 
 .face-back__stacks {
@@ -117,7 +120,7 @@
   height: fit-content;
   padding-top: 1.5em;
 
-  box-shadow: 0 -3px 3px -3px var(--color-blue-6);
+  box-shadow: 0 -3px 3px -3px var(--color-teal-3);
   display: flex;
 }
 
