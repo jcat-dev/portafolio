@@ -27,6 +27,38 @@
   margin-top: 1.5em;
 }
 
+.profile-links {
+  margin-top: 5em;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.cv-link {
+  background-color: var(--color-blue-6);
+  border-radius: 0;
+  color: var(--color-gray-1);
+}
+
+.link {
+  border: 1px solid var(--color-blue-6);
+
+  background-color: transparent;
+  border-radius: 0;
+  color: var(--color-blue-6);
+
+  &:hover {
+    background-color: var(--color-blue-6);
+    color: var(--color-gray-1);
+  }
+}
+
+.cv-link-icon, .link-icon {
+  margin-left: 0.5em;
+}
+
 @media screen and (width <= 768px) {
   .profile {
     width: 90%;
@@ -41,5 +73,9 @@
   .profile-fullname {
     font-size: 2em;
     margin: 1rem 0;
+  }
+
+  .cv-link, .link {
+    width: 100%;
   }
 }
