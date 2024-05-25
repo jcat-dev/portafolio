@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { getTechnologySvgUrl } from '../../../utils/technologySVG'
 import LoadingImage from '../../../component/loading/LoadingImage'
 import Anchor from '../../../component/button/Anchor'
 import BorderAnimation from '../../../component/animation/BorderAnimation'
@@ -56,14 +57,22 @@ const HomeProjectsPage = () => {
                   className={styles['face-back__stacks']} 
                 >  
                   {
-                    projectValue.stackType.flatMap((value) => value.skills).map((flatValue, flatIndex) => (
+                    projectValue.stackType.flatMap((flatValue) => flatValue.skills).map((mapValue, mapIndex) => (
                       <li
-                        key={flatIndex}
+                        key={mapIndex}
                         className={styles['face-back__stacks-item']}
                       >
-                        {
-                          flatValue
-                        }
+                        <img
+                          src={getTechnologySvgUrl(mapValue) ?? ''}
+                          className={styles['item-svg']}
+                          loading='lazy'
+                        />
+
+                        <span className={styles['item-title']} >
+                          {
+                            mapValue
+                          }
+                        </span>
                       </li>
                     ))
                   }
@@ -89,7 +98,7 @@ const HomeProjectsPage = () => {
                     target='_blank' 
                     className={styles['face-back__link-github']}
                   >
-                    Github
+                    GitHub
                     
                     <FontAwesomeIcon 
                       icon={faGithub} 
@@ -100,13 +109,21 @@ const HomeProjectsPage = () => {
                 </div>
                 
                 <BorderAnimation 
-                  bottomColor='#49a69a'
-                  leftColor='#49a69a'
-                  rightColor='#49a69a'
-                  topColor='#49a69a'
-                  className={styles['projects-item__animation']}
+                  bottomColor='#015fa3'
+                  leftColor='#015fa3'
+                  rightColor='#015fa3'
+                  topColor='#015fa3'
+                  className={styles['face-back__animation']}
                 />   
               </div>
+
+              <BorderAnimation 
+                bottomColor='#015fa3'
+                leftColor='#015fa3'
+                rightColor='#015fa3'
+                topColor='#015fa3'
+                className={styles['projects-item__animation']}
+              />   
             </li>
           ))
         }
