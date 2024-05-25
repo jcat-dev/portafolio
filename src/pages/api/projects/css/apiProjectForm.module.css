@@ -49,6 +49,9 @@
 }
 
 .form-stacks__details-delete {
+  height: 3em;
+  padding: 0 1em;
+
   position: absolute;
   top: 0;
   right: 0;
