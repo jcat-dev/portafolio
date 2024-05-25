@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SkillWithId } from '../../Types/Skill'
 import { icons } from '../../utils/Icons'
 import { faLaptopCode } from '@fortawesome/free-solid-svg-icons'
+import { getTechnologySvgUrl } from '../../utils/technologySVG'
 import BorderAnimation from '../animation/BorderAnimation'
 import StackTypeButtons from './StackTypeButtons'
 import styles from './stacksTypeCard.module.css'
@@ -40,6 +41,12 @@ const StacksTypeCard: React.FC<Props> = ({stackType, devMode, onDelete}) => {
                     key={index}
                     className={styles['stacks-item__skills-item']}
                   >
+                    <img 
+                      src={getTechnologySvgUrl(value) ?? ''}
+                      className={styles['svg']}
+                      loading='lazy'
+                    />
+                    
                     {value}
                   </li>
                 ))
@@ -55,10 +62,10 @@ const StacksTypeCard: React.FC<Props> = ({stackType, devMode, onDelete}) => {
               
             <BorderAnimation 
               className={styles['stacks-item__animation']}
-              topColor={'#49a69a'} 
-              rightColor={'#49a69a'} 
-              bottomColor={'#49a69a'} 
-              leftColor={'#49a69a'} 
+              topColor={'#015fa3'} 
+              rightColor={'#015fa3'} 
+              bottomColor={'#015fa3'} 
+              leftColor={'#015fa3'} 
             />
           </li>
         ))
