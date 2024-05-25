@@ -95,7 +95,7 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
-    row-gap: 0.5em;
+    row-gap: 1em;
 
     &[hidden] {
       display: none;
@@ -103,7 +103,7 @@
   }
 
   .link-mode {
-    margin: 1em 0;
+    margin-bottom: 0.5em;
   }
 
   .nav-mobil__menu-btn {    
@@ -140,6 +140,10 @@
       display: none;
     }
   }  
+
+  .link {
+    padding: 0.5em 0;
+  }
 }
 
 @media screen and (max-width: 320px) {
