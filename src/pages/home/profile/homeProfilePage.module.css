@@ -24,7 +24,7 @@
 }
 
 .profile-description {
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 .profile-links {
@@ -38,15 +38,15 @@
 
 .cv-link {
   background-color: var(--color-blue-6);
-  border-radius: 0;
+  border-radius: 0.5em;
   color: var(--color-gray-1);
 }
 
-.link {
+.link-contact, .link-github {
   border: 1px solid var(--color-blue-6);
 
   background-color: transparent;
-  border-radius: 0;
+  border-radius: 0.5em;
   color: var(--color-blue-6);
 
   &:hover {
@@ -75,7 +75,7 @@
     margin: 1rem 0;
   }
 
-  .cv-link, .link {
+  .cv-link, .link-contact, .link-github {
     width: 100%;
   }
 }

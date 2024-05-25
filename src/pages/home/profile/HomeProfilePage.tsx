@@ -2,10 +2,12 @@ import { useLoaderData } from 'react-router-dom'
 import { ProfileWithId } from '../../../Types/Profile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-regular-svg-icons'
-import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import Anchor from '../../../component/button/Anchor'
 import styles from './homeProfilePage.module.css'
 import ParticlesBg from '../../../component/particle/ParticlesBg'
+import LinkButton from '../../../component/button/LinkButton'
 
 const HomeProfilePage: React.FC = () => {
   const profile = useLoaderData() as ProfileWithId | null
@@ -54,7 +56,7 @@ const HomeProfilePage: React.FC = () => {
           <Anchor
             href={import.meta.env.VITE_GITHUB_URL}
             target='_blank'
-            className={styles['link']}
+            className={styles['link-github']}
           >
             GitHub
 
@@ -65,19 +67,17 @@ const HomeProfilePage: React.FC = () => {
             />
           </Anchor>  
 
-          <Anchor
-            href={import.meta.env.VITE_LINKEDIN_URL}
-            target='_blank'
-            className={styles['link']}
+          <LinkButton 
+            to={'/contact'}
+            className={styles['link-contact']}
           >
-            LinkedIn
+            Contacto
 
             <FontAwesomeIcon 
-              icon={faLinkedinIn}
+              icon={faArrowRight} 
               className={styles['link-icon']}
-              size='xl'
             />
-          </Anchor>     
+          </LinkButton> 
         </div>
       </div>      
     </main>
