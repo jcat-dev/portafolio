@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedinIn, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Form, Formik, FormikHelpers } from 'formik'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { setFetch } from '../../../utils/fetch'
@@ -56,8 +56,58 @@ const HomeContactPage = () => {
     <main className={styles['container']} >
       <h1 className={styles['title']} >
         CONTACTO
-      </h1>   
+      </h1>
+      
+      <div className={styles['link']} >
+        <Anchor
+          href={import.meta.env.VITE_LINKEDIN_URL}
+          target='_blank'
+          className={styles['link-linkedin']}
+        >
+          <span className={styles['link-text']} >
+            LinkedIn
+          </span>
 
+          <FontAwesomeIcon 
+            icon={faLinkedinIn}
+            className={styles['link-icon']}
+            size='xl'
+          />
+        </Anchor> 
+
+        <Anchor 
+          href={`http://wa.me/${import.meta.env.VITE_WHATSAPP}`}
+          className={styles['link-wsp']}
+          target="_blank" 
+        >
+          <span className={styles['link-text']} >
+            WhatsApp
+          </span>
+
+          <FontAwesomeIcon 
+            icon={faWhatsapp}
+            size='xl'
+            className={styles['link-icon']}
+          />
+        </Anchor>
+
+        <Anchor
+          href={import.meta.env.VITE_GITHUB_URL}
+          target='_blank'
+          className={styles['link-github']}
+        >
+          <span className={styles['link-text']} >
+            GitHub
+          </span>          
+
+          <FontAwesomeIcon 
+            icon={faGithub}
+            className={styles['link-icon']}
+            size='xl'
+          />
+        </Anchor> 
+      </div> 
+      
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -106,20 +156,7 @@ const HomeContactPage = () => {
             </Form>
           )
         }
-      </Formik>
-
-      <Anchor 
-        href={`http://wa.me/${import.meta.env.VITE_WHATSAPP}`}
-        className={styles['wsp-btn']}
-        target="_blank" 
-      >
-        Enviar WhatsApp
-        <FontAwesomeIcon 
-          icon={faWhatsapp}
-          size='xl'
-          className={styles['wsp-btn-icon']}
-        />
-      </Anchor>        
+      </Formik>             
     </main>
   )
 }
