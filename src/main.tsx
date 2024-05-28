@@ -1,12 +1,14 @@
 import { createRoot } from 'react-dom/client'
+import { ToastContainer } from 'react-toastify';
 import Routers from './routers/Routers'
-import LayoutToast from './layout/LayoutToast'
 import './global.css'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 const root = createRoot(document.getElementById('root')!)
 
 root.render(
-  <LayoutToast>
+  <>
     <Routers />
-  </LayoutToast>
+    <ToastContainer position='bottom-right' />
+  </>
 )
