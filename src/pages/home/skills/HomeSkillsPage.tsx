@@ -1,4 +1,4 @@
-import { SkillWithId } from '../../../Types/Skill'
+import { SkillWithId } from '../../../types/Skill'
 import { useLoaderData } from 'react-router-dom'
 import StackTypeCard from '../../../component/card/StacksTypeCard'
 import styles from './homeSkillsPage.module.css'

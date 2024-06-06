@@ -1,6 +1,6 @@
 import { useLoaderData } from 'react-router-dom'
-import { ProjectWithId } from '../../../Types/Project'
-import { SkillWithId } from '../../../Types/Skill'
+import { ProjectWithId } from '../../../types/Project'
+import { SkillWithId } from '../../../types/Skill'
 import ProjectForm from './components/ApiProjectForm'
 
 interface EditProject {

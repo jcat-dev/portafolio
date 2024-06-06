@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import { ProfileWithId } from '../../../Types/Profile'
+import { ProfileWithId } from '../../../types/Profile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-regular-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'

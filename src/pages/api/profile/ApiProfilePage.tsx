@@ -1,5 +1,5 @@
 import { useLoaderData, useNavigate } from 'react-router-dom'
-import { Profile, ProfileWithId } from '../../../Types/Profile'
+import { Profile, ProfileWithId } from '../../../types/Profile'
 import { Formik, Form } from 'formik'
 import { getToastError, getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { setFetch } from '../../../utils/fetch'

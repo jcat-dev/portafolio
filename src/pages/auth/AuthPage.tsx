@@ -1,13 +1,14 @@
 import { Form, Formik, FormikHelpers } from 'formik'
 import { setFetch } from '../../utils/fetch'
 import { getToastLoading, updateToastLoading } from '../../utils/toast'
-import { FetchResponseWithData } from '../../Types/FetchResponse'
+import { FetchResponseWithData } from '../../types/FetchResponse'
+import { CredentialAuth } from '../../types/CredentialAuth'
 import { CREATED_STATUS } from '../../constants/HTTP_STATUS'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import FormikInput from '../../component/formik/FormikInput'
-import styles from './authPage.module.css'
 import Button from '../../component/button/Button'
+import styles from './authPage.module.css'
 
 interface FormValues {
   credential: string

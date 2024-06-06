@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import { SkillWithId } from '../../../Types/Skill'
+import { SkillWithId } from '../../../types/Skill'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'

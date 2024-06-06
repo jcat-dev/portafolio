@@ -1,5 +1,5 @@
-import { FetchResponseWithData } from '../../../Types/FetchResponse'
-import { ProfileWithId } from '../../../Types/Profile'
+import { FetchResponseWithData } from '../../../types/FetchResponse'
+import { ProfileWithId } from '../../../types/Profile'
 import { setFetch } from '../../../utils/fetch'
 import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { getToastError } from '../../../utils/toast'

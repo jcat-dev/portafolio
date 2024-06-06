@@ -1,5 +1,5 @@
-import { FetchResponseWithData } from '../../../Types/FetchResponse'
-import { SkillWithId } from '../../../Types/Skill'
+import { FetchResponseWithData } from '../../../types/FetchResponse'
+import { SkillWithId } from '../../../types/Skill'
 import { setFetch } from '../../../utils/fetch'
 import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { getToastError } from '../../../utils/toast'

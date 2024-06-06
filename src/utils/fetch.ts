@@ -1,4 +1,4 @@
-import { FetchMethod } from '../Types/FetchResponse'
+import { FetchMethod } from '../types/FetchResponse'
 
 export const setFetch = (api: string, method: FetchMethod, body?: object) => {
   const token = sessionStorage.getItem('token')

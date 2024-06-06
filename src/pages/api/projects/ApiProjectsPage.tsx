@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import { ProjectWithId } from '../../../Types/Project'
+import { ProjectWithId } from '../../../types/Project'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons/faPenToSquare'

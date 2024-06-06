@@ -1,4 +1,4 @@
-import { ProjectWithId } from '../../../Types/Project'
+import { ProjectWithId } from '../../../types/Project'
 import { useLoaderData } from 'react-router-dom'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

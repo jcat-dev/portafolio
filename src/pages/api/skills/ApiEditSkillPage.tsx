@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import { SkillWithId } from '../../../Types/Skill'
+import { SkillWithId } from '../../../types/Skill'
 import ApiSkillsForm from './components/ApiSkillsForm'
 
 const ApiEditSkillPage = () => {

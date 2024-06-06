@@ -1,5 +1,5 @@
 import {  useLoaderData } from 'react-router-dom'
-import { SkillWithId } from '../../../Types/Skill'
+import { SkillWithId } from '../../../types/Skill'
 import ProjectForm from './components/ApiProjectForm'
 
 const ApiNewProjectPage = () => {

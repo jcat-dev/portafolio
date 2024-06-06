@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { SkillWithId } from '../../Types/Skill'
 import { icons } from '../../utils/Icons'
 import { faLaptopCode } from '@fortawesome/free-solid-svg-icons'
 import { getTechnologySvgUrl } from '../../utils/technologySVG'

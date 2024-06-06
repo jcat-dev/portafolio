@@ -1,5 +1,5 @@
-import { FetchResponseWithData } from '../../../Types/FetchResponse'
-import { ProjectWithId } from '../../../Types/Project'
+import { FetchResponseWithData } from '../../../types/FetchResponse'
+import { ProjectWithId } from '../../../types/Project'
 import { setFetch } from '../../../utils/fetch'
 import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { getToastError } from '../../../utils/toast'
