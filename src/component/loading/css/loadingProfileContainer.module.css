@@ -1,0 +1,20 @@
+.loading-box {
+  width: 50%;
+  height: 3em;
+  margin: auto;
+
+  &:nth-child(1) {
+    margin-top: 2.5em;
+  }
+
+  &:nth-child(2) {
+    width: 70%;
+  }  
+}
+
+
+@media screen and (width < 768px) {
+  .loading-box, .loading-box:nth-child(2) {
+    width: 100%;
+  }
+}

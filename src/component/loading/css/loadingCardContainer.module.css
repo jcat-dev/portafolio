@@ -1,0 +1,10 @@
+.loading-box {
+  width: min(calc(33em - 1em), calc(50% - 1em));
+  height: 20em;
+}
+
+@media screen and (width < 768px) {
+  .loading-box {
+    width: 100%;
+  }
+}

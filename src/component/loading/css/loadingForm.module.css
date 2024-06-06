@@ -1,0 +1,14 @@
+.loading-form {
+  width: min(25em, 100%);
+  margin: auto;
+  padding-top: 2.5em;
+}
+
+.loading-field {
+  height: 3em;
+  margin-bottom: 1em;
+}
+
+.loading-field--textarea {
+  height: 9em;
+}
