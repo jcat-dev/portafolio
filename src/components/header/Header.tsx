@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavScroll } from '../../hooks/useNavScroll'
+import { NavItems } from '../../types/NavItems'
 import styles from './header.module.css'
 import LinkButton from '../button/LinkButton'
 

@@ -3,8 +3,8 @@ import { SkillWithId } from '../../../types/Skill'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
-import StackTypeCard from '../../../component/card/StacksTypeCard'
-import LinkButton from '../../../component/button/LinkButton'
+import StackTypeCard from '../../../components/card/StacksTypeCard'
+import LinkButton from '../../../components/button/LinkButton'
 import styles from './css/apiSkillsPage.module.css'
 
 const ApiSkillsPage = () => {

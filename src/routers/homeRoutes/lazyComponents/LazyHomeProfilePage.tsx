@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import LoadingProfileContainer from '../../../component/loading/LoadingProfileContainer';
+import LoadingProfileContainer from '../../../components/loading/LoadingProfileContainer';
 const HomeProfilePage = lazy(() => import('../../../pages/home/profile/HomeProfilePage'))
 
 const LazyHomeProfilePage = () => {

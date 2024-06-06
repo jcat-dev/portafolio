@@ -6,8 +6,8 @@ import { CredentialAuth } from '../../types/CredentialAuth'
 import { CREATED_STATUS } from '../../constants/HTTP_STATUS'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
-import FormikInput from '../../component/formik/FormikInput'
-import Button from '../../component/button/Button'
+import FormikInput from '../../components/formik/FormikInput'
+import Button from '../../components/button/Button'
 import styles from './authPage.module.css'
 
 interface FormValues {

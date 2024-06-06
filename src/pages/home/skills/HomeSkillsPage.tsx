@@ -1,6 +1,6 @@
 import { SkillWithId } from '../../../types/Skill'
 import { useLoaderData } from 'react-router-dom'
-import StackTypeCard from '../../../component/card/StacksTypeCard'
+import StackTypeCard from '../../../components/card/StacksTypeCard'
 import styles from './homeSkillsPage.module.css'
 
 const HomeSkillsPage = () => {  

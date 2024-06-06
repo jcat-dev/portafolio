@@ -4,9 +4,9 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { getTechnologySvgUrl } from '../../../utils/technologySVG'
-import LoadingImage from '../../../component/loading/LoadingImage'
-import Anchor from '../../../component/button/Anchor'
-import BorderAnimation from '../../../component/animation/BorderAnimation'
+import LoadingImage from '../../../components/loading/LoadingImage'
+import Anchor from '../../../components/button/Anchor'
+import BorderAnimation from '../../../components/animation/BorderAnimation'
 import styles from './homeProjectsPage.module.css'
 
 const HomeProjectsPage = () => {

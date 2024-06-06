@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import LoadingCardContainer from '../../../component/loading/LoadingCardContainer';
+import LoadingCardContainer from '../../../components/loading/LoadingCardContainer';
 const HomeSkillsPage = lazy(() => import('../../../pages/home/skills/HomeSkillsPage'))
 
 const LazyHomeSkillsPage = () => {

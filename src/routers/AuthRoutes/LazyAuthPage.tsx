@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import LoadingAuthContainer from '../../component/loading/LoadingAuthContainer';
+import LoadingAuthContainer from '../../components/loading/LoadingAuthContainer';
 const AuthPage = lazy(() => import('../../pages/auth/AuthPage'))
 
 const LazyAuthPage = () => {

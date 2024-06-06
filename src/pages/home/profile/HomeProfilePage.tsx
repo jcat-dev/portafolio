@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-regular-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import Anchor from '../../../component/button/Anchor'
+import Anchor from '../../../components/button/Anchor'
+import ParticlesBg from '../../../components/particle/ParticlesBg'
+import LinkButton from '../../../components/button/LinkButton'
 import styles from './homeProfilePage.module.css'
-import ParticlesBg from '../../../component/particle/ParticlesBg'
-import LinkButton from '../../../component/button/LinkButton'
 
 const HomeProfilePage: React.FC = () => {
   const profile = useLoaderData() as ProfileWithId | null

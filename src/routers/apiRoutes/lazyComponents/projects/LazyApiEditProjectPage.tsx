@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react'
-import LoadingDoubleFormContainer from '../../../../component/loading/LoadingDoubleFormContainer'
+import LoadingDoubleFormContainer from '../../../../components/loading/LoadingDoubleFormContainer'
 const ApiEditProjectPage = lazy(() => import('../../../../pages/api/projects/ApiEditProjectPage'))
 
 const LazyApiEditProjectPage = () => {

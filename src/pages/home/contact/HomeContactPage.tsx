@@ -7,12 +7,12 @@ import { FormContact } from '../../../types/FormContact'
 import { FetchResponse } from '../../../types/FetchResponse'
 import { CREATED_STATUS } from '../../../constants/HTTP_STATUS'
 import { VALIDATION_MSG } from '../../../constants/TOAST_MSG'
-import FormikInput from '../../../component/formik/FormikInput'
-import FormikTextArea from '../../../component/formik/FormikTextArea'
-import Button from '../../../component/button/Button'
-import styles from './homeContactPage.module.css'
 import * as Yup from 'yup'
-import Anchor from '../../../component/button/Anchor'
+import FormikInput from '../../../components/formik/FormikInput'
+import FormikTextArea from '../../../components/formik/FormikTextArea'
+import Button from '../../../components/button/Button'
+import Anchor from '../../../components/button/Anchor'
+import styles from './homeContactPage.module.css'
 
 const HomeContactPage = () => { 
   const initialValues: FormContact = {

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import LoadingFormContainer from '../../../component/loading/LoadingFormContainer';
+import LoadingFormContainer from '../../../components/loading/LoadingFormContainer';
 const ApiProfilePage = lazy(() => import('../../../pages/api/profile/ApiProfilePage'))
 
 const LazyApiProfilePage = () => {

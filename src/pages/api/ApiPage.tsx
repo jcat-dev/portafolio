@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { navDev } from '../../utils/navItems';
-import Header from '../../component/header/Header';
+import Header from '../../components/header/Header';
 
 const ApiPage = () => {
   return (

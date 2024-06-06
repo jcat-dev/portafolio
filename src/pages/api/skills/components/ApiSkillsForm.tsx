@@ -9,11 +9,11 @@ import { FetchResponse } from '../../../../types/FetchResponse'
 import { useNavigate } from 'react-router-dom'
 import { CREATED_STATUS, OK_STATUS } from '../../../../constants/HTTP_STATUS'
 import { VALIDATION_MSG } from '../../../../constants/TOAST_MSG'
-import FormikInput from '../../../../component/formik/FormikInput'
+import FormikInput from '../../../../components/formik/FormikInput'
 import styles from '../css/apiSkillsForm.module.css'
-import Button from '../../../../component/button/Button'
+import Button from '../../../../components/button/Button'
 import ApiSkillInput from './ApiSkillInput'
-import LinkButton from '../../../../component/button/LinkButton'
+import LinkButton from '../../../../components/button/LinkButton'
 
 interface Props {
   skill?: SkillWithId

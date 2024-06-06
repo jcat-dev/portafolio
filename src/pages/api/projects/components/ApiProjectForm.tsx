@@ -11,11 +11,11 @@ import { useState } from 'react'
 import { CREATED_STATUS, OK_STATUS } from '../../../../constants/HTTP_STATUS'
 import { VALIDATION_MSG } from '../../../../constants/TOAST_MSG'
 import * as Yup from 'yup'
-import Button from '../../../../component/button/Button'
-import FormikTextArea from '../../../../component/formik/FormikTextArea'
-import MyTextInput from '../../../../component/formik/FormikInput'
+import Button from '../../../../components/button/Button'
+import FormikTextArea from '../../../../components/formik/FormikTextArea'
+import MyTextInput from '../../../../components/formik/FormikInput'
+import LinkButton from '../../../../components/button/LinkButton'
 import styles from '../css/apiProjectForm.module.css'
-import LinkButton from '../../../../component/button/LinkButton'
 
 interface Props {
   stacksType: SkillWithId[]

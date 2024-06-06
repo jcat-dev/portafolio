@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import LoadingTableContainer from '../../../../component/loading/LoadingTableContainer';
+import LoadingTableContainer from '../../../../components/loading/LoadingTableContainer';
 const ApiProjectsPage = lazy(() => import('../../../../pages/api/projects/ApiProjectsPage'))
 
 const LazyApiProjectsPage = () => {

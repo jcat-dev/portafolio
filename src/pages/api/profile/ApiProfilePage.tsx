@@ -5,9 +5,9 @@ import { getToastError, getToastLoading, updateToastLoading } from '../../../uti
 import { setFetch } from '../../../utils/fetch'
 import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { VALIDATION_MSG } from '../../../constants/TOAST_MSG'
-import FormikInput from '../../../component/formik/FormikInput'
-import FormikTextArea from '../../../component/formik/FormikTextArea'
-import Button from '../../../component/button/Button'
+import FormikInput from '../../../components/formik/FormikInput'
+import FormikTextArea from '../../../components/formik/FormikTextArea'
+import Button from '../../../components/button/Button'
 import styles from './apiProfilePage.module.css'
 import * as Yup from 'yup'
 

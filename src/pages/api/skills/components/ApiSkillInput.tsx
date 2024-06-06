@@ -1,9 +1,9 @@
 import { ChangeEvent, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import Button from '../../../../component/button/Button'
+import Button from '../../../../components/button/Button'
 import styles from '../css/apiSkillInput.module.css'
-import Input from '../../../../component/formik/Input'
+import Input from '../../../../components/formik/Input'
 
 interface Props {
   error: boolean

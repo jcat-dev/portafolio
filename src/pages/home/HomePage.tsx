@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { navHome } from '../../utils/navItems'
-import Header from '../../component/header/Header'
+import Header from '../../components/header/Header'
 
 const HomePage = () => {  
   return (

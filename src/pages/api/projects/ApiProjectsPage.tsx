@@ -8,9 +8,9 @@ import { setFetch } from '../../../utils/fetch'
 import { useEffect, useState } from 'react'
 import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { OK_STATUS } from '../../../constants/HTTP_STATUS'
-import Button from '../../../component/button/Button'
-import LoadingImage from '../../../component/loading/LoadingImage'
-import LinkButton from '../../../component/button/LinkButton'
+import Button from '../../../components/button/Button'
+import LoadingImage from '../../../components/loading/LoadingImage'
+import LinkButton from '../../../components/button/LinkButton'
 import styles from './css/apiProjectsPage.module.css'
 
 const ApiProjectsPage = () => {
