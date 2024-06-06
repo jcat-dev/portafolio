@@ -1,9 +1,9 @@
 import { FetchResponseWithData } from '../../../Types/FetchResponse'
 import { SkillWithId } from '../../../Types/Skill'
 import { setFetch } from '../../../utils/fetch'
-import { OK_STATUS } from '../../../utils/httpStatus'
+import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { getToastError } from '../../../utils/toast'
-import { SKILLS_LOADER_MSG } from '../../../utils/toastMsg'
+import { SKILLS_LOADER_MSG } from '../../../constants/TOAST_MSG'
 
 export const homeSkillsLoader = async (): Promise<SkillWithId[]> => {
   try {

@@ -1,9 +1,9 @@
 import { FetchResponseWithData } from '../../../Types/FetchResponse'
 import { ProfileWithId } from '../../../Types/Profile'
 import { setFetch } from '../../../utils/fetch'
-import { OK_STATUS } from '../../../utils/httpStatus'
+import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { getToastError } from '../../../utils/toast'
-import { PROFILE_LOADER_MSG } from '../../../utils/toastMsg'
+import { PROFILE_LOADER_MSG } from '../../../constants/TOAST_MSG'
 
 export const homeProfileLoader = async (): Promise<ProfileWithId | null> => {
   try {

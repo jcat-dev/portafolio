@@ -2,9 +2,9 @@ import { FetchResponseWithData } from '../../../Types/FetchResponse'
 import { ProjectWithId } from '../../../Types/Project'
 import { SkillWithId } from '../../../Types/Skill'
 import { setFetch } from '../../../utils/fetch'
-import { OK_STATUS } from '../../../utils/httpStatus'
+import { OK_STATUS } from '../../../constants/HTTP_STATUS'
 import { getToastError } from '../../../utils/toast'
-import { PROJECTS_LOADER_MSG, PROJECT_LOADER_MSG, STACK_PROJECTS_LOADER_MSG } from '../../../utils/toastMsg'
+import { PROJECTS_LOADER_MSG, PROJECT_LOADER_MSG, STACK_PROJECTS_LOADER_MSG } from '../../../constants/TOAST_MSG'
 
 export const apiProjectsLoader = async (): Promise<ProjectWithId[] | []> => {
   try {
