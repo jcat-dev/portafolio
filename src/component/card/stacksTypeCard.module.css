@@ -48,7 +48,7 @@
   font-weight: bold;
 }
 
-.svg {
+.svg, .loading-svg {
   width: 3em;
   height: 3em;
 }

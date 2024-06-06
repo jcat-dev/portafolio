@@ -5,6 +5,7 @@ import { faLaptopCode } from '@fortawesome/free-solid-svg-icons'
 import { getTechnologySvgUrl } from '../../utils/technologySVG'
 import BorderAnimation from '../animation/BorderAnimation'
 import StackTypeButtons from './StackTypeButtons'
+import LoadingImage from '../loading/LoadingImage'
 import styles from './stacksTypeCard.module.css'
 
 interface Props {
@@ -41,10 +42,11 @@ const StacksTypeCard: React.FC<Props> = ({stackType, devMode, onDelete}) => {
                     key={index}
                     className={styles['stacks-item__skills-item']}
                   >
-                    <img 
+                    <LoadingImage 
                       src={getTechnologySvgUrl(value) ?? ''}
-                      className={styles['svg']}
-                      loading='lazy'
+                      alt={`Imagen de ${value}`}
+                      imgClassName={styles['svg']}
+                      loadingClassName={styles['loading-svg']}
                     />
                     
                     {value}

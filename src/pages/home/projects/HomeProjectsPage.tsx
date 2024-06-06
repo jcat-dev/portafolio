@@ -32,11 +32,11 @@ const HomeProjectsPage = () => {
                   }
                 </h2>
 
-                <LoadingImage 
-                  classNameContainer={styles['face-front__img-container']}
-                  classNameImg={styles['face-front__img']}
+                <LoadingImage
+                  loadingClassName={styles['face-front__loading-img']}                  
+                  imgClassName={styles['face-front__img']}
                   src={projectValue.pageImgURL} 
-                  alt="imagen de la app" 
+                  alt={`Imagen de ${projectValue.projectTitle}`}
                 />
               </div>
 
@@ -62,10 +62,12 @@ const HomeProjectsPage = () => {
                         key={mapIndex}
                         className={styles['face-back__stacks-item']}
                       >
-                        <img
+                        <LoadingImage 
                           src={getTechnologySvgUrl(mapValue) ?? ''}
-                          className={styles['item-svg']}
-                          loading='lazy'
+                          alt={`imagen de ${mapValue}`}
+                          imgClassName={styles['item-svg']}
+                          loadingClassName={styles['loading-svg']}
+                          title={mapValue}
                         />
 
                         <span className={styles['item-title']} >

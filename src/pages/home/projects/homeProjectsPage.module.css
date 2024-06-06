@@ -67,15 +67,12 @@
   letter-spacing: var(--letter-spacing);
 }
 
-.face-front__img-container {
+.face-front__img, .face-front__loading-img {
   width: 100%;
   height: 20em;
 }
 
 .face-front__img {
-  width: 100%;
-  height: 100%;
-
   object-fit: cover;
 }
 
@@ -115,7 +112,7 @@
   align-items: center;
 }
 
-.item-svg {
+.item-svg, .loading-svg {
   width: 1.5em;
   height: 1.5em;
 }

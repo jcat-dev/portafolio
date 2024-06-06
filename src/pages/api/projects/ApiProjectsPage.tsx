@@ -10,8 +10,8 @@ import { getToastLoading, updateToastLoading } from '../../../utils/toast'
 import { OK_STATUS } from '../../../utils/httpStatus'
 import Button from '../../../component/button/Button'
 import LoadingImage from '../../../component/loading/LoadingImage'
-import styles from './css/apiProjectsPage.module.css'
 import LinkButton from '../../../component/button/LinkButton'
+import styles from './css/apiProjectsPage.module.css'
 
 const ApiProjectsPage = () => {
   const data = useLoaderData() as ProjectWithId[] | []
@@ -75,7 +75,7 @@ const ApiProjectsPage = () => {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className={styles['table-body']}>
           {
             projects?.map((value, index) => (
               <tr 
@@ -90,36 +90,34 @@ const ApiProjectsPage = () => {
                   {value.stackTitle}
                 </td>
 
-                <td className={`${styles['table-body__tr-td']} ${styles['td']}`} >
+                <td className={styles['table-body__tr-td']} >
                   <LoadingImage 
                     src={value.pageImgURL} 
                     alt="project image" 
-                    classNameContainer={styles['td-box-img']}
-                    classNameImg={styles['td-box-img__img']}  
+                    loadingClassName={styles['td-loading']}
+                    imgClassName={styles['td-img']}  
                   />
                 </td>
                   
                 <td 
-                  className={`${styles['table-body__tr-td']} ${styles['td']}`} 
+                  className={`${styles['table-body__tr-td']} ${styles['td-box']}`} 
                 >                    
-                  <div className={styles['td-box']} >     
-                    <LinkButton
-                      to={`/api/projects/${value._id}`} 
-                      className={styles['td-box__edit-button']}
-                      aria-label='editar elemento'
-                    >
-                      <FontAwesomeIcon icon={faPenToSquare} />
-                    </LinkButton>  
+                  <LinkButton
+                    to={`/api/projects/${value._id}`} 
+                    className={styles['td-box__edit-button']}
+                    aria-label='editar elemento'
+                  >
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </LinkButton>  
 
-                    <Button 
-                      type='button'
-                      className={styles['td-box__delete-button']}
-                      aria-label='eliminar elemento'
-                      onClick={() => handleDeleteClick(value._id)}
-                    >
-                      <FontAwesomeIcon icon={faTrashCan} />
-                    </Button>
-                  </div>
+                  <Button 
+                    type='button'
+                    className={styles['td-box__delete-button']}
+                    aria-label='eliminar elemento'
+                    onClick={() => handleDeleteClick(value._id)}
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </Button>
                 </td>
               </tr>
             ))
