@@ -1,3 +1,5 @@
+import { NavItems } from '../types/NavItems'
+
 export const navDev: NavItems = {
   items: [
     { title: 'PERFIL', link: '/api/profile' },
