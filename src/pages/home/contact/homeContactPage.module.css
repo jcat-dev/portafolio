@@ -83,6 +83,7 @@
   margin-bottom: 1em;
 
   display: flex;
+  justify-content: flex-start;
   border-radius: 0.5em;
   letter-spacing: var(--letter-spacing);
 }
@@ -92,7 +93,8 @@
 }
 
 .link-icon {
-  margin-left: 0.25em;
+  margin-left: 25%;
+  margin-right: 0.5em;
 }
 
 @media screen and (width < 1024px) {
@@ -111,5 +113,15 @@
 @media screen and (width < 768px) {
   .title {
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (width < 425px) {
+  .link-wsp, .link-linkedin, .link-github {
+    justify-content: center;
+  }
+
+  .link-icon {
+    margin-left: 0;
   }
 }

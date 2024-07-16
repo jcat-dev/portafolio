@@ -64,15 +64,15 @@ const HomeContactPage = () => {
           target='_blank'
           className={styles['link-linkedin']}
         >
-          <span className={styles['link-text']} >
-            LinkedIn
-          </span>
-
           <FontAwesomeIcon 
             icon={faLinkedinIn}
             className={styles['link-icon']}
-            size='xl'
+            size='2xl'
           />
+          
+          <span className={styles['link-text']} >
+            LinkedIn
+          </span>
         </Anchor> 
 
         <Anchor 
@@ -80,15 +80,15 @@ const HomeContactPage = () => {
           className={styles['link-wsp']}
           target="_blank" 
         >
+          <FontAwesomeIcon 
+            icon={faWhatsapp}
+            size='2xl'
+            className={styles['link-icon']}
+          />
+
           <span className={styles['link-text']} >
             WhatsApp
           </span>
-
-          <FontAwesomeIcon 
-            icon={faWhatsapp}
-            size='xl'
-            className={styles['link-icon']}
-          />
         </Anchor>
 
         <Anchor
@@ -96,15 +96,15 @@ const HomeContactPage = () => {
           target='_blank'
           className={styles['link-github']}
         >
-          <span className={styles['link-text']} >
-            GitHub
-          </span>          
-
           <FontAwesomeIcon 
             icon={faGithub}
             className={styles['link-icon']}
-            size='xl'
+            size='2xl'
           />
+
+          <span className={styles['link-text']} >
+            GitHub
+          </span>   
         </Anchor> 
       </div> 
       
