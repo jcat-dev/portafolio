@@ -11,7 +11,7 @@ import LazyHomeProfilePage from './homeRoutes/lazyComponents/LazyHomeProfilePage
 import LazyHomeProjectsPage from './homeRoutes/lazyComponents/LazyHomeProjectsPage'
 import LazyHomeSkillsPage from './homeRoutes/lazyComponents/LazyHomeSkillsPage'
 import LazyHomeContactPage from './homeRoutes/lazyComponents/LazyHomeContactPage'
-import LazyAuthPage from './AuthRoutes/LazyAuthPage'
+import LazyAuthPage from './authRoutes/LazyAuthPage'
 import ApiPage from '../pages/api/ApiPage'
 import LazyApiProfilePage from './apiRoutes/lazyComponents/LazyApiProfilePage'
 import LazyApiProjectsPage from './apiRoutes/lazyComponents/projects/LazyApiProjectsPage'
